@@ -6,7 +6,7 @@ try
     {
         $url = explode("/", $_GET['url']);
         $classController = 'C' . ucfirst(strtolower($url[0]));
-        $fichierController = './controller/' . $classController . '.php';
+        $fichierController = 'controller/' . $classController . '.php';
         if(file_exists($fichierController))
         {
             require_once($fichierController);
@@ -19,7 +19,7 @@ try
     }
     else
     {
-        require_once('./controller/CAccueil.php');
+        require_once('controller/CAccueil.php');
     }
 }
 catch(Exception $e)

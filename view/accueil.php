@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
     <head>
-        <title>compte</title>
+        <title>accueil</title>
     </head>
     <body>
     </body>

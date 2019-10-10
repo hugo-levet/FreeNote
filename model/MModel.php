@@ -1,6 +1,6 @@
 <?php
 
-abstract class Model
+abstract class MModel
 {
     private static $_bdd;
 

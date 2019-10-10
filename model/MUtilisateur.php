@@ -1,24 +1,18 @@
 <?php
-
-include 'Mots.php';
-include 'Message.php';
-
-class Utilisateur
+class MUtilisateur extends MModel
 {
-    private $i_UserID;
-    private $s_Pseudo;
-    private $s_Email;
-    private $s_MDP;
+    private $id;
+    private $pseudo;
+    private $mail;
+    private $mdp;
 
-    public function EcrireUnMot()
+    function __construct($mail, $pseudo, $mdp)
     {
-
-    }
-
-    public function setPseudo($new_pseudo)
-    {
-        $s_Pseudo = $new_pseudo;
+        $this->mail = $mail;
+        $this->pseudo = $pseudo;
+        $this->mdp = $mdp;
+        //mettre dans base données
+        //récupérer id dans base de données
     }
 }
-
 ?>

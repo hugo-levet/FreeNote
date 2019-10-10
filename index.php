@@ -10,7 +10,7 @@ try
         if(file_exists($fichierController))
         {
             require_once($fichierController);
-            $controller = new $classController();
+            $controller = new $classController($url);
         }
         else
         {

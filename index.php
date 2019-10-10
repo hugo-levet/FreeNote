@@ -20,12 +20,13 @@ try
     else
     {
         require_once('./controller/CAccueil.php');
-        $controller = new $classController();
+        $controller = new CAccueil();
     }
 }
 catch(Exception $e)
 {
     $messageErreur = $e->getMessage();
-    require_once('view/VErreur.php');
+    require_once('./controller/CErreur.php');
+    $controller = new CErreur($messageErreur);
 }
 ?>

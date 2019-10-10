@@ -5,7 +5,7 @@ abstract class Model
     private static $_bdd;
 
     //Instantation de la connexion
-    private static function stBdd()
+    private static function setBdd()
     {
         self::$_bdd = new PDO('mysql:host= ; dbname= ;charset=utf8', ' ', ' ');
         self::$_bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);

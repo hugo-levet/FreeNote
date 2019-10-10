@@ -4,7 +4,7 @@ abstract class Model
 {
     private static $_bdd;
 
-    //Instantation de la connexion
+    //Instantiation de la connexion
     private static function setBdd()
     {
         self::$_bdd = new PDO('mysql:host= ; dbname= ;charset=utf8', ' ', ' ');
@@ -34,4 +34,4 @@ abstract class Model
 }
 ?>
 
-//Explication: https://www.youtube.com/watch?v=GV-MY1Kg4Hg&t jusqu'à 5:50
+//Explication:   jusqu'à 5:50

@@ -1,32 +1,38 @@
 <?php
-try
+$controller;
+//dirige vers le bon controlleur
+if(isset($_GET['url']))
 {
-    //dirige vers le bon controlleur
-    if(isset($_GET['url']))
+    $url = explode("/", $_GET['url']);
+    $classController = 'C' . ucfirst(strtolower($url[0]));
+    $view = 'V' . ucfirst(strtolower($url[0]));
+    $fichierController = './controller/' . $classController . '.php';
+    $fichierView = './view/' . $view . '.php';
+    try
     {
-        $url = explode("/", $_GET['url']);
-        $classController = 'C' . ucfirst(strtolower($url[0]));
-        $fichierController = './controller/' . $classController . '.php';
         if(file_exists($fichierController))
         {
             require_once($fichierController);
             $controller = new $classController($url);
+            require_once($fichierView);
         }
         else
         {
             throw new Exception('Page introuvable');
         }
     }
-    else
+    catch(Exception $e)
     {
-        require_once('./controller/CAccueil.php');
-        $controller = new CAccueil();
+        $messageErreur = $e->getMessage();
+        require_once('./controller/CErreur.php');
+        $controller = new CErreur($url, $messageErreur);
+        require_once('./view/VErreur.php');
     }
 }
-catch(Exception $e)
+else
 {
-    $messageErreur = $e->getMessage();
-    require_once('./controller/CErreur.php');
-    $controller = new CErreur($messageErreur);
+    require_once('./controller/CAccueil.php');
+    $controller = new CAccueil();
+    require_once('./view/VAccueil.php');
 }
 ?>

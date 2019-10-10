@@ -20,6 +20,7 @@ try
     else
     {
         require_once('./controller/CAccueil.php');
+        $controller = new $classController();
     }
 }
 catch(Exception $e)

@@ -1,8 +1,11 @@
 <?php
 
+include 'Utilisateur.php';
+
 class Mots
 {
-    private $_Mot;
+    private $s_Mot;
+    private $o_Utilisateur;
 }
 
 ?>

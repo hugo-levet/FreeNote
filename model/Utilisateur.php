@@ -1,9 +1,24 @@
 <?php
 
+include 'Mots.php';
+include 'Message.php';
+
 class Utilisateur
 {
-    private $_UserID;
-    private $_Pseudo;
-    private $_Email;
-    private $_Mdp;
+    private $i_UserID;
+    private $s_Pseudo;
+    private $s_Email;
+    private $s_MDP;
+
+    public function EcrireUnMot()
+    {
+
+    }
+
+    public function setPseudo($new_pseudo)
+    {
+        $s_Pseudo = $new_pseudo;
+    }
 }
+
+?>

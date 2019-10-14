@@ -34,4 +34,4 @@ abstract class MModel
 }
 ?>
 
-//Explication:   jusqu'à 5:50
+<!-- Explication:   jusqu'à 5:50 -->

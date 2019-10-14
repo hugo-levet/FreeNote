@@ -1,4 +1,5 @@
 <?php
+require_once('model/MModel.php');
 class MUtilisateur extends MModel
 {
     private $id;

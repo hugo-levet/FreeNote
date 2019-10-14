@@ -21,4 +21,4 @@ o l’ensemble des identifiants de connexion
 
   ▪ de l’hébergement
 
-  ▪ du compte du système de version (obligatoire)
+github : https://github.com/hugo-levet/FreeNote

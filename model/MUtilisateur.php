@@ -12,7 +12,6 @@ class MUtilisateur extends MModel
         $this->mail = $mail;
         $this->pseudo = $pseudo;
         $this->mdp = $mdp;
-        //mettre dans base données
         //récupérer id dans base de données
     }
 }

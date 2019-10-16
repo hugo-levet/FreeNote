@@ -1,5 +1,4 @@
 <?php
-
 abstract class MModel
 {
     private static $_bdd;
@@ -7,7 +6,7 @@ abstract class MModel
     //Instantiation de la connexion
     private static function setBdd()
     {
-        self::$_bdd = new PDO('mysql:host= ; dbname= ;charset=utf8', ' ', ' ');
+        self::$_bdd = new PDO('mysql:host=mysql-noeguyomarch.alwaysdata.net ; dbname=noeguyomarch_freenote ;charset=utf8', '189624_root', 'iutinfoaix');
         self::$_bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
     }
 

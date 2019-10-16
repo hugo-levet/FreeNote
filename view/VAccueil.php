@@ -12,8 +12,10 @@
     <?php
     $messagesParPage = 2; //nb de messages par pages
 
-    //ouvrir une connexion sql
-    $retour_total = mysql_query('SELECT COUNT (*) AS total FROM discussion'); // recuperer le contenu de discussion
+    $bdd = new MBaseDeDonnees;
+    $tableDiscussion = getToutesDiscussions(); //recuperer le contenu de discussion -> ('SELECT COUNT (*) AS total FROM discussion');
+    count($tableDiscussion);
+
     $donnees_total = mysql_fetch_assoc($retour_total); //mettre tout sous la forme d'un tableau
     $total = $donnees_total['total']; //on recupere le total pour le placer dans la variable $total
 

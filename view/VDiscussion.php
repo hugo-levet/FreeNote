@@ -9,6 +9,7 @@
     <link rel="import" href="../controller/CDiscussion.php">
 </head>
 <body>
+    <h1><?= $controller->getDiscussion()->getTitre()?></h1>
     <form action="message" method="post">
         <input type="text" name="mot" maxlength="52"/>
         <button name="envoyer"><i class="fab fa-telegram-plane"></i></button>

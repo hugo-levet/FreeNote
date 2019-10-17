@@ -8,32 +8,31 @@ class MBaseDeDonnees{
         //connexion
         try
         {
-            $this->bdd = new PDO('mysql:host=mysql-noeguyomarch.alwaysdata.net;dbname=noeguyomarch_freenote ;charset=utf8', '189624_root', 'iutinfoaix');
-            $this->bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
+            require_once('model/MVariablesConnexion.php');
+            $this->bdd = new PDO('mysql:host=' . $host . ';dbname=' . $dbname, $identifiantBdd, $mdpBdd , array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
         }
-        catch (PDOException $exception)
+        catch (Exception $e)
         {
-            echo $exception->getMessage();
-            echo '<br>Erreur de connexion à la base de données';
+            die('Erreur  : ' . $e->getMessage());
         }
     }
 
     function getDiscussion($id)
     {
-        $query = $bdd->query("SELECT * FROM discussion WHERE iddisc == $id");
+        $requete = $this->bdd->query("SELECT * FROM discussion WHERE iddisc = $id");
+//        $requete->execute([$id]);
 
-        $discussion = $query->fetchAll();
+        $discussion = $requete->fetchAll();
 
         return $discussion;
     }
 
     function getToutesDiscussions()
     {
-        $query = $bdd->query("SELECT * FROM discussion");
+        $requete = $this->bdd->query("SELECT * FROM discussion Order By iddesc");
 
-        $discussion = $query->fetchAll();
+        $discussion = $requete->fetchAll();
 
         return $discussion;
     }
 }
-?>

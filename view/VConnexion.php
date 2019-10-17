@@ -4,7 +4,7 @@
         <title>connexion</title>
     </head>
     <body>
-        <form method="post" action="../controller/verificationConnexion.php">
+        <form method="post" action="../controller/CConnexion.php">
             <div>
                 <label for="pseudo">Pseudo</label>
                 <input type="text" name="pseudo" required>

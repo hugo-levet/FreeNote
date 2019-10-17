@@ -42,13 +42,29 @@ class MUtilisateur extends MModel
 
     public function setMail($mail)
     {
-        if(is_string($mail))
+        if(is_mail($mail))
             $this->_mail = $mail;
     }
 
     //GETTERS
 
 
+    public function getId()
+    {
+        return $this->_id;
+    }
+
+
+    public function getMail()
+    {
+        return $this->_mail;
+    }
+
+
+    public function getPseudo()
+    {
+        return $this->_pseudo;
+    }
 
     //Autres fonctions
 
@@ -61,14 +77,26 @@ class MUtilisateur extends MModel
             for($i = 0; $i<= $taille_str;++$i)
             {
                 if($mail[i] == '@')
+                {
+                    $cmp = i;
                     $ismail = 1;
+                }
                 if($ismail) break;
             }
             if(!$ismail) return 0;
-
+            $ismail = 0;
+            for($i = $cmp; $i<= $taille_str;++$i)
+            {
+                if($mail[i] == '.' and $mail[i+1] != null)
+                {
+                    $ismail = 1;
+                }
+                if($ismail) break;
+            }
         }
         else
             return 0;
+        return $ismail;
     }
 }
 ?>

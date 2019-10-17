@@ -16,5 +16,10 @@ class CDiscussion{
     {
         return $this->discussion;
     }
+
+    public function setDiscussion($discussion)
+    {
+        $this->discussion = $discussion;
+    }
 }
 ?>

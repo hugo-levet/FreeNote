@@ -48,7 +48,7 @@ class CAccueil
     //fonction privé appelé par le controller
     private function discussions()
     {
-        require_once('model/MBaseDeDonnees.php');
+        require_once('model/MModel.php');
 
         $this->tableToutesDiscussions = //recupérer toute les discussions selon MBaseDeDonnees;
 

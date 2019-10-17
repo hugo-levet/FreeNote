@@ -12,7 +12,12 @@ class MDiscussion extends MModel {
         $this->table = 'discussion';
         $this->connexionBdd();
         $tuple = $this->getUnTuple($this->id);
+<<<<<<< HEAD
+        $this->titre = $tuple[2];
+        $this->statut = $tuple[1];
+=======
         $this->hydrate($tuple);
+>>>>>>> 9210c95ff8e4f58948353dd62ebdc1c597e2af53
     }
 
     public function getId()

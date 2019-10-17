@@ -1,15 +1,15 @@
 <?php
 require_once ('model/MModel.php');
-class MDiscussion extends MModel {
+class MMessage extends MModel {
     protected $id;
+    protected $idDiscussion;
     protected $statut;
-    protected $titre;
-    protected $messages = [];
+    protected $mots = [];
 
     function __construct($id)
     {
         $this->id = $id;
-        $this->table = 'discussion';
+        $this->table = 'message';
         $this->connexionBdd();
         $tuple = $this->getUnTuple($this->id);
         $this->hydrate($tuple);
@@ -20,6 +20,11 @@ class MDiscussion extends MModel {
         return $this->id;
     }
 
+    public function getIdDiscussion()
+    {
+        return $this->idDiscussion;
+    }
+
     public function getStatut()
     {
         return $this->statut;
@@ -28,16 +33,6 @@ class MDiscussion extends MModel {
     public function setStatut($statut)
     {
         $this->statut = $statut;
-    }
-
-    public function getTitre()
-    {
-        return $this->titre;
-    }
-
-    public function setTitre($titre)
-    {
-        $this->titre = $titre;
     }
 }
 ?>

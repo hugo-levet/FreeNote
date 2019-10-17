@@ -1,68 +1,64 @@
 <?php
+abstract class MModel{
 
-abstract class Model
-{
-    private static $_bdd;
+    private $bdd;
+    protected $table;
 
-    //Instantation de la connexion
-    private static function setBdd()
+    function connexionBdd()
     {
         try
         {
             require_once('model/MVariablesConnexion.php');
-            self::$_bdd = new PDO('mysql:host=' . $host . ';dbname=' . $dbname, $identifiantBdd, $mdpBdd , array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
+            $this->bdd = new PDO('mysql:host=' . $host . ';dbname=' . $dbname, $identifiantBdd, $mdpBdd , array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
         }
         catch (Exception $e)
         {
-            die('Erreur : ' .$e->getMessage());
+            die('Erreur  : ' . $e->getMessage());
         }
-        self::$_bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
     }
 
-    //Récupération de la connexion
-    protected function getBdd()
+    public function hydrate(array $data)
     {
-        if(self::$_bdd ==null)
-            self::setBdd();
-        return self::$_bdd;
-    }
-
-    protected function getAll($table, $obj)
-    {
-        $var = [];
-        $req = $this->getBdd()->prepare('SELECT * FROM'.$table.'ORDER BY id'.$table.' desc');
-        $req->execute();
-        while ($data = $req ->fetch(PDO::FETCH_ASSOC))
+        foreach($data as $key => $value)
         {
-            $var[] = new $obj($data);
+            $this->$key = $value;
         }
-        return $var;
-        $req->closeCursor();
     }
 
-    protected function getColonne($table, $obj, $attr)
+    function getUnTuple($id)
     {
-        $var = [];
-        $req = $this->getBdd()->prepare('SELECT '.$attr.' FROM '.$table.' ORDER BY id'.$table.' desc');
-        $req->execute();
-        while ($data = $req ->fetch(PDO::FETCH_ASSOC))
+        $requete = $this->bdd->prepare("SELECT * FROM $this->table WHERE id$this->table = $id ORDER BY id$this->table");
+        $requete->execute();
+        //exception si la requette est vide
+        try
         {
-            $var[] = new $obj($data);
+            $reponse = null;
+            while ($donnees = $requete->fetch())
+            {
+                $reponse = $donnees;
+            }
+
+            $requete->closeCursor();
+
+            if ($reponse == null)
+            {
+                throw new Exception($this->table . ' invalide.');
+            }
         }
-        return $var;
-        $req->closeCursor();
+        catch (Exception $e)
+        {
+            die('Erreur  : ' . $e->getMessage());
+        }
+
+        return $reponse;
     }
 
-    protected function getDonnee($table, $obj, $condition)
+    function getUneTable()
     {
-        $var = [];
-        $req = $this->getBdd()->prepare('SELECT * FROM'.$table.' WHERE '.$condition.'ORDER BY id'.$table.' desc');
-        $req->execute();
-        $obj = $req -> fetch(PDO::FETCH_ASSOC);
-        return $obj;
-        $req->closeCursor();
+        $requete = $this->bdd->query("SELECT * FROM $this->table ORDER BY id$this->table");
+
+        $discussion = $requete->fetchAll();
+
+        return $discussion;
     }
 }
-?>
-
-<!--//Explication: https://www.youtube.com/watch?v=GV-MY1Kg4Hg&t jusqu'à 5:50-->

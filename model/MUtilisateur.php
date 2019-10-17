@@ -1,6 +1,6 @@
 <?php
-require_once('model/MBaseDeDonnees.php');
-class MUtilisateur extends MBaseDeDonees
+require_once('model/MModel.php');
+class MUtilisateur extends MModel
 {
     private $_id;
     private $_pseudo;
@@ -18,17 +18,6 @@ class MUtilisateur extends MBaseDeDonees
             $this->hydrate($this->getUnTuple($this->ident));
         }
 
-    }
-
-    public function hydrate(array $data)
-    {
-        foreach($data as $key => $value)
-        {
-            $method = 'set'.ucfirst($key);
-
-            if(method_exist($this, $method))
-                $this->$method($value);
-        }
     }
 
     //SETTERS

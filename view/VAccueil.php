@@ -9,67 +9,50 @@
     <p>ce site internet est un site de chat... (a developper)</p>
 
 
-    <?php
-    $messagesParPage = 2; //nb de messages par pages
+<?php
+//on calcul la premiere entree a lire dans la table ex: (2 - 1) * 2 = premiere entrée 0,1,[2],3,4, ...
+$premiereEntree = ($controller->getPageActuelle() - 1) * $controller->getNbDiscussionParPage();
 
-    $bdd = new MBaseDeDonnees;
-    $tableDiscussion = getToutesDiscussions(); //recuperer le contenu de discussion -> ('SELECT COUNT (*) AS total FROM discussion');
-    count($tableDiscussion);
+//boucle pour qui lit le tableau de messages selon les meesages de la page courante
+for($i = $premiereEntree; $i <= ($premiereEntree + $controller->getNbDiscussionParPage()); $i++)
+{
+    //titre du message[i] a afficher
+    $titre = $controller->getUneDiscussion($i)->getTitre;
 
-    $donnees_total = mysql_fetch_assoc($retour_total); //mettre tout sous la forme d'un tableau
-    $total = $donnees_total['total']; //on recupere le total pour le placer dans la variable $total
+    //statut du message[i]
+    $statut = $controller->getUneDiscussion($i)->getStatutDisc;
+    if($statut)
+        $statut = 'Ouvert';
+    else
+        $statut = 'Fermer';
 
-    //on compte de nombre de pages
-    $nombreDePages = ceil($total/$messagesParPage);
+    //table de presentation du message courant
+    echo '<table width="400" border="0" align="center" cellpadding="0" cellspacing="0">
+                <tr>
+                     <td><strong>discussion: '.stripslashes($titre).'</strong></td>
+                </tr>
+                <tr>
+                     <td>statut: '.($statut).'</td>
+                </tr>
+            </table><br /><br />'; //saut a la ligne
+}
 
-    if(isset($_GET['page'])) //si $_GET['page'] existe
+echo '<p align="center">Page : '; //Pour l'affichage, on centre la liste des pages
+for($i = 1; $i <= $controller->getNbPages(); $i++) //On fait notre boucle
+{
+    //On va faire notre condition
+    if($i == $controller->getNbPages()) //Si il s'agit de la page actuelle
     {
-        $pageActuelle = intval($_GET['page']);
-
-        if($pageActuelle > $nombreDePages) //si la valeur de $pageActuelle est plus grand que $nombreDePages
-        {
-            $pageActuelle = $nombreDePages;
-        }
+        echo ' [ '.$i.' ] ';
     }
     else
     {
-        $pageActuelle = 1;
+        echo '<a href="?page='.$i.'">'.$i.'</a>';
     }
-
-    $premiereEntree = ($pageActuelle - 1) * $messagesParPage; //on calcul la premiere entree a lire
-
-    //la requete sql pour recuperer les messages de la page actuelle
-    $retour_messages = mysql-query('SELECT * FROM discussion ORDER BY iddisc DESC LIMIT'.$premiereEntree.', '.$messagesParPage.'');
-
-    while($donnees_messages = mysql_fetch_assoc($retour_messages)) //on lit les entrées une a une grace a une boucle
-    {
-
-
-        echo '<table width="400" border="0" align="center" cellpadding="0" cellspacing="0">
-                <tr>
-                     <td><strong>Ecrit par : '.stripslashes($donnees_messages['pseudo']).'</strong></td>
-                </tr>
-                <tr>
-                     <td>'.nl2br(stripslashes($donnees_messages['message'])).'</td>
-                </tr>
-            </table><br /><br />'; //saut a la ligne
-    }
-
-    echo '<p align="center">Page : '; //Pour l'affichage, on centre la liste des pages
-    for($i = 1; $i <= $nombreDePages; $i++) //On fait notre boucle
-    {
-        //On va faire notre condition
-        if($i == $pageActuelle) //Si il s'agit de la page actuelle...
-        {
-            echo ' [ '.$i.' ] ';
-        }
-        else //Sinon...
-        {
-            echo '<a href="livredor.php?page='.$i.'">'.$i.'</a>';
-        }
-    }
-    echo '</p>';
-    ?>
+    echo' ';
+}
+echo '</p>';
+?>
     
 
 

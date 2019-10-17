@@ -1,12 +1,13 @@
 <?php
-abstract class MModel
+
+abstract class Model
 {
     private static $_bdd;
 
-    //Instantiation de la connexion
+    //Instantation de la connexion
     private static function setBdd()
     {
-        self::$_bdd = new PDO('mysql:host=mysql-noeguyomarch.alwaysdata.net ; dbname=noeguyomarch_freenote ;charset=utf8', '189624_root', 'iutinfoaix');
+        self::$_bdd = new PDO('mysql:host= ; dbname= ;charset=utf8', ' ', ' ');
         self::$_bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
     }
 
@@ -33,4 +34,4 @@ abstract class MModel
 }
 ?>
 
-<!-- Explication:   jusqu'à 5:50 -->
+//Explication: https://www.youtube.com/watch?v=GV-MY1Kg4Hg&t jusqu'à 5:50

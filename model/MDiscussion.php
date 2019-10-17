@@ -1,5 +1,6 @@
 <?php
-class MDiscussion {
+require_once ('model/MBaseDeDonnees.php');
+class MDiscussion extends MBaseDeDonnees {
     private $id;
     private $statut;
     private $titre;
@@ -7,20 +8,11 @@ class MDiscussion {
     function __construct($id)
     {
         $this->id = $id;
-        require_once ('model/MBaseDeDonnees.php');
-        $bdd = new MBaseDeDonnees();
-        $discussion = $bdd->getDiscussion($this->id);
-        //si une discussion qui n'existe pas
-        if ($discussion == null)
-        {
-            $this->statut = 'non_existant';
-            $this->titre = 'donc pas de titre';
-        }
-        else
-        {
-            $this->statut = $discussion[0]['statutdisc'];
-            $this->titre = $discussion[0]['titre'];
-        }
+        $this->table = 'discussion';
+        $this->connexionBdd();
+        $tuple = $this->getUnTuple($this->id);
+        $this->titre = $tuple[1];
+        $this->statut = $tuple[2];
     }
 
     public function getId()
@@ -31,6 +23,11 @@ class MDiscussion {
     public function getStatut()
     {
         return $this->statut;
+    }
+
+    public function setStatut($statut)
+    {
+        $this->statut = $statut;
     }
 
     public function getTitre()

@@ -1,11 +1,11 @@
 <?php
-class MBaseDeDonnees{
+abstract class MBaseDeDonnees{
 
     private $bdd;
+    protected $table;
 
-    function __construct()
+    function connexionBdd()
     {
-        //connexion
         try
         {
             require_once('model/MVariablesConnexion.php');
@@ -17,19 +17,45 @@ class MBaseDeDonnees{
         }
     }
 
-    function getDiscussion($id)
+    function getUnTuple($id)
     {
-        $requete = $this->bdd->query("SELECT * FROM discussion WHERE iddisc = $id");
-//        $requete->execute([$id]);
+        $requete = $this->bdd->prepare("SELECT * FROM $this->table WHERE id$this->table = $id ORDER BY id$this->table");
+        $requete->execute();
+        //exception si la requette est vide
+        try
+        {
 
-        $discussion = $requete->fetchAll();
 
-        return $discussion;
+            //            foreach($requete as $donnees){
+            //contenu
+            //            $reponse
+            //}
+            $reponse = null;
+            while ($donnees = $requete->fetch())
+            {
+                $reponse = $donnees;
+            }
+
+            $requete->closeCursor();
+
+
+            //            $reponse = $requete->execute();
+            if ($reponse == null)
+            {
+                throw new Exception($this->table . ' invalide.');
+            }
+        }
+        catch (Exception $e)
+        {
+            die('Erreur  : ' . $e->getMessage());
+        }
+
+        return $reponse;
     }
 
-    function getToutesDiscussions()
+    function getUneTable()
     {
-        $requete = $this->bdd->query("SELECT * FROM discussion Order By iddesc");
+        $requete = $this->bdd->query("SELECT * FROM $this->table ORDER BY id$this->table");
 
         $discussion = $requete->fetchAll();
 

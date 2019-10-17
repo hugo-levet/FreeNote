@@ -21,7 +21,7 @@ abstract class MBaseDeDonnees{
     {
         $requete = $this->bdd->prepare("SELECT * FROM $this->table WHERE id$this->table = $id ORDER BY id$this->table");
         $requete->execute();
-        //exception si la requette est vide
+        //exception si la requete est vide
         try
         {
 

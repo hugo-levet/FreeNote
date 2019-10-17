@@ -11,8 +11,8 @@ class MDiscussion extends MBaseDeDonnees {
         $this->table = 'discussion';
         $this->connexionBdd();
         $tuple = $this->getUnTuple($this->id);
-        $this->titre = $tuple[1];
-        $this->statut = $tuple[2];
+        $this->titre = $tuple[2];
+        $this->statut = $tuple[1];
     }
 
     public function getId()

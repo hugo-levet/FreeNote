@@ -11,5 +11,10 @@ class CDiscussion{
             echo 'la discussion nexiste pas <br>';
         }
     }
+
+    public function getDiscussion()
+    {
+        return $this->discussion;
+    }
 }
 ?>

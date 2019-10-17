@@ -1,5 +1,5 @@
 <?php
-class MBaseDeDonnees{
+class MBaseDeDonnees {
 
     private $bdd;
 

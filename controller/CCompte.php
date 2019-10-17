@@ -1,5 +1,5 @@
 <?php
-class CCompte{
+class CCompte {
     private $pseudo;
     private $mail;
 
@@ -24,4 +24,3 @@ class CCompte{
     }
 }
 ?>
-

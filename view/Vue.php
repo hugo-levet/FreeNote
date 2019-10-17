@@ -1,15 +1,18 @@
 <?php
-class View
+
+namespace \Vue;
+
+class Vue
 {
     private $_file;
     private $_t;
 
     public function __construct($action)
     {
-        $this->_file = 'view/V'.$action.'php';
+        $this->_file = 'view/V' . $action . 'php';
     }
 
-    //Génère et affiche la vue
+    // Génère et affiche la vue
     public function generate($data)
     {
         $content = $this->generateFile($this->_file, $data);
@@ -19,7 +22,7 @@ class View
         echo $view;
     }
 
-    //Génère un fichier vue et renvoie le résultat produit
+    // Génère un fichier vue et renvoie le résultat produit
     private function generateFile($file, $data)
     {
         if (file_exists($file))

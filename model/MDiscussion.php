@@ -25,6 +25,11 @@ class MDiscussion extends MBaseDeDonnees {
         return $this->statut;
     }
 
+    public function setStatut($statut)
+    {
+        $this->statut = $statut;
+    }
+
     public function getTitre()
     {
         return $this->titre;

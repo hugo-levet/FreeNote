@@ -4,31 +4,53 @@ class CAccueil
 
     private $tableToutesDiscussions;
 
-    private $nbDiscussionParPage = 2;//nb de messages par pages
-    private $nbDiscussion;
-    private $nbPages;
+    private $nbDiscussionParPage = 2;   //nb de discussion par pages
+    private $nbDiscussion;              //nb total de discussion
+    private $nbPages;                   //nb pages necessaires pour afficher l'ensemble des discussions
     private $pageActuelle;
 
-
+    //constructeur
     function __construct()
     {
         if (isset($url) && count($url) > 1)
-            throw new \mysql_xdevapi\Exception('Page introuvable');
+            throw new Exception('Page introuvable');
         else
             $this->discussions();
     }
 
+    //getter et setter
     function setNbDiscussionParPage($i)
     {
         $this->nbDiscussionParPage = $i;
     }
 
+    function getNbDiscussionParPage()
+    {
+       return $this->nbDiscussionParPage;
+    }
 
+    function getUneDiscussion($i)
+    {
+        return $this->tableToutesDiscussions[$i];
+    }
+
+    function getPageActuelle()
+    {
+        return $this->pageActuelle;
+    }
+
+    function getNbPages()
+    {
+        return $this->nbPages;
+    }
+
+
+    //fonction privé appelé par le controller
     private function discussions()
     {
         require_once('model/MBaseDeDonnees.php');
 
-        $this->tableToutesDiscussions = //recupéerer toute les discussions selon MBaseDeDonnees;
+        $this->tableToutesDiscussions = //recupérer toute les discussions selon MBaseDeDonnees;
 
         $this->nbDiscussion = count($this->tableToutesDiscussions);
         $this->nbPages = ceil($this->nbDiscussion/$this->nbDiscussionParPage); //on compte de nombre de pages
@@ -51,7 +73,5 @@ class CAccueil
 
     }
 }
-
-$premiereEntree = ($this->pageActuelle - 1) * $this->nbDiscussionParPage; //on calcul la premiere entree a lire dans la table ex: (2 - 1) * 2 = premiere entrée 0,1,[2],3,4, ...
 
 ?>

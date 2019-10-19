@@ -1,5 +1,6 @@
 <?php
 require_once ('model/MModel.php');
+require_once ('model/MMessage.php');
 class MDiscussion extends MModel {
     protected $id;
     protected $statut;
@@ -10,9 +11,28 @@ class MDiscussion extends MModel {
     {
         $this->id = $id;
         $this->table = 'discussion';
+        $this->composition = 'message';
         $this->connexionBdd();
         $tuple = $this->getUnTuple($this->id);
-        $this->hydrate($tuple);
+
+//                $this->statut = $tuple[1];
+//                $this->titre = $tuple[2];
+//        $this->hydrate($tuple);
+
+        //crée un tableau des messages de la discussion a partir de la base données
+        $idMessages = $this->getComposition();
+////        echo 'composition : ' . $idMessages;
+        foreach ($idMessages as $value)
+        {
+            array_push($this->messages, new MMessage($value));
+        }
+
+    }
+
+    public function hydrate(array $data)
+    {
+        $this->titre = $data['titre'];
+        $this->statut = $data['statutdiscussion'];
     }
 
     public function getId()
@@ -38,6 +58,28 @@ class MDiscussion extends MModel {
     public function setTitre($titre)
     {
         $this->titre = $titre;
+    }
+
+    public function getMessages()
+    {
+        return $this->messages;
+    }
+
+    public function getMessage($i)
+    {
+        return $this->messages[$i];
+    }
+
+    public function isOuvert()
+    {
+        if ($this->statut)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }
 ?>

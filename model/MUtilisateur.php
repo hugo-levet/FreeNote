@@ -20,6 +20,13 @@ class MUtilisateur extends MModel
 
     }
 
+    public function hydrate(array $data)
+    {
+        $this->_pseudo = $data['pseudo'];
+        $this->_mail = $data['mail'];
+        $this->_mdp = $data['mdp'];
+    }
+
     //SETTERS
     public function setId($id)
     {

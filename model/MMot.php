@@ -12,7 +12,13 @@ class MMot extends MModel {
         $this->table = 'mot';
         $this->connexionBdd();
         $tuple = $this->getUnTuple($this->id);
-        $this->hydrate($tuple);
+    }
+
+    public function hydrate(array $data)
+    {
+        $this->idMessage = $data['idmessage'];
+        $this->idUtilisateur = $data['idutilisateur'];
+        $this->valeur = $data['valeur'];
     }
 
     public function getId()

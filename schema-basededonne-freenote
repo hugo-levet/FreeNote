@@ -1,10 +1,10 @@
 nom des tuples en minuscule
 
-DISCUSSION  (_iddisc, statutdisc, titre)
+DISCUSSION  (_iddiscussion, statutdiscussion, titre)
 
-MESSAGE     (_idmsg, iddisc#, statutmessage)
+MESSAGE     (_idmessage, iddiscussion#, statutmessage)
 
-MOT         (_idmot, idmsg#, idutilisateur#, valeur)
+MOT         (_idmot, idmessage#, idutilisateur#, valeur)
 
 UTILISATEUR (_idutilisateur, mdp, pseudo, mail, role)
 

@@ -4,7 +4,7 @@
         <title>connexion</title>
     </head>
     <body>
-        <form method="post" action="../controller/CConnexion.php">
+        <form method="post" action="<?= $controller->getUrlIci(); ?>">
             <div>
                 <label for="pseudo">Pseudo</label>
                 <input type="text" name="pseudo" required>
@@ -16,7 +16,7 @@
                 <a href="mdp_perdu.php">Mot de passe perdu ?</a>
             </div>
             <div>
-                <button type="submit" name="action" value="connexion">Se connecter</button>
+                <button type="submit" name="connexion" value="connexion">Se connecter</button>
             </div>
         </form>
         <a href="inscription.php">S'inscrire</a>

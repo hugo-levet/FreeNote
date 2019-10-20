@@ -1,10 +1,14 @@
 <?php
 require_once ('model/MDiscussion.php');
-class CDiscussion{
+require_once ('controller/CController.php');
+class CDiscussion extends CController
+{
     private $discussion;
-    //    private $messages;
 
     function __construct($arg) {
+        //vérifie si l'utilisateur est connecte
+        $this->autoConnexion();
+
         //crée objet discussion a partir de la base de données
         try
         {
@@ -25,9 +29,10 @@ class CDiscussion{
         //gestion si cloture d'un message
         if(!empty($_POST['clotureMessage']))
         {
-                $this->discussion->clotureMessage(count($this->discussion->getMessages())-1);
-                //actualise la discussion pour qu'elle possede le nouveau mot
-                $this->discussion = new MDiscussion($arg[1]);
+            echo '<p>cloture message</p>';
+            $this->discussion->clotureMessage($this->discussion->getMessage(count($this->discussion->getMessages())-1)->getId());
+            //actualise la discussion pour qu'elle possede le nouveau mot
+            $this->discussion = new MDiscussion($arg[1]);
         }
 
         //gestion si ajout de mot

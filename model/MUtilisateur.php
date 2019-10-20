@@ -2,55 +2,58 @@
 require_once('model/MModel.php');
 class MUtilisateur extends MModel
 {
-    private $_id;
-    private $_pseudo;
-    private $_mail;
-    private $_mdp;
+    private $id;
+    private $pseudo;
+    private $mail;
+    private $mdp;
+    private $role;
 
-    function __construct($ident)
+    function __construct($id)
     {
-        $this->connexionBdd();
-        if ($ident == null)
+        //si l'id est un nombre
+        if (is_int($id))
         {
+            $this->id = $id;
+            $this->connexionBdd();
+            $tuple = $this->getUnTuple($this->id);
         }
+        //sinon crée l'utilisateur par son pseudo (qui est unique)
         else
         {
-            $this->hydrate($this->getUnTuple($this->ident));
+            $this->pseudo = $id;
+            $this->connexionBdd();
+            $tuple = $this->getUnTupleParPseudo($this->pseudo);
         }
-
     }
 
     public function hydrate(array $data)
     {
-        $this->_pseudo = $data['pseudo'];
-        $this->_mail = $data['mail'];
-        $this->_mdp = $data['mdp'];
+        $this->id = $data['idutilisateur'];
+        $this->pseudo = $data['pseudo'];
+        $this->mail = $data['mail'];
+        $this->mdp = $data['mdp'];
+        $this->role = $data['role'];
     }
 
     //SETTERS
     public function setId($id)
     {
-        $id = (int) $id;
-        if($id>0)
-            $this->_id = $id;
+        $this->id = $id;
     }
 
     public function setPseudo($pseudo)
     {
-        if(is_string($pseudo))
-            $this->_pseudo = $pseudo;
+        $this->pseudo = $pseudo;
     }
 
     public function setMdp($mdp)
     {
-        if(is_string($mdp))
-            $this->_mdp = $mdp;
+        $this->mdp = $mdp;
     }
 
     public function setMail($mail)
     {
-        if(is_mail($mail))
-            $this->_mail = $mail;
+        $this->mail = $mail;
     }
 
     //GETTERS
@@ -58,52 +61,56 @@ class MUtilisateur extends MModel
 
     public function getId()
     {
-        return $this->_id;
+        return $this->id;
     }
 
 
     public function getMail()
     {
-        return $this->_mail;
+        return $this->mail;
     }
-
 
     public function getPseudo()
     {
-        return $this->_pseudo;
+        return $this->pseudo;
+    }
+
+    public function getMdp()
+    {
+        return $this->mdp;
     }
 
     //Autres fonctions
 
-    public function is_mail($mail)
-    {
-        $ismail = 0;
-        if(is_string($mail))
-        {
-            $taille_str = strlen($mail);
-            for($i = 0; $i<= $taille_str;++$i)
-            {
-                if($mail[i] == '@')
-                {
-                    $cmp = i;
-                    $ismail = 1;
-                }
-                if($ismail) break;
-            }
-            if(!$ismail) return 0;
-            $ismail = 0;
-            for($i = $cmp; $i<= $taille_str;++$i)
-            {
-                if($mail[i] == '.' and $mail[i+1] != null)
-                {
-                    $ismail = 1;
-                }
-                if($ismail) break;
-            }
-        }
-        else
-            return 0;
-        return $ismail;
-    }
+//    public function is_mail($mail)
+//    {
+//        $ismail = 0;
+//        if(is_string($mail))
+//        {
+//            $taille_str = strlen($mail);
+//            for($i = 0; $i<= $taille_str;++$i)
+//            {
+//                if($mail[i] == '@')
+//                {
+//                    $cmp = i;
+//                    $ismail = 1;
+//                }
+//                if($ismail) break;
+//            }
+//            if(!$ismail) return 0;
+//            $ismail = 0;
+//            for($i = $cmp; $i<= $taille_str;++$i)
+//            {
+//                if($mail[i] == '.' and $mail[i+1] != null)
+//                {
+//                    $ismail = 1;
+//                }
+//                if($ismail) break;
+//            }
+//        }
+//        else
+//            return 0;
+//        return $ismail;
+//    }
 }
 ?>

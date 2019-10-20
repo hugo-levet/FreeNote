@@ -86,10 +86,11 @@ abstract class MModel{
 
     function clotureMessage($id)
     {
+        echo 'id du message clot : ' . $id;
         //ferme le dernier message
         $query = "UPDATE message SET statutmessage = 1 WHERE idmessage = $id";
 
-        if(!($dbResult = mysqli_query($this->bdd, $query)))
+        if(!(mysqli_query($this->bdd, $query)))
         {
             echo 'Erreur de requête<br/>';
             // Affiche le type d'erreur.
@@ -102,6 +103,23 @@ abstract class MModel{
         //crée un nouveau message ouvert
         $query = "INSERT INTO message (iddiscussion, statutmessage) VALUES ($this->id, 0)";
 
+        if(!(mysqli_query($this->bdd, $query)))
+        {
+            echo 'Erreur de requête<br/>';
+            // Affiche le type d'erreur.
+            echo 'Erreur : ' . mysqli_error($this->bdd) . '<br/>';
+            // Affiche la requête envoyée.
+            echo 'Requête : ' . $query . '<br/>';
+            exit();
+        }
+    }
+
+
+
+    function getUnTupleParPseudo($pseudo)
+    {
+        $query = "SELECT * FROM utilisateur WHERE pseudo = '$pseudo'";
+
         if(!($dbResult = mysqli_query($this->bdd, $query)))
         {
             echo 'Erreur de requête<br/>';
@@ -111,5 +129,13 @@ abstract class MModel{
             echo 'Requête : ' . $query . '<br/>';
             exit();
         }
+
+
+        while($dbRow = mysqli_fetch_assoc($dbResult))
+        {
+            $this->hydrate($dbRow);
+        }
+
+        return $dbResult;
     }
 }

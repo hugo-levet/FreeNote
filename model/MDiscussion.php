@@ -9,6 +9,7 @@ class MDiscussion extends MModel {
 
     function __construct($id)
     {
+            echo 'constructeur';
         $this->id = $id;
         $this->table = 'discussion';
         $this->composition = 'message';

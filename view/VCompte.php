@@ -31,7 +31,7 @@
             <fieldset>
                 <legend>modification pseudo</legend>
                 <div>
-                    <label for="ancienPseudo">Ancien pseudo : <?php $controller->getUtilisateur()->getPseudo() ?></label>
+                    <label for="ancienPseudo">Ancien pseudo : <?= $controller->getUtilisateur()->getPseudo() ?></label>
                 </div>
                 <div>
                     <label for="nouveauPseudo">Nouveau Pseudo :</label><input type="text" name="nouveauPseudo">
@@ -45,7 +45,7 @@
             <fieldset>
                 <legend>modification mail</legend>
                 <div>
-                    <label for="ancienMdp">Ancien mail : <?php $controller->getUtilisateur()->getMail() ?></label>
+                    <label for="ancienMdp">Ancien mail : <?= $controller->getUtilisateur()->getMail() ?></label>
                 </div>
                 <div>
                     <label for="nouveauMail">Nouveau mail :</label><input type="email" name="nouveauMail">

@@ -30,11 +30,17 @@ class CInscription extends CController
 
         if($this->isConnecte())
             header("location: $this->urlRetour");
+
+        //vérifie si on viens de se connecter
+        if(!empty($_POST['inscription']))
+        {
+            $this->verificationInscription();
+        }
     }
 
     function verificationInscription()
     {
-        if (isset($_POST['pseudo']), $_POST['mail'], $_POST['mdp'], $_POST['mdp2']) {
+        if (isset($_POST['pseudo'], $_POST['mail'], $_POST['mdp'], $_POST['mdp2'])) {
             if ($_POST['mdp'] == $_POST['mdp2']) {
                 if (6 <= strlen($_POST['mdp'])) {
                     $mdp_crypte = md5($_POST['mdp']);
@@ -49,14 +55,19 @@ class CInscription extends CController
                                 echo 'Le pseudonyme doit au moins contenir une lettre.';
                         } else
                             echo 'La taille du pseudonyme est incorrecte.';
-                     } else
-                     echo 'L\'adresse mail est invalide.';
+                    } else
+                        echo 'L\'adresse mail est invalide.';
                 } else
                     echo 'Veuillez entrer un mot de passe d\'au moins 6 caractères.';
             } else
                 echo 'Les mots de passe ne correspondent pas.';
         } else
             echo 'Formulaire d\'inscription incomplet.';
+    }
+
+    public function getUrlIci()
+    {
+        $this->urlIci;
     }
 }
 

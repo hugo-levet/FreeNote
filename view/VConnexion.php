@@ -13,7 +13,11 @@
             <div>
                 <label for="mdp">Mot de passe</label>
                 <input type="password" name="mdp" required>
+<<<<<<< HEAD
+                <a href="./nouveauMdp">Mot de passe perdu ?</a>
+=======
                 <a href="mdp_perdu.php">Mot de passe perdu ?</a>
+>>>>>>> a4696fc9f790bf89cda78e361c119f201093d1ea
             </div>
             <div>
                 <button type="submit" name="connexion" value="connexion">Se connecter</button>

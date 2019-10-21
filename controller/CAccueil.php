@@ -55,18 +55,17 @@ class CAccueil extends CController
 //        $this->tableToutesDiscussions = $tablediscussion->getDiscussions();
 
         $this->nbDiscussion = count($this->discussionsManageur->getDiscussions());
-        $this->nbPages = ceil($this->nbDiscussion/$this->nbDiscussionParPage); //on compte de nombre de pages
+        $this->nbPages = ceil($this->nbDiscussion/$this->nbDiscussionParPage); //on compte le nombre de pages
 
         //si (pageActulelle  > nbPages) pageActuelle = nbPages
-        if(isset($_GET['page'])) //si $_GET['page'] existe
-        {
-            $this->pageActuelle = intval($_GET['page']);
 
-            if($this->pageActuelle > $this->nbPages) //si la valeur de $pageActuelle est plus grand que $nbPages
-            {
-                $this->pageActuelle = $this->nbPages;
-            }
+
+
+        if($this->pageActuelle > $this->nbPages) //si la valeur de $pageActuelle est plus grand que $nbPages
+        {
+            $this->pageActuelle = $this->nbPages;
         }
+
         else
         {
             $this->pageActuelle = 1;

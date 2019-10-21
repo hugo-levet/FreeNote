@@ -41,7 +41,7 @@ echo '<p align="center">Page : '; //Pour l'affichage, on centre la liste des pag
 for($i = 1; $i <= $controller->getNbPages(); $i++) //On fait notre boucle
 {
     //On va faire notre condition
-    if($i == $controller->getNbPages()) //Si il s'agit de la page actuelle
+    if($i == $controller->getPageActuelle()) //Si il s'agit de la page actuelle
     {
         echo ' [ '.$i.' ] ';
     }
@@ -53,19 +53,6 @@ for($i = 1; $i <= $controller->getNbPages(); $i++) //On fait notre boucle
 }
 echo '</p>';
 ?>
-    
-
-
-    <ul id="pagination-flickr">
-        <li class="previous-off">« Précédent</li>
-        <li class="active">1</li>
-        <li><a href="">3</a></li>
-        <li><a href="">5</a></li>
-        <li><a href="">7</a></li>
-        <li><a href="">9</a></li>
-        <li><a href="">11</a></li>
-        <li class="next"><a href="/?page=2">Suivant »</a></li>
-    </ul>
 
 
     </body>

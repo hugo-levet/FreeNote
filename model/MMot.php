@@ -45,5 +45,7 @@ class MMot extends MModel {
     {
         $this->valeur = $valeur;
     }
+
+
 }
 ?>

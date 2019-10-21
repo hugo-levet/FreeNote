@@ -1,6 +1,6 @@
 <?php
-$host  = 'localhost';
+$host  = 'localhost:8889';
 $dbname = 'freenote';
 $identifiantBdd = 'root';
-$mdpBdd = '';
+$mdpBdd = 'root';
 ?>

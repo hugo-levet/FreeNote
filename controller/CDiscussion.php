@@ -6,7 +6,7 @@ class CDiscussion extends CController
     private $discussion;
 
     function __construct($arg) {
-        //vérifie si l'utilisateur est connecte
+        //vérifie si l'utilisateur est connecté
         $this->autoConnexion();
 
         //crée objet discussion a partir de la base de données

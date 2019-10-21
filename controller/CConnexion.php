@@ -2,8 +2,8 @@
 require_once('model/MUtilisateur.php');
 class CConnexion
 {
-    public $urlRetourdeb = '';
-    public $urlRetourfin = '';
+    private $urlRetourDebut = '';
+    private $urlRetourFin = '';
     private $urlRetour;
     private $urlIci;
 
@@ -11,29 +11,25 @@ class CConnexion
     {
         foreach ($arg as $key => $p)
         {
-            if ($key < 1)
+            if ($key >= 1)
             {
-//                $this->urlRetourdeb .= '../';
-            }
-            else
-            {
-                $this->urlRetourdeb .= '../';
+                $this->urlRetourDebut .= '../';
             }
 
             if($key != 0)
             {
-            if ($key <= 1)
-            {
-                $this->urlRetourfin .= strval($p);
-            }
-            else
-            {
-                $this->urlRetourfin .= '/' . strval($p);
-            }
+                if ($key <= 1)
+                {
+                    $this->urlRetourFin .= strval($p);
+                }
+                else
+                {
+                    $this->urlRetourFin .= '/' . strval($p);
+                }
             }
         }
-        $this->urlIci = $this->urlRetourdeb . 'connexion/' . $this->urlRetourfin;
-        $this->urlRetour = $this->urlRetourdeb . $this->urlRetourfin;
+        $this->urlIci = $this->urlRetourDebut . 'connexion/' . $this->urlRetourFin;
+        $this->urlRetour = $this->urlRetourDebut . $this->urlRetourFin;
 
         //vérifie si on viens de se connecter
         if(!empty($_POST['connexion']))
@@ -46,13 +42,11 @@ class CConnexion
     {
         if (isset($_POST['pseudo'], $_POST['mdp']))
         {
-            // Connexion au serveur de la base de données, à la base de données et
-            // récupération dans la table utilisateur du login dans la variable $login
-            // et du mot de passe dans la variable $pwd.
+            //récupération de l'utilisateur qui veut se connecter
             $utilisateurTemp = new MUtilisateur($_POST['pseudo']);
             $mdp = $utilisateurTemp->getMdp();
 
-            if (/*login == $_POST['login'] && */$mdp == md5($_POST['mdp']))
+            if ($mdp == md5($_POST['mdp']))
             {
                 session_start();
                 $_SESSION['idUtilisateur'] = $utilisateurTemp->getId();

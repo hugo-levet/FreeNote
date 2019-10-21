@@ -37,11 +37,26 @@ abstract class MModel{
 
     function getUneTable()
     {
-        $requete = $this->bdd->query("SELECT * FROM $this->table ORDER BY id$this->table");
+        $query = "SELECT * FROM $this->table ORDER BY id$this->table";
 
-        $discussion = $requete->fetchAll();
+        if(!($dbResult = mysqli_query($this->bdd, $query)))
+        {
+            echo 'Erreur de requête<br/>';
+            // Affiche le type d'erreur.
+            echo 'Erreur : ' . mysqli_error($this->bdd) . '<br/>';
+            // Affiche la requête envoyée.
+            echo 'Requête : ' . $query . '<br/>';
+            exit();
+        }
 
-        return $discussion;
+
+        while($dbRow = mysqli_fetch_assoc($dbResult))
+        {
+            $this->hydrate($dbRow);
+        }
+
+        return $dbResult;
+
     }
 
     function getComposition()//ne récupère que l'id de composition

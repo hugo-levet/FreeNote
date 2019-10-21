@@ -34,7 +34,7 @@ class CInscription extends CController
 
     function verificationInscription()
     {
-        if (isset($_POST['pseudo']), $_POST['mail'], $_POST['mdp'], $_POST['mdp2']) {
+        if (isset($_POST['pseudo'], $_POST['mail'], $_POST['mdp'], $_POST['mdp2'])) {
             if ($_POST['mdp'] == $_POST['mdp2']) {
                 if (6 <= strlen($_POST['mdp'])) {
                     $mdp_crypte = md5($_POST['mdp']);

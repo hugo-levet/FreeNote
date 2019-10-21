@@ -5,7 +5,7 @@ class CController
     private $isConnecte = false;
 
 
-    public function autoConnexion()
+    protected function autoConnexion()
     {
         session_start();
         if (isset($_SESSION['idUtilisateur'], $_SESSION['mdp']))

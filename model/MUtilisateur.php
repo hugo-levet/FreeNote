@@ -58,14 +58,23 @@ class MUtilisateur extends MModel
         $this->mail = $mail;
     }
 
+    public function changeRole()
+    {
+        if($this->role == 'membre')
+        {
+            $this->role = 'admin';
+        }
+        else
+        {
+            $this->role = 'membre';
+        }
+    }
+
     //GETTERS
-
-
     public function getId()
     {
         return $this->id;
     }
-
 
     public function getMail()
     {
@@ -81,38 +90,5 @@ class MUtilisateur extends MModel
     {
         return $this->mdp;
     }
-
-    //Autres fonctions
-
-//    public function is_mail($mail)
-//    {
-//        $ismail = 0;
-//        if(is_string($mail))
-//        {
-//            $taille_str = strlen($mail);
-//            for($i = 0; $i<= $taille_str;++$i)
-//            {
-//                if($mail[i] == '@')
-//                {
-//                    $cmp = i;
-//                    $ismail = 1;
-//                }
-//                if($ismail) break;
-//            }
-//            if(!$ismail) return 0;
-//            $ismail = 0;
-//            for($i = $cmp; $i<= $taille_str;++$i)
-//            {
-//                if($mail[i] == '.' and $mail[i+1] != null)
-//                {
-//                    $ismail = 1;
-//                }
-//                if($ismail) break;
-//            }
-//        }
-//        else
-//            return 0;
-//        return $ismail;
-//    }
 }
 ?>

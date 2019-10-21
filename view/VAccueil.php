@@ -14,17 +14,17 @@
 $premiereEntree = ($controller->getPageActuelle() - 1) * $controller->getNbDiscussionParPage();
 
 //boucle pour qui lit le tableau de messages selon les meesages de la page courante
-for($i = $premiereEntree; $i <= ($premiereEntree + $controller->getNbDiscussionParPage()); $i++)
+for($i = $premiereEntree; $i <= ($premiereEntree + $controller->getNbDiscussionParPage())-1; $i++)
 {
     //titre du message[i] a afficher
-    $titre = $controller->getUneDiscussion($i)->getTitre;
+    $titre = $controller->getTableToutesDiscussions()->getTitre($i);
 
     //statut du message[i]
-    $statut = $controller->getUneDiscussion($i)->getStatutDisc;
+    $statut = $controller->getTableToutesDiscussions()->getStatut($i);
     if($statut)
         $statut = 'Ouvert';
     else
-        $statut = 'Fermer';
+        $statut = 'Fermée';
 
     //table de presentation du message courant
     echo '<table width="400" border="0" align="center" cellpadding="0" cellspacing="0">

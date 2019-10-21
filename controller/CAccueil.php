@@ -1,8 +1,10 @@
 <?php
-class CAccueil
+require_once ('model/MDiscussionManageur.php');
+require_once ('controller/CController.php');
+class CAccueil extends CController
 {
 
-    private $tableToutesDiscussions;
+    private $discussionsManageur;
 
     private $nbDiscussionParPage = 2;   //nb de discussion par pages
     private $nbDiscussion;              //nb total de discussion
@@ -29,9 +31,9 @@ class CAccueil
        return $this->nbDiscussionParPage;
     }
 
-    function getUneDiscussion($i)
+    function getTableToutesDiscussions()
     {
-        return $this->tableToutesDiscussions[$i];
+        return $this->discussionsManageur;
     }
 
     function getPageActuelle()
@@ -48,11 +50,11 @@ class CAccueil
     //fonction privé appelé par le controller
     private function discussions()
     {
-        require_once('model/MModel.php');
+        $this->discussionsManageur = new MDiscussionManageur();
 
-        $this->tableToutesDiscussions = //recupérer toute les discussions selon MBaseDeDonnees;
+//        $this->tableToutesDiscussions = $tablediscussion->getDiscussions();
 
-        $this->nbDiscussion = count($this->tableToutesDiscussions);
+        $this->nbDiscussion = count($this->discussionsManageur->getDiscussions());
         $this->nbPages = ceil($this->nbDiscussion/$this->nbDiscussionParPage); //on compte de nombre de pages
 
         //si (pageActulelle  > nbPages) pageActuelle = nbPages

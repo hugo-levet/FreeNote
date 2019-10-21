@@ -81,6 +81,7 @@ class MMessage extends MModel {
 
     public function verifieNbMot()
     {
+        $retour = 0;
         $space = 0;
         for($i =0; $i<strlen($this->composition) or $space >= 2; ++$i)
         {
@@ -91,8 +92,9 @@ class MMessage extends MModel {
                 ++$space;
             }
             if($space <= 1)
-                return true;
+                $retour = true;
         }
+        return $retour;
     }
 
     public function normalisation($i)//i == i+1

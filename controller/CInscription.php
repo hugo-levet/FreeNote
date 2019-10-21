@@ -2,6 +2,7 @@
 
 require_once('model/MUtilisateur.php');
 require_once('controller/CController.php');
+require_once('model/MUtilisateurManageur.php');
 
 class CInscription extends CController
 {
@@ -25,11 +26,11 @@ class CInscription extends CController
                     $this->urlRetourFin .= '/' . strval($p);
             }
         }
-        $this->urlIci = $this->urlRetourDebut . 'inscription/' . $this->urlRetourFin;
+        $this->urlIci = $this->urlRetourDebut . 'inscirption/' . $this->urlRetourFin;
         $this->urlRetour = $this->urlRetourDebut . $this->urlRetourFin;
 
         if($this->isConnecte())
-            header("location: $this->urlRetour");
+            header("location: ./$this->urlRetour");
 
         //vérifie si on viens de se connecter
         if(!empty($_POST['inscription']))
@@ -47,7 +48,7 @@ class CInscription extends CController
                     if (filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL)) {
                         $longueur_pseudo = strlen($_POST['pseudo']);
                         if (3 <= $longueur_pseudo && $longueur_pseudo <= 24) {
-                            if (preg_matches('/.*[a-z]+.*/', $_POST['pseudo']) == 0) {
+                            if (preg_match('/.*[a-z]+.*/', $_POST['pseudo']) != 0) {
                                 $utilisateur = new MUtilisateurManageur();
                                 $utilisateur->ajouterUtilisateur($_POST['pseudo'], $_POST['mail'], $mdp_crypte);
                                 header("location: $this->urlRetour");

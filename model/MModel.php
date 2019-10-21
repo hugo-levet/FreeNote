@@ -1,7 +1,7 @@
 <?php
 abstract class MModel{
 
-    private $bdd;
+    protected $bdd;
     protected $table;
     protected $composition;
 

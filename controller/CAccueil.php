@@ -9,11 +9,12 @@ class CAccueil extends CController
     private $nbDiscussionParPage = 2;   //nb de discussion par pages
     private $nbDiscussion;              //nb total de discussion
     private $nbPages;                   //nb pages necessaires pour afficher l'ensemble des discussions
-    private $pageActuelle;
+    private $pageActuelle = 1;
 
     //constructeur
-    function __construct()
+    function __construct($arg)
     {
+        $this->pageActuelle = $arg[1];
         if (isset($url) && count($url) > 1)
             throw new Exception('Page introuvable');
         else

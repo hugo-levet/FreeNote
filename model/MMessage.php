@@ -90,7 +90,7 @@ class MMessage extends MModel {
                     $this->normalisation($i+1);
                 ++$space;
             }
-            if($space < 1)
+            if($space <= 1)
                 return true;
         }
     }

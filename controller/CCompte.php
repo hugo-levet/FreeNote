@@ -29,12 +29,12 @@ class CCompte extends CController
                 }
                 else
                 {
-                    echo 'Répétition de mot de passe incorrecte.<br>';
+                    echo 'Les mots de passe ne correspondent pas.<br>';
                 }
             }
             else
             {
-                echo 'Ancien mot de passe incorrect.<br>';
+                echo 'Le mot de passe actuel est incorrect.<br>';
             }
         }
     }

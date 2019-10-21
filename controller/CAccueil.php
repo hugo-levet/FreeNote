@@ -9,11 +9,12 @@ class CAccueil extends CController
     private $nbDiscussionParPage = 2;   //nb de discussion par pages
     private $nbDiscussion;              //nb total de discussion
     private $nbPages;                   //nb pages necessaires pour afficher l'ensemble des discussions
-    private $pageActuelle;
+    private $pageActuelle = 1;
 
     //constructeur
-    function __construct()
+    function __construct($arg)
     {
+        $this->pageActuelle = $arg[1];
         if (isset($url) && count($url) > 1)
             throw new Exception('Page introuvable');
         else
@@ -52,26 +53,17 @@ class CAccueil extends CController
     {
         $this->discussionsManageur = new MDiscussionManageur();
 
-//        $this->tableToutesDiscussions = $tablediscussion->getDiscussions();
+//      $this->tableToutesDiscussions = $tablediscussion->getDiscussions();
 
         $this->nbDiscussion = count($this->discussionsManageur->getDiscussions());
         $this->nbPages = ceil($this->nbDiscussion/$this->nbDiscussionParPage); //on compte le nombre de pages
 
         //si (pageActulelle  > nbPages) pageActuelle = nbPages
 
-
-
         if($this->pageActuelle > $this->nbPages) //si la valeur de $pageActuelle est plus grand que $nbPages
         {
             $this->pageActuelle = $this->nbPages;
         }
-
-        else
-        {
-            $this->pageActuelle = 1;
-        }
-        echo 'accueil';
-
     }
 }
 

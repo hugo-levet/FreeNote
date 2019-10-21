@@ -79,32 +79,35 @@ class MMessage extends MModel {
         }
     }
 
-    public function verifieNbMot()
+    public function verifieNbMot($str)
     {
-        $space = 0;
-        for($i =0; $i<strlen($this->composition) or $space >= 2; ++$i)
+
+        function normalisation($i, $str)//i == i+1
         {
-            if($this->composition[$i] == ' ')
+            $j = $i;
+            while($str[$i] == ' ')
             {
-                if($this->composition[$i+1] == ' ' or $i == 0)
-                    $this->normalisation($i+1);
+                for($k = $j; $str[$k] == ' '; ++$k)
+                {
+                    $str[$k] = $str[$k+1];
+                }
+            }
+        }
+
+        $retour = 0;
+        $space = 0;
+        for($i =0; $i<strlen($str) or $space >= 2; ++$i)
+        {
+            if($str[$i] == ' ')
+            {
+                if($str[$i+1] == ' ' or $i == 0)
+                    normalisation($i+1, $str);
                 ++$space;
             }
             if($space <= 1)
-                return true;
+                $retour = true;
         }
-    }
-
-    public function normalisation($i)//i == i+1
-    {
-        $j = $i;
-        while($this->composition[$i] == ' ')
-        {
-            for($k = $j; $this->composition[$k] == ' '; ++$k)
-            {
-                $this->composition[$k] = $this->composition[$k+1];
-            }
-        }
+        return $retour;
     }
 }
 ?>

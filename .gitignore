@@ -4,3 +4,6 @@
 
 # Fichiers de configuration de projet créés par PhpStorm
 .idea/
+
+# Variables de connexion à la base de données
+model/MVariablesConnexion.php

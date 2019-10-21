@@ -40,9 +40,17 @@ class CDiscussion extends CController
             if(isset($_POST['mot']))
             {
                 $motAjout = $_POST['mot'];
-                $this->discussion->getMessage(count($this->discussion->getMessages())-1)->ajoutMot($motAjout, $this->getIdUtilisateurActuel());
-                //actualise la discussion pour qu'elle possede le nouveau mot
-                $this->discussion = new MDiscussion($arg[1]);
+//                if (/*le mot est plus petit que 2*/)
+//                {
+
+                    $this->discussion->getMessage(count($this->discussion->getMessages())-1)->ajoutMot($motAjout, $this->getIdUtilisateurActuel());
+                    //actualise la discussion pour qu'elle possede le nouveau mot
+                    $this->discussion = new MDiscussion($arg[1]);
+//                }
+//                else
+//                {
+//                    echo 'Vous ne pouvez ajouter que 1 ou 2 mots.<br>'
+//                }
             }
         }
     }

@@ -13,7 +13,7 @@
             <div>
                 <label for="mdp">Mot de passe</label>
                 <input type="password" name="mdp" required>
-                <a href="CNouveauMdp.php">Mot de passe perdu ?</a>
+                <a href="/nouveauMdp">Mot de passe perdu ?</a>
             </div>
             <div>
                 <button type="submit" name="connexion" value="connexion">Se connecter</button>

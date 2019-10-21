@@ -2,7 +2,7 @@
 require_once('model/MModel.php');
 class MUtilisateur extends MModel
 {
-    private $id;
+    protected $id;
     private $pseudo;
     private $mail;
     private $mdp;
@@ -10,8 +10,9 @@ class MUtilisateur extends MModel
 
     function __construct($id)
     {
+        $this->table = 'utilisateur';
         //si l'id est un nombre
-        if (is_int($id))
+        if (is_numeric($id))
         {
             $this->id = $id;
             $this->connexionBdd();
@@ -48,7 +49,8 @@ class MUtilisateur extends MModel
 
     public function setMdp($mdp)
     {
-        $this->mdp = $mdp;
+        $this->mdp = md5($mdp);
+        $this->changementMdp($this->mdp);
     }
 
     public function setMail($mail)

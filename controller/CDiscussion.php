@@ -29,7 +29,6 @@ class CDiscussion extends CController
         //gestion si cloture d'un message
         if(!empty($_POST['clotureMessage']))
         {
-            echo '<p>cloture message</p>';
             $this->discussion->clotureMessage($this->discussion->getMessage(count($this->discussion->getMessages())-1)->getId());
             //actualise la discussion pour qu'elle possede le nouveau mot
             $this->discussion = new MDiscussion($arg[1]);
@@ -41,7 +40,7 @@ class CDiscussion extends CController
             if(isset($_POST['mot']))
             {
                 $motAjout = $_POST['mot'];
-                $this->discussion->getMessage(count($this->discussion->getMessages())-1)->ajoutMot($motAjout);
+                $this->discussion->getMessage(count($this->discussion->getMessages())-1)->ajoutMot($motAjout, $this->getIdUtilisateurActuel());
                 //actualise la discussion pour qu'elle possede le nouveau mot
                 $this->discussion = new MDiscussion($arg[1]);
             }

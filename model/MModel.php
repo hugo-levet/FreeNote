@@ -67,10 +67,9 @@ abstract class MModel{
         return $idComposition;
     }
 
-    function ajoutMot($valeur/*, $idUtilisateur*/)
+    function ajoutMot($valeur, $idUtilisateur)
     {
-        //$query = "INSERT INTO mot (idmessage,/* idutilisateur,*/ valeur) VALUES ($this->id,/* $idUtilisateur,*/ $valeur);";
-        $query = "INSERT INTO mot (idmessage, idutilisateur, valeur) VALUES ($this->id, 1, '$valeur')";
+        $query = "INSERT INTO mot (idmessage, idutilisateur, valeur) VALUES ($this->id, $idUtilisateur, '$valeur')";
 
 
         if(!($dbResult = mysqli_query($this->bdd, $query)))
@@ -86,7 +85,6 @@ abstract class MModel{
 
     function clotureMessage($id)
     {
-        echo 'id du message clot : ' . $id;
         //ferme le dernier message
         $query = "UPDATE message SET statutmessage = 1 WHERE idmessage = $id";
 
@@ -114,8 +112,6 @@ abstract class MModel{
         }
     }
 
-
-
     function getUnTupleParPseudo($pseudo)
     {
         $query = "SELECT * FROM utilisateur WHERE pseudo = '$pseudo'";
@@ -137,5 +133,53 @@ abstract class MModel{
         }
 
         return $dbResult;
+    }
+
+    function aParticipe($idUtilisateur)
+    {
+        echo $idUtilisateur;
+        $query = "SELECT * FROM mot WHERE idutilisateur = $idUtilisateur AND idmessage = $this->id";
+
+        if(!($dbResult = mysqli_query($this->bdd, $query)))
+        {
+            echo 'Erreur de requête<br/>';
+            // Affiche le type d'erreur.
+            echo 'Erreur : ' . mysqli_error($this->bdd) . '<br/>';
+            // Affiche la requête envoyée.
+            echo 'Requête : ' . $query . '<br/>';
+            exit();
+        }
+
+        $nbmsg = 0;
+
+        while($dbRow = mysqli_fetch_assoc($dbResult))
+        {
+            $nbmsg += 1;
+        }
+
+        if ($nbmsg > 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    function changementMdp($mdp)
+    {
+        //ferme le dernier message
+        $query = "UPDATE utilisateur SET mdp = '$mdp' WHERE idutilisateur = $this->id";
+
+        if(!(mysqli_query($this->bdd, $query)))
+        {
+            echo 'Erreur de requête<br/>';
+            // Affiche le type d'erreur.
+            echo 'Erreur : ' . mysqli_error($this->bdd) . '<br/>';
+            // Affiche la requête envoyée.
+            echo 'Requête : ' . $query . '<br/>';
+            exit();
+        }
     }
 }

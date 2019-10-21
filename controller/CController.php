@@ -1,7 +1,7 @@
 <?php
 class CController
 {
-    private $idUtilisateurActuel;
+    protected $idUtilisateurActuel;
     private $isConnecte = false;
 
 
@@ -12,6 +12,7 @@ class CController
         {
             // L'authentification est validée.
             $this->isConnecte = true;
+            $this->idUtilisateurActuel = $_SESSION['idUtilisateur'];
         }
 
         //gestion si deconnexion

@@ -9,20 +9,14 @@ class MDiscussion extends MModel {
 
     function __construct($id)
     {
-            echo 'constructeur';
         $this->id = $id;
         $this->table = 'discussion';
         $this->composition = 'message';
         $this->connexionBdd();
         $tuple = $this->getUnTuple($this->id);
 
-//                $this->statut = $tuple[1];
-//                $this->titre = $tuple[2];
-//        $this->hydrate($tuple);
-
         //crée un tableau des messages de la discussion a partir de la base données
         $idMessages = $this->getComposition();
-////        echo 'composition : ' . $idMessages;
         foreach ($idMessages as $value)
         {
             array_push($this->messages, new MMessage($value));

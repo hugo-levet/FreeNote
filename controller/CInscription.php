@@ -1,20 +1,63 @@
 <?php
 
-use \Vue;
+require_once('model/MUtilisateur.php');
+require_once('controller/CController.php');
 
-class CInscription
+class CInscription extends CController
 {
-    public function nouvelleAction()
+    private $urlRetourDebut = '';
+    private $urlRetourFin = '';
+    private $urlRetour;
+    private $urlIci;
+
+    function __construct($arg)
     {
-        Vue::generate('Inscription');
+        $this->autoConnexion();
+
+        foreach ($arg as $key => $p) {
+            if ($key >= 1)
+                $this->urlRetourDebut .= '../';
+
+            if ($key != 0) {
+                if ($key <= 1)
+                    $this->urlRetourFin .= strval($p);
+                else
+                    $this->urlRetourFin .= '/' . strval($p);
+            }
+        }
+        $this->urlIci = $this->urlRetourDebut . 'inscription/' . $this->urlRetourFin;
+        $this->urlRetour = $this->urlRetourDebut . $this->urlRetourFin;
+
+        if($this->isConnecte())
+            header("location: $this->urlRetour");
     }
 
-    public function creerAction()
+    function verificationInscription()
     {
-        $utilisateur = new MUtilisateur();
+        if (isset($_POST['pseudo']), $_POST['mail'], $_POST['mdp'], $_POST['mdp2']) {
+            if ($_POST['mdp'] == $_POST['mdp2']) {
+                if (6 <= strlen($_POST['mdp'])) {
+                    $mdp_crypte = md5($_POST['mdp']);
+                    if (filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL)) {
+                        $longueur_pseudo = strlen($pseudo);
+                        if (3 <= $longueur_pseudo && $longueur_pseudo <= 24) {
+                            if (preg_matches('/.*[a-z]+.*/') == 0) {
+                                $utilisateur = new MUtilisateurManageur();
+                                $utilisateur->ajouterUtilisateur($_POST['pseudo'], $_POST['mail'], $mdp_crypte);
+                                header("location: $this->urlRetour");
+                            } else
+                                echo 'Le pseudonyme doit au moins contenir une lettre.';
+                        } else
+                            echo 'La taille du pseudonyme est incorrecte.';
+                     } else
+                     echo 'L\'adresse mail est invalide.';
+                } else
+                    echo 'Veuillez entrer un mot de passe d\'au moins 6 caractères.';
+            } else
+                echo 'Les mots de passe ne correspondent pas.';
+        } else
+            echo 'Formulaire d\'inscription incomplet.';
     }
-
-
 }
 
 ?>

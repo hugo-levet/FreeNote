@@ -14,69 +14,69 @@ abstract class MModel{
 
     function getUnTuple($id)
     {
-        $query = "SELECT * FROM $this->table WHERE id$this->table = $id ORDER BY id$this->table";
+        $requete = "SELECT * FROM $this->table WHERE id$this->table = $id ORDER BY id$this->table";
 
-        if(!($dbResult = mysqli_query($this->bdd, $query)))
+        if(!($resultat = mysqli_query($this->bdd, $requete)))
         {
             echo 'Erreur de requête<br/>';
             // Affiche le type d'erreur.
             echo 'Erreur : ' . mysqli_error($this->bdd) . '<br/>';
             // Affiche la requête envoyée.
-            echo 'Requête : ' . $query . '<br/>';
+            echo 'Requête : ' . $requete . '<br/>';
             exit();
         }
 
 
-        while($dbRow = mysqli_fetch_assoc($dbResult))
+        while($ligneTable = mysqli_fetch_assoc($resultat))
         {
-            $this->hydrate($dbRow);
+            $this->hydrate($ligneTable);
         }
 
-        return $dbResult;
+        return $resultat;
     }
 
     function getUneTable()
     {
-        $query = "SELECT * FROM $this->table ORDER BY id$this->table";
+        $requete = "SELECT * FROM $this->table ORDER BY id$this->table";
 
-        if(!($dbResult = mysqli_query($this->bdd, $query)))
+        if(!($resultat = mysqli_query($this->bdd, $requete)))
         {
             echo 'Erreur de requête<br/>';
             // Affiche le type d'erreur.
             echo 'Erreur : ' . mysqli_error($this->bdd) . '<br/>';
             // Affiche la requête envoyée.
-            echo 'Requête : ' . $query . '<br/>';
+            echo 'Requête : ' . $requete . '<br/>';
             exit();
         }
 
 
-        while($dbRow = mysqli_fetch_assoc($dbResult))
+        while($ligneTable = mysqli_fetch_assoc($resultat))
         {
-            $this->hydrate($dbRow);
+            $this->hydrate($ligneTable);
         }
 
-        return $dbResult;
+        return $resultat;
 
     }
 
     function getComposition()//ne récupère que l'id de composition
     {
-        $query = "SELECT id$this->composition FROM $this->composition WHERE id$this->table = $this->id";
+        $requete = "SELECT id$this->composition FROM $this->composition WHERE id$this->table = $this->id";
 
-        if(!($dbResult = mysqli_query($this->bdd, $query)))
+        if(!($resultat = mysqli_query($this->bdd, $requete)))
         {
             echo 'Erreur de requête<br/>';
             // Affiche le type d'erreur.
             echo 'Erreur : ' . mysqli_error($this->bdd) . '<br/>';
             // Affiche la requête envoyée.
-            echo 'Requête : ' . $query . '<br/>';
+            echo 'Requête : ' . $requete . '<br/>';
             exit();
         }
 
         $idComposition = [];
-        while($dbRow = mysqli_fetch_assoc($dbResult))
+        while($ligneTable = mysqli_fetch_assoc($resultat))
         {
-            array_push($idComposition, $dbRow['id'.$this->composition]);
+            array_push($idComposition, $ligneTable['id'.$this->composition]);
         }
 
         return $idComposition;
@@ -84,16 +84,16 @@ abstract class MModel{
 
     function ajoutMot($valeur, $idUtilisateur)
     {
-        $query = "INSERT INTO mot (idmessage, idutilisateur, valeur) VALUES ($this->id, $idUtilisateur, '$valeur')";
+        $requete = "INSERT INTO mot (idmessage, idutilisateur, valeur) VALUES ($this->id, $idUtilisateur, '$valeur')";
 
 
-        if(!($dbResult = mysqli_query($this->bdd, $query)))
+        if(!($resultat = mysqli_query($this->bdd, $requete)))
         {
             echo 'Erreur de requête<br/>';
             // Affiche le type d'erreur.
             echo 'Erreur : ' . mysqli_error($this->bdd) . '<br/>';
             // Affiche la requête envoyée.
-            echo 'Requête : ' . $query . '<br/>';
+            echo 'Requête : ' . $requete . '<br/>';
             exit();
         }
     }
@@ -101,73 +101,73 @@ abstract class MModel{
     function clotureMessage($id)
     {
         //ferme le dernier message
-        $query = "UPDATE message SET statutmessage = 1 WHERE idmessage = $id";
+        $requete = "UPDATE message SET statutmessage = 1 WHERE idmessage = $id";
 
-        if(!(mysqli_query($this->bdd, $query)))
+        if(!(mysqli_query($this->bdd, $requete)))
         {
             echo 'Erreur de requête<br/>';
             // Affiche le type d'erreur.
             echo 'Erreur : ' . mysqli_error($this->bdd) . '<br/>';
             // Affiche la requête envoyée.
-            echo 'Requête : ' . $query . '<br/>';
+            echo 'Requête : ' . $requete . '<br/>';
             exit();
         }
 
         //crée un nouveau message ouvert
-        $query = "INSERT INTO message (iddiscussion, statutmessage) VALUES ($this->id, 0)";
+        $requete = "INSERT INTO message (iddiscussion, statutmessage) VALUES ($this->id, 0)";
 
-        if(!(mysqli_query($this->bdd, $query)))
+        if(!(mysqli_query($this->bdd, $requete)))
         {
             echo 'Erreur de requête<br/>';
             // Affiche le type d'erreur.
             echo 'Erreur : ' . mysqli_error($this->bdd) . '<br/>';
             // Affiche la requête envoyée.
-            echo 'Requête : ' . $query . '<br/>';
+            echo 'Requête : ' . $requete . '<br/>';
             exit();
         }
     }
 
     function getUnTupleParPseudo($pseudo)
     {
-        $query = "SELECT * FROM utilisateur WHERE pseudo = '$pseudo'";
+        $requete = "SELECT * FROM utilisateur WHERE pseudo = '$pseudo'";
 
-        if(!($dbResult = mysqli_query($this->bdd, $query)))
+        if(!($resultat = mysqli_query($this->bdd, $requete)))
         {
             echo 'Erreur de requête<br/>';
             // Affiche le type d'erreur.
             echo 'Erreur : ' . mysqli_error($this->bdd) . '<br/>';
             // Affiche la requête envoyée.
-            echo 'Requête : ' . $query . '<br/>';
+            echo 'Requête : ' . $requete . '<br/>';
             exit();
         }
 
 
-        while($dbRow = mysqli_fetch_assoc($dbResult))
+        while($ligneTable = mysqli_fetch_assoc($resultat))
         {
-            $this->hydrate($dbRow);
+            $this->hydrate($ligneTable);
         }
 
-        return $dbResult;
+        return $resultat;
     }
 
     function aParticipe($idUtilisateur)
     {
         echo $idUtilisateur;
-        $query = "SELECT * FROM mot WHERE idutilisateur = $idUtilisateur AND idmessage = $this->id";
+        $requete = "SELECT * FROM mot WHERE idutilisateur = $idUtilisateur AND idmessage = $this->id";
 
-        if(!($dbResult = mysqli_query($this->bdd, $query)))
+        if(!($resultat = mysqli_query($this->bdd, $requete)))
         {
             echo 'Erreur de requête<br/>';
             // Affiche le type d'erreur.
             echo 'Erreur : ' . mysqli_error($this->bdd) . '<br/>';
             // Affiche la requête envoyée.
-            echo 'Requête : ' . $query . '<br/>';
+            echo 'Requête : ' . $requete . '<br/>';
             exit();
         }
 
         $nbmsg = 0;
 
-        while($dbRow = mysqli_fetch_assoc($dbResult))
+        while($ligneTable = mysqli_fetch_assoc($resultat))
         {
             $nbmsg += 1;
         }
@@ -185,15 +185,15 @@ abstract class MModel{
     function changementMdp($mdp)
     {
         //ferme le dernier message
-        $query = "UPDATE utilisateur SET mdp = '$mdp' WHERE idutilisateur = $this->id";
+        $requete = "UPDATE utilisateur SET mdp = '$mdp' WHERE idutilisateur = $this->id";
 
-        if(!(mysqli_query($this->bdd, $query)))
+        if(!(mysqli_query($this->bdd, $requete)))
         {
             echo 'Erreur de requête<br/>';
             // Affiche le type d'erreur.
             echo 'Erreur : ' . mysqli_error($this->bdd) . '<br/>';
             // Affiche la requête envoyée.
-            echo 'Requête : ' . $query . '<br/>';
+            echo 'Requête : ' . $requete . '<br/>';
             exit();
         }
     }

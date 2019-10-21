@@ -10,7 +10,7 @@
                 <input type="text" name="pseudo" required>
             </div>
             <div>
-                <label for="mail">Pseudo</label>
+                <label for="mail">Mail</label>
                 <input type="email" name="mail" required>
             </div>
             <div>

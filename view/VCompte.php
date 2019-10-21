@@ -25,5 +25,34 @@
                 <button type="submit" name="modificationMdp" value="modificationMdp">modifier</button>
             </fieldset>
         </form>
+
+        <!-- Modifier de pseudo -->
+        <form method="post" action="#">
+            <fieldset>
+                <legend>modification pseudo</legend>
+                <div>
+                    <label for="ancienPseudo">Ancien pseudo : <?php $controller->getUtilisateur()->getPseudo() ?></label>
+                </div>
+                <div>
+                    <label for="nouveauPseudo">Nouveau Pseudo :</label><input type="text" name="nouveauPseudo">
+                </div>
+                <button type="submit" name="modificationPseudo" value="modificationPseudo">modifier</button>
+            </fieldset>
+        </form>
+
+        <!-- Modifier de Mail -->
+        <form method="post" action="#">
+            <fieldset>
+                <legend>modification mail</legend>
+                <div>
+                    <label for="ancienMdp">Ancien mail : <?php $controller->getUtilisateur()->getMail() ?></label>
+                </div>
+                <div>
+                    <label for="nouveauMail">Nouveau mail :</label><input type="email" name="nouveauMail">
+                </div>
+                <button type="submit" name="modificationMail" value="modificationMail">modifier</button>
+            </fieldset>
+        </form>
+
     </body>
 </html>

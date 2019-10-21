@@ -19,8 +19,8 @@ class MMessage extends MModel {
         $this->connexionBdd();
         $tuple = $this->getUnTuple($this->id);
 
-//        $this->idDiscussion = $tuple[1];
-//        $this->statut = $tuple[2];
+        //        $this->idDiscussion = $tuple[1];
+        //        $this->statut = $tuple[2];
         //        $this->hydrate($tuple);
 
         //crée un tableau des mots du message a partir de la base données

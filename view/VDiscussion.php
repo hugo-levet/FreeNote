@@ -22,25 +22,27 @@
         ?>
         <div>
             <?php
-            echo 'nombre de messages : ' . count($controller->getDiscussion()->getMessages()) . '<br><br>contenues : <br>';
 
             for ($i = 0; $i < count($controller->getDiscussion()->getMessages()); $i++)
             {
-                    echo $controller->getDiscussion()->getMessage($i)->getStatut() . ' ';
+                echo '<br>';
+                echo $controller->getDiscussion()->getMessage($i)->getStatut() . ' ';
                 for ($j = 0; $j < count($controller->getDiscussion()->getMessage($i)->getMots()); $j++)
                 {
-//                    echo $controller->getMessage($i)->getStatut() . '<br>';
+                    //                    echo $controller->getMessage($i)->getStatut() . '<br>';
                     echo $controller->getDiscussion()->getMessage($i)->getMot($j)->getvaleur() . ' ';
                 }
-                echo '<br>';
             }
 
 
             ?>
         </div>
-        <form action="message" method="post">
-            <input type="text" name="mot" maxlength="52"/>
-            <button name="envoyer"><i class="fab fa-telegram-plane"></i></button>
+        <form action="../discussion/<?= $controller->getDiscussion()->getId(); ?>" method="post">
+            <button type="submit" name="clotureMessage" value="clotureMessage"><i class="far fa-times-circle"></i></button>
+        </form>
+        <form action="../discussion/<?= $controller->getDiscussion()->getId(); ?>" method="post">
+            <input type="text" name="mot" maxlength="52" required />
+            <button type="submit" name="ajoutMot" value="ajoutMot"><i class="fab fa-telegram-plane"></i></button>
         </form>
     </body>
 </html>

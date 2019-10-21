@@ -16,6 +16,8 @@ $premiereEntree = ($controller->getPageActuelle() - 1) * $controller->getNbDiscu
 //boucle pour qui lit le tableau de messages selon les messages de la page courante
 for($i = $premiereEntree; $i <= ($premiereEntree + $controller->getNbDiscussionParPage())-1; $i++)
 {
+  if(isset($controller->getTableToutesDiscussions()->getTitre($i)))
+  {
     //titre du message[i] a afficher
     $titre = $controller->getTableToutesDiscussions()->getTitre($i);
 
@@ -35,6 +37,7 @@ for($i = $premiereEntree; $i <= ($premiereEntree + $controller->getNbDiscussionP
                      <td>statut: '.($statut).'</td>
                 </tr>
             </table><br /><br />'; //saut a la ligne
+  }
 }
 
 echo '<p align="center">Page : '; //Pour l'affichage, on centre la liste des pages

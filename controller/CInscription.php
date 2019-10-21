@@ -39,9 +39,9 @@ class CInscription extends CController
                 if (6 <= strlen($_POST['mdp'])) {
                     $mdp_crypte = md5($_POST['mdp']);
                     if (filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL)) {
-                        $longueur_pseudo = strlen($pseudo);
+                        $longueur_pseudo = strlen($_POST['pseudo']);
                         if (3 <= $longueur_pseudo && $longueur_pseudo <= 24) {
-                            if (preg_matches('/.*[a-z]+.*/') == 0) {
+                            if (preg_matches('/.*[a-z]+.*/', $_POST['pseudo']) == 0) {
                                 $utilisateur = new MUtilisateurManageur();
                                 $utilisateur->ajouterUtilisateur($_POST['pseudo'], $_POST['mail'], $mdp_crypte);
                                 header("location: $this->urlRetour");

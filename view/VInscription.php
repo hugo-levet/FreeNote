@@ -1,9 +1,9 @@
-<!DOCTYPE html>
-<html lang="fr">
-    <head>
-        <title>Inscription</title>
-    </head>
-    <body>
+<?php
+$titre = 'inscription';
+$ajoutHead = '';
+require_once('template/base.php');
+startPage();
+?>
         <form method="post" action="<?= $controller->getUrlIci(); ?>">
             <div>
                 <label for="pseudo">Pseudo</label>
@@ -26,5 +26,7 @@
             </div>
         </form>
         <a href="connexion">Déjà un compte ? Se connecter</a>
-    </body>
-</html>
+        ?>
+<?php
+endPage();
+?>

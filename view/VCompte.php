@@ -1,10 +1,9 @@
-<!DOCTYPE html>
-<html lang="fr">
-    <head>
-        <meta charset="UTF-8">
-        <title>Compte</title>
-    </head>
-    <body>
+<?php
+$titre = 'compte';
+$ajoutHead = '';
+require_once('template/base.php');
+startPage();
+?>
         <!-- information sur l'utilisateur -->
         <p>pseudo : <?= $controller->getUtilisateur()->getPseudo() ?>  <a href="#">modifier</a></p>
         <p>mail : <?= $controller->getUtilisateur()->getMail() ?>  <a href="#">modifier</a></p>
@@ -53,6 +52,7 @@
                 <button type="submit" name="modificationMail" value="modificationMail">modifier</button>
             </fieldset>
         </form>
-
-    </body>
-</html>
+        ?>
+<?php
+endPage();
+?>

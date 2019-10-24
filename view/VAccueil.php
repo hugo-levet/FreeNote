@@ -1,12 +1,9 @@
-<!DOCTYPE html>
-<html lang="fr">
-    <head>
-        <meta charset="UTF-8">
-        <title>accueil</title>
-
-        <script src="https://kit.fontawesome.com/66ecd38112.js" crossorigin="anonymous"></script>
-    </head>
-    <body>
+<?php
+$titre = 'accueil';
+$ajoutHead = '';
+require_once('template/base.php');
+startPage();
+?>
         <!--description du service-->
         <p>ce site internet est un site de chat... (a developper)</p>
 
@@ -74,5 +71,6 @@
         }
         echo '</p>';
         ?>
-    </body>
-</html>
+<?php
+endPage();
+?>

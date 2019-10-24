@@ -1,0 +1,81 @@
+<?php
+function startPage()
+{
+?>
+<!doctype html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <?php
+    if($GLOBALS['titre'] == '')
+    {
+        ?>
+        <title>FreeNote</title>
+        <?php
+    }
+    else
+    {
+        ?>
+        <title>FreeNote - <?= $GLOBALS['titre'] ?></title>
+        <?php
+    }
+        ?>
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="../public/css/style.css">
+
+        <!-- FONTAWESOME -->
+        <script src="https://kit.fontawesome.com/66ecd38112.js" crossorigin="anonymous"></script>
+
+
+        <?php
+    if($GLOBALS['ajoutHead'] == '')
+    {
+
+    }
+    else
+    {
+        echo $GLOBALS['ajoutHead'];
+    }
+        ?>
+
+    </head>
+    <body>
+        <header>
+            <p>FreeNote</p>
+            <nav>
+                <?php
+    if($GLOBALS['titre'] != 'connexion' || $GLOBALS['titre'] != 'inscription')
+    {
+                ?>
+                <?php if($GLOBALS['controller']->isConnecte())
+                {
+                ?>
+                <!--            <form action="../discussion/<?= 'tmp';/* $GLOBALS['controller']->getDiscussion()->getId(); */ ?>" method="post">-->
+                <form action="./" method="post">
+                    <button type="submit" name="deconnexion" value="deconnexion">se deconnecter</button>
+                </form>
+                <?php
+                }
+        else
+        {
+                ?>
+                <!--            <a href="../connexion/discussion/<?= 'tmp';/*$GLOBALS['controller']->getDiscussion()->getId();*/ ?>">se connecter</a>-->
+                <a href="../connexion/">se connecter</a>
+                <?php
+        }
+    }
+                ?>
+            </nav>
+        </header>
+        <?php
+}
+
+function endPage()
+{ ?>
+    </body>
+</html>
+<?php
+}
+
+?>

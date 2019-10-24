@@ -1,0 +1,33 @@
+html, body{
+    margin: 0;
+    padding: 0;
+}
+
+header
+{
+    background: #2552bb;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px;
+    font-family: sans-serif;
+}
+
+header p{
+    margin: 0;
+}
+
+header a{
+    margin: 0;
+    color: white;
+    text-decoration: underline;
+}
+
+header button{
+    margin: 0;
+    color: white;
+    text-decoration: underline;
+    background: none;
+    border: none;
+}

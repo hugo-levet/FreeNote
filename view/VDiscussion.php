@@ -1,24 +1,9 @@
-<!DOCTYPE html>
-<html lang="fr">
-    <head>
-        <meta charset="UTF-8">
-        <title>FreeNote</title>
-        <!-- scripts -->
-        <script src="https://kit.fontawesome.com/66ecd38112.js" crossorigin="anonymous"></script>
-        <!-- fichiers inclus -->
-        <link rel="import" href="../controller/CDiscussion.php">
-    </head>
-    <body>
-        <?php if($controller->isConnecte()) { ?>
-
-
-        <form action="../discussion/<?= $controller->getDiscussion()->getId(); ?>" method="post">
-            <button type="submit" name="deconnexion" value="deconnexion">se deconnecter</button>
-        </form>
-        <?php } else { ?>
-        <a href="../connexion/discussion/<?= $controller->getDiscussion()->getId(); ?>">se connecter</a>
-        <?php } ?>
-
+<?php
+$titre = 'discussion';
+$ajoutHead = '';
+require_once('template/base.php');
+startPage();
+?>
         <h1><?= $controller->getDiscussion()->getTitre(); ?></h1>
 
         <?php
@@ -67,5 +52,6 @@
             }
         }
         ?>
-    </body>
-</html>
+<?php
+endPage();
+?>

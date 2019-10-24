@@ -1,10 +1,13 @@
 <?php
-class CErreur{
+require_once ('controller/CController.php');
+class CErreur extends CController
+{
     private $message;
     private $retourAccueil = '';
 
     function __construct($arg, $message)
     {
+        $this->autoConnexion();
         $this->message = $message;
 
         foreach ($arg as &$value)

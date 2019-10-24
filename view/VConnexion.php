@@ -1,15 +1,15 @@
-<!DOCTYPE html>
-<html lang="fr">
-    <head>
+<?php
+$titre = 'connexion';
+$ajoutHead = '';
+$ajoutHead = '
         <script language="javascript" type="text/javascript">
             function popup(){
-                alert("<?php echo htmlspecialchars('Nous vous avons envoyé un e-mail avec votre nouveau mot de passe.', ENT_QUOTES); ?>")
+                alert("' . htmlspecialchars('Nous vous avons envoyé un e-mail avec votre nouveau mot de passe.', ENT_QUOTES) . '")
             }
-        </script>
-        <meta charset="UTF-8">
-        <title>connexion</title>
-    </head>
-    <body>
+        </script>';
+require_once('template/base.php');
+startPage();
+?>
         <form method="post" action="<?= $controller->getUrlIci(); ?>">
             <div>
                 <label for="pseudo">Pseudo</label>
@@ -26,5 +26,6 @@
             </div>
         </form>
         <a href="inscription.php">S'inscrire</a>
-    </body>
-</html>
+<?php
+endPage();
+?>

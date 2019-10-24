@@ -40,17 +40,69 @@ class CDiscussion extends CController
             if(isset($_POST['mot']))
             {
                 $motAjout = $_POST['mot'];
-//                if (/*le mot est plus petit que 2*/)
-//                {
 
+                //normalisation de la phrase
+                $mots = [];
+                for($i = 0; $i<strlen($motAjout); ++$i)
+                {
+                    if(ctype_alpha($motAjout[$i]))
+                    {
+                        array_push($mots, $motAjout[$i]);
+                    }
+                    else
+                    {
+                        if(count($mots) == 0)
+                        {
+
+                        }
+                        elseif(count($mots) == 1)
+                        {
+                            array_push($mots, ' ');
+                        }
+                        elseif($mots[count($mots)-1] != ' ')
+                        {
+                            array_push($mots, ' ');
+                        }
+                    }
+                }
+                if($mots[count($mots)-1] == ' ')
+                {
+                    array_splice($mots, count($mots)-1);
+                }
+                $motAjout = implode($mots);
+
+                function verifieNbMot($phrase)
+                {
+                    $espaces = 0;
+                    for($i = 0; $i<strlen($phrase); ++$i)
+                    {
+                        if($phrase[$i] == ' ')
+                        {
+                            ++$espaces;
+                        }
+                    }
+
+                    if($espaces > 1)
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        return true;
+                    }
+                }
+                echo $motAjout . '.';
+
+                if(verifieNbMot($motAjout))
+                {
                     $this->discussion->getMessage(count($this->discussion->getMessages())-1)->ajoutMot($motAjout, $this->getIdUtilisateurActuel());
                     //actualise la discussion pour qu'elle possede le nouveau mot
                     $this->discussion = new MDiscussion($arg[1]);
-//                }
-//                else
-//                {
-//                    echo 'Vous ne pouvez ajouter que 1 ou 2 mots.<br>'
-//                }
+                }
+                else
+                {
+                    echo '<p class="erreur">Vous ne pouvez ajouter que 1 ou 2 mots.</p>';
+                }
             }
         }
     }

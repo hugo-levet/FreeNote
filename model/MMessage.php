@@ -78,36 +78,5 @@ class MMessage extends MModel {
             return false;
         }
     }
-
-    public function verifieNbMot($str)
-    {
-
-        function normalisation($i, $str)//i == i+1
-        {
-            $j = $i;
-            while($str[$i] == ' ')
-            {
-                for($k = $j; $str[$k] == ' '; ++$k)
-                {
-                    $str[$k] = $str[$k+1];
-                }
-            }
-        }
-
-        $retour = 0;
-        $space = 0;
-        for($i =0; $i<strlen($str) or $space >= 2; ++$i)
-        {
-            if($str[$i] == ' ')
-            {
-                if($str[$i+1] == ' ' or $i == 0)
-                    normalisation($i+1, $str);
-                ++$space;
-            }
-            if($space <= 1)
-                $retour = true;
-        }
-        return $retour;
-    }
 }
 ?>

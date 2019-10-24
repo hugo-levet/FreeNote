@@ -1,8 +1,7 @@
 <?php
-
 require_once('model/MUtilisateur.php');
-
-class CConnexion
+require_once('controller/CController.php');
+class CConnexion extends CController
 {
     private $urlRetourDebut = '';
     private $urlRetourFin = '';
@@ -11,6 +10,13 @@ class CConnexion
 
     function __construct($arg)
     {
+        //vérifie si l'utilisateur est connecte
+        $this->autoConnexion();
+        //si connecter retourne a l'accueil
+        if($this->isConnecte())
+        {
+            header('Location: index.php');
+        }
         foreach ($arg as $key => $p)
         {
             if ($key >= 1)

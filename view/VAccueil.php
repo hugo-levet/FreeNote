@@ -41,6 +41,22 @@ for($i = $premiereEntree; $i <= ($premiereEntree + $controller->getNbDiscussionP
   }
 }
 
+//optino de pagination
+<form method="get" action="CAccueil.php">
+  <label>
+    "Afficher "
+    <select name="nbDiscParPage" aria-controls="eventTable">
+      <option value="2">2</option>
+      <option value="5">5</option>
+      <option value="10">10</option>
+      <option value="25">25</option>
+    </select> "éléments"
+  </label>
+  <input type="submit" value="Valider" />
+  <button type="submit" name="discParPage" value="discParPage"><i class="fas fa-sort-amount-down"></i></button>
+
+</form>
+
 echo '<p align="center">Page : '; //Pour l'affichage, on centre la liste des pages
 for($i = 1; $i <= $controller->getNbPages(); $i++) //On fait notre boucle
 {

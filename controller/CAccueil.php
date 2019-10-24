@@ -59,10 +59,17 @@ class CAccueil extends CController
         $this->nbPages = ceil($this->nbDiscussion/$this->nbDiscussionParPage); //on compte le nombre de pages
 
         //si (pageActulelle  > nbPages) pageActuelle = nbPages
-
         if($this->pageActuelle > $this->nbPages) //si la valeur de $pageActuelle est plus grand que $nbPages
         {
             $this->pageActuelle = $this->nbPages;
+        }
+        if(!empty($_GET['discParPage']))
+        {
+          $this->$nbDiscussionParPage = ($_GET[nbDiscParPage]);
+
+          if ($this->$nbDiscussionParPage > 25) {
+              $this->$nbDiscussionParPage = 25;
+          }
         }
     }
 }

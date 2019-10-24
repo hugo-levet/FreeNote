@@ -1,6 +1,6 @@
 <?php
-$host  = 'localhost';
-$dbname = 'freenote';
-$identifiantBdd = 'root';
-$mdpBdd = '';
+$host  = 'mysql-noeguyomarch.alwaysdata.net';
+$dbname = 'noeguyomarch_freenote';
+$identifiantBdd = '189624_root';
+$mdpBdd = 'iutinfoaix';
 ?>

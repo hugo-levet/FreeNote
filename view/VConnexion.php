@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="fr">
     <head>
+        <script language="javascript" type="text/javascript">
+            function popup(){
+                alert("<?php echo htmlspecialchars('Nous vous avons envoyé un e-mail avec votre nouveau mot de passe.', ENT_QUOTES); ?>")
+            }
+        </script>
+        <meta charset="UTF-8">
         <title>connexion</title>
     </head>
     <body>
@@ -13,11 +19,7 @@
             <div>
                 <label for="mdp">Mot de passe</label>
                 <input type="password" name="mdp" required>
-<<<<<<< HEAD
-                <a href="./nouveauMdp">Mot de passe perdu ?</a>
-=======
-                <a href="mdp_perdu.php">Mot de passe perdu ?</a>
->>>>>>> a4696fc9f790bf89cda78e361c119f201093d1ea
+                <button onclick="popup()" type="submit" value="envoyer">Mot de passe perdu ?</button>
             </div>
             <div>
                 <button type="submit" name="connexion" value="connexion">Se connecter</button>

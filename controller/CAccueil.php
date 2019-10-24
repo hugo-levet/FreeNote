@@ -9,16 +9,21 @@ class CAccueil extends CController
     private $nbDiscussionParPage = 2;   //nb de discussion par pages
     private $nbDiscussion;              //nb total de discussion
     private $nbPages;                   //nb pages necessaires pour afficher l'ensemble des discussions
-    private $pageActuelle = 1;
+    private $pageActuelle;
 
     //constructeur
     function __construct($arg)
     {
-        $this->pageActuelle = $arg[1];
-        if (isset($url) && count($url) > 1)
-            throw new Exception('Page introuvable');
+        if(!empty($arg[1]))
+        {
+            $this->pageActuelle =  $arg[1];
+        }
         else
-            $this->discussions();
+        {
+            $this->pageActuelle = 1;
+        }
+
+        $this->discussions();
     }
 
     //getter et setter
@@ -29,7 +34,7 @@ class CAccueil extends CController
 
     function getNbDiscussionParPage()
     {
-       return $this->nbDiscussionParPage;
+        return $this->nbDiscussionParPage;
     }
 
     function getTableToutesDiscussions()
@@ -47,13 +52,18 @@ class CAccueil extends CController
         return $this->nbPages;
     }
 
+    function getNbDiscussion()
+    {
+        return $this->nbDiscussion;
+    }
+
 
     //fonction privé appelé par le controller
     private function discussions()
     {
         $this->discussionsManageur = new MDiscussionManageur();
 
-//      $this->tableToutesDiscussions = $tablediscussion->getDiscussions();
+        //      $this->tableToutesDiscussions = $tablediscussion->getDiscussions();
 
         $this->nbDiscussion = count($this->discussionsManageur->getDiscussions());
         $this->nbPages = ceil($this->nbDiscussion/$this->nbDiscussionParPage); //on compte le nombre de pages

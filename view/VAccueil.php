@@ -17,7 +17,7 @@ $premiereEntree = ($controller->getPageActuelle() - 1) * $controller->getNbDiscu
 //boucle pour qui lit le tableau de messages selon les messages de la page courante
 for($i = $premiereEntree; $i <= ($premiereEntree + $controller->getNbDiscussionParPage())-1; $i++)
 {
-  if(isset($controller->getTableToutesDiscussions()->getTitre($i)))
+  if($i <= $controller->getNbDiscussion()-1 )
   {
     //titre du message[i] a afficher
     $titre = $controller->getTableToutesDiscussions()->getTitre($i);

@@ -37,7 +37,37 @@ class CCompte extends CController
                 echo 'Le mot de passe actuel est incorrect.<br>';
             }
         }
+
+        //Gestion du pseudo
+        if(!empty($_POST['modificationPseudo']))
+        {
+            if (!is_numeric($_POST['nouveauPseudo']))
+            {
+                $this->utilisateur->setPseudo($_POST['nouveauPseudo']);
+                echo 'Pseudo modifié avec succès.<br>';
+            }
+            else
+            {
+                echo 'Le pseudo n\'ai constitué que d\'une suite numérique.<br>';
+            }
+        }
+
+        //Gestion du mail
+        if(!empty($_POST['modificationMail']))
+        {
+            if (preg_match('/^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/', $_POST['nouveauPseudo']))
+            {
+                $this->utilisateur->setMail($_POST['nouveauMail']);
+                echo 'Mail modifié avec succès.<br>';
+            }
+            else
+            {
+                echo 'Le mail est invalide.<br>';
+            }
+        }
     }
+
+
 
     public function getUtilisateur()
     {

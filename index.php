@@ -31,8 +31,9 @@ if(isset($_GET['url']))
 }
 else
 {
-    require_once('./controller/CAccueil.php');
-    $controller = new CAccueil();
-    require_once('./view/VAccueil.php');
+    header('Location: accueil/1');
+//    require_once('./controller/CAccueil.php');
+//    $controller = new CAccueil();
+//    require_once('./view/VAccueil.php');
 }
 ?>

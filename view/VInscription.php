@@ -25,6 +25,6 @@
                 <button type="submit" name="inscription" value="inscription">S'inscrire</button>
             </div>
         </form>
-        <a href="VConnexion.php">Déjà un compte ? Se connecter</a>
+        <a href="connexion">Déjà un compte ? Se connecter</a>
     </body>
 </html>

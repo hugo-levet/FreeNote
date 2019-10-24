@@ -32,7 +32,7 @@ class CConnexion
         }
         $this->urlIci = $this->urlRetourDebut . 'connexion/' . $this->urlRetourFin;
         $this->urlRetour = $this->urlRetourDebut . $this->urlRetourFin;
-
+        echo $this->urlRetour;
         //vérifie si on viens de se connecter
         if(!empty($_POST['connexion']))
         {
@@ -53,7 +53,7 @@ class CConnexion
                 session_start();
                 $_SESSION['idUtilisateur'] = $utilisateurTemp->getId();
                 $_SESSION['mdp'] = md5($_POST['mdp']);
-                header("location: $this->urlRetour");
+                header("location: ./$this->urlRetour");
             }
             else
             {

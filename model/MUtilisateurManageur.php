@@ -11,7 +11,7 @@ class MUtilisateurManageur extends MModel {
 
     function ajouterUtilisateur($pseudo, $mail, $mdp_crypte)
     {
-        $requete = "INSERT INTO utilisateur(pseudo, mail, mdp) VALUES ('$pseudo', '$mail', '$mdp_crypte')';
+        $requete = "INSERT INTO utilisateur(pseudo, mail, mdp, role) VALUES ('$pseudo', '$mail', '$mdp_crypte', 'membre')";
 
         if(!($resultat = mysqli_query($this->bdd, $requete)))
         {

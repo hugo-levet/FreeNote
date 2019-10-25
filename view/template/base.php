@@ -29,11 +29,7 @@ function startPage()
 
 
         <?php
-    if($GLOBALS['ajoutHead'] == '')
-    {
-
-    }
-    else
+    if($GLOBALS['ajoutHead'] != '')
     {
         echo $GLOBALS['ajoutHead'];
     }

@@ -22,7 +22,7 @@ function startPage()
         ?>
 
         <!-- CSS -->
-        <link rel="stylesheet" href="../public/css/style.css">
+        <link rel="stylesheet" href="<?= $GLOBALS['controller']->getRetourRacine() ?>public/css/style.css">
 
         <!-- FONTAWESOME -->
         <script src="https://kit.fontawesome.com/66ecd38112.js" crossorigin="anonymous"></script>
@@ -47,7 +47,7 @@ function startPage()
                 <?php if($GLOBALS['controller']->isConnecte())
                 {
                 ?>
-                <p><?=  $GLOBALS['controller']->getUtilisateurActuel()->getPseudo() ?></p>
+                <a href="<?= $GLOBALS['controller']->getRetourRacine() ?>compte" ><?=  $GLOBALS['controller']->getUtilisateurActuel()->getPseudo() ?></a>
                 <form action="./" method="post">
                     <button type="submit" name="deconnexion" value="deconnexion">se deconnecter</button>
                 </form>

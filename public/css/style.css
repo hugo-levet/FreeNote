@@ -31,3 +31,9 @@ header button{
     background: none;
     border: none;
 }
+
+header nav{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}

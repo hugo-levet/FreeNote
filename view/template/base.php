@@ -41,26 +41,26 @@ function startPage()
             <a href="<?= $GLOBALS['controller']->getRetourRacine() ?>accueil/1" title="retour accueil">FreeNote</a>
             <nav>
                 <?php
-    if($GLOBALS['titre'] != 'connexion' || $GLOBALS['titre'] != 'inscription')
-    {
+            if($GLOBALS['titre'] != 'connexion' || $GLOBALS['titre'] != 'inscription')
+            {
                 ?>
                 <?php if($GLOBALS['controller']->isConnecte())
                 {
                 ?>
-                <!--            <form action="../discussion/<?= 'tmp';/* $GLOBALS['controller']->getDiscussion()->getId(); */ ?>" method="post">-->
+                <p><?=  $GLOBALS['controller']->getUtilisateurActuel()->getPseudo() ?></p>
                 <form action="./" method="post">
                     <button type="submit" name="deconnexion" value="deconnexion">se deconnecter</button>
                 </form>
                 <?php
                 }
-        else
-        {
+                else
+                {
                 ?>
                 <!--            <a href="../connexion/discussion/<?= 'tmp';/*$GLOBALS['controller']->getDiscussion()->getId();*/ ?>">se connecter</a>-->
                 <a href="../connexion/">se connecter</a>
                 <?php
-        }
-    }
+                }
+            }
                 ?>
             </nav>
         </header>

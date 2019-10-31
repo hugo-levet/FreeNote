@@ -1,7 +1,9 @@
 <?php
+require_once('model/MUtilisateur.php');
 class CController
 {
     protected $idUtilisateurActuel;
+    protected $utilisateurActuel;
     private $isConnecte = false;
     private $retourRacine;
     private $urlIci;
@@ -14,6 +16,8 @@ class CController
             // L'authentification est validée.
             $this->isConnecte = true;
             $this->idUtilisateurActuel = $_SESSION['idUtilisateur'];
+
+            $this->utilisateurActuel = new MUtilisateur($_SESSION['idUtilisateur']);
         }
 
         //retour racine du site
@@ -47,9 +51,9 @@ class CController
         return $this->idUtilisateurActuel;
     }
 
-    public function setIdUtilisateurActuel($id)
+    public function getUtilisateurActuel()
     {
-        $this->idUtilisateurActuel = $id;
+        return $this->utilisateurActuel;
     }
 
     public function isConnecte()

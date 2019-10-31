@@ -29,10 +29,10 @@ function startPage()
 
 
         <?php
-    if($GLOBALS['ajoutHead'] != '')
-    {
-        echo $GLOBALS['ajoutHead'];
-    }
+            if($GLOBALS['ajoutHead'] != '')
+            {
+                echo $GLOBALS['ajoutHead'];
+            }
         ?>
 
     </head>
@@ -48,15 +48,12 @@ function startPage()
                 {
                 ?>
                 <a href="<?= $GLOBALS['controller']->getRetourRacine() ?>compte" ><?=  $GLOBALS['controller']->getUtilisateurActuel()->getPseudo() ?></a>
-                <form action="./" method="post">
-                    <button type="submit" name="deconnexion" value="deconnexion">se deconnecter</button>
-                </form>
                 <?php
                 }
                 else
                 {
                 ?>
-                <a href="../connexion/">se connecter</a>
+                <a href="<?= $GLOBALS['controller']->getRetourRacine() ?>connexion">se connecter</a>
                 <?php
                 }
             }

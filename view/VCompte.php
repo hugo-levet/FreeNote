@@ -1,6 +1,7 @@
 <?php
 $titre = 'compte';
-$ajoutHead = '';
+$ajoutHead = '
+        <link rel="stylesheet" href="public/css/compte.css">';
 require_once('template/base.php');
 startPage();
 ?>
@@ -53,8 +54,8 @@ startPage();
     </fieldset>
 </form>
 
-<form action="<?= $GLOBALS['controller']->getRetourRacine() ?>" method="post">
-    <button type="submit" name="deconnexion" value="deconnexion">se deconnecter</button>
+<form class="deconnexion" action="<?= $GLOBALS['controller']->getRetourRacine() ?>" method="post">
+    <button class="deconnexion" type="submit" name="deconnexion" value="deconnexion">se deconnecter</button>
 </form>
 
 <?php

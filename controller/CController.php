@@ -4,6 +4,7 @@ class CController
     protected $idUtilisateurActuel;
     private $isConnecte = false;
     private $retourRacine;
+    private $urlIci;
 
     protected function autoConnexion($arg = [])
     {
@@ -21,6 +22,16 @@ class CController
             if($key != 0)
             {
                 $this->retourRacine .= '../';
+            }
+        }
+
+        //chemin de depuis la racine vers cette page
+        foreach ($arg as $key => $p)
+        {
+            $this->urlIci .= $p;
+            if($key < count($arg)-1)
+            {
+                $this->urlIci .= '/';
             }
         }
 
@@ -89,6 +100,11 @@ class CController
     public function getRetourRacine()
     {
         return $this->retourRacine;
+    }
+
+    public function getUrlIci()
+    {
+        return $this->urlIci;
     }
 }
 ?>

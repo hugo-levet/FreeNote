@@ -52,7 +52,6 @@ startPage();
                 <button type="submit" name="modificationMail" value="modificationMail">modifier</button>
             </fieldset>
         </form>
-        ?>
 <?php
 endPage();
 ?>

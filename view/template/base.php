@@ -56,7 +56,6 @@ function startPage()
                 else
                 {
                 ?>
-                <!--            <a href="../connexion/discussion/<?= 'tmp';/*$GLOBALS['controller']->getDiscussion()->getId();*/ ?>">se connecter</a>-->
                 <a href="../connexion/">se connecter</a>
                 <?php
                 }

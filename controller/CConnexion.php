@@ -37,7 +37,7 @@ class CConnexion extends CController
                 }
             }
         }
-        $this->urlIci = $this->urlRetourDebut . 'connexion/' . $this->urlRetourFin;
+        $this->urlIci = $this->urlRetourDebut . 'connexion' . $this->urlRetourFin;
         $this->urlRetour = $this->urlRetourDebut . $this->urlRetourFin;
         //vérifie si on viens de se connecter
         if(!empty($_POST['connexion']))

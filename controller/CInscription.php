@@ -13,7 +13,7 @@ class CInscription extends CController
 
     function __construct($arg)
     {
-        $this->autoConnexion();
+        $this->autoConnexion($arg);
 
         foreach ($arg as $key => $p) {
             if ($key >= 1)

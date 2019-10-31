@@ -38,7 +38,7 @@ function startPage()
     </head>
     <body>
         <header>
-            <p>FreeNote</p>
+            <a href="<?= $GLOBALS['controller']->getRetourRacine() ?>accueil/1" title="retour accueil">FreeNote</a>
             <nav>
                 <?php
     if($GLOBALS['titre'] != 'connexion' || $GLOBALS['titre'] != 'inscription')

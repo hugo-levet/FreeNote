@@ -11,14 +11,15 @@ startPage();
         <?php
         //on calcul la premiere entree a lire dans la table ex: (2 - 1) * 2 = premiere entrée 0,1,[2],3,4, ...
         $premiereEntree = ($controller->getPageActuelle() - 1) * $controller->getNbDiscussionParPage();
-        echo $premiereEntree;
 
-        echo $controller->getPageActuelle();
         //boucle pour qui lit le tableau de messages selon les messages de la page courante
         for($i = $premiereEntree; $i <= ($premiereEntree + $controller->getNbDiscussionParPage())-1; $i++)
         {
             if($i <= $controller->getNbDiscussion()-1 )
             {
+                //titre du message[i] a afficher
+                $id = $controller->getTableToutesDiscussions()->getId($i);
+
                 //titre du message[i] a afficher
                 $titre = $controller->getTableToutesDiscussions()->getTitre($i);
 
@@ -36,6 +37,9 @@ startPage();
                 </tr>
                 <tr>
                      <td>statut: '.($statut).'</td>
+                </tr>
+                <tr>
+                     <td><a href="../discussion/' . ($id) . '">ouvrir</a></td>
                 </tr>
             </table><br /><br />'; //saut a la ligne
             }

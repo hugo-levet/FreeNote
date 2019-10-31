@@ -30,6 +30,11 @@ class MDiscussionManageur extends MModel {
         return $this->discussions[$ligne];
     }
 
+    public function getId($ligne)
+    {
+        return $this->discussions[$ligne][0];
+    }
+
     public function getTitre($ligne)
     {
         return $this->discussions[$ligne][2];

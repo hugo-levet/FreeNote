@@ -3,9 +3,9 @@ class CController
 {
     protected $idUtilisateurActuel;
     private $isConnecte = false;
+    private $retourRacine;
 
-
-    protected function autoConnexion()
+    protected function autoConnexion($arg = [])
     {
         session_start();
         if (isset($_SESSION['idUtilisateur'], $_SESSION['mdp']))
@@ -13,6 +13,15 @@ class CController
             // L'authentification est validée.
             $this->isConnecte = true;
             $this->idUtilisateurActuel = $_SESSION['idUtilisateur'];
+        }
+
+        //retour racine du site
+        foreach ($arg as $key)
+        {
+            if($key != 0)
+            {
+                $this->retourRacine .= '../';
+            }
         }
 
         //gestion si deconnexion
@@ -75,6 +84,11 @@ class CController
         {
             die('Erreur  : ' . $e->getMessage());
         }
+    }
+
+    public function getRetourRacine()
+    {
+        return $this->retourRacine;
     }
 }
 ?>

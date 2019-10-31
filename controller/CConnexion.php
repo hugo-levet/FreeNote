@@ -11,12 +11,13 @@ class CConnexion extends CController
     function __construct($arg)
     {
         //vérifie si l'utilisateur est connecte
-        $this->autoConnexion();
+        $this->autoConnexion($arg);
         //si connecter retourne a l'accueil
         if($this->isConnecte())
         {
             header('Location: index.php');
         }
+
         foreach ($arg as $key => $p)
         {
             if ($key >= 1)

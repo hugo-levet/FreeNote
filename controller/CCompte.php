@@ -8,7 +8,7 @@ class CCompte extends CController
     function __construct($arg)
     {
         //vérifie si l'utilisateur est connecte
-        $this->autoConnexion();
+        $this->autoConnexion($arg);
         //si pas connecter retourne a l'accueil
         if(!$this->isConnecte())
         {

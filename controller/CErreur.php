@@ -7,7 +7,7 @@ class CErreur extends CController
 
     function __construct($arg, $message)
     {
-        $this->autoConnexion();
+        $this->autoConnexion($arg);
         $this->message = $message;
 
         foreach ($arg as &$value)

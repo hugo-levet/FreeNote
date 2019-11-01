@@ -2,14 +2,18 @@
 abstract class MModel{
 
     protected $bdd;
+    public static $isConnecte;
     protected $table;
     protected $composition;
 
     function connexionBdd()
     {
         require('model/MVariablesConnexion.php');
-
-        $this->bdd = mysqli_connect($host, $identifiantBdd, $mdpBdd, $dbname) or die('Erreur de connexion au serveur : ' . mysqli_connect_error());
+        if(!self::isConnecte)
+        {
+            $this->bdd = mysqli_connect($host, $identifiantBdd, $mdpBdd, $dbname) or die('Erreur de connexion au serveur : ' . mysqli_connect_error());
+            self::$isConnecte = true;
+        }
     }
 
     function getUnTuple($id)
@@ -181,7 +185,7 @@ abstract class MModel{
             return false;
         }
     }
-/*
+    /*
     function changementMdp($mdp)
     {
         //ferme le dernier message

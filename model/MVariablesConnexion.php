@@ -2,5 +2,5 @@
 $host  = 'localhost';
 $dbname = 'freenote';
 $identifiantBdd = 'root';
-$mdpBdd = 'root';
+$mdpBdd = '';
 ?>

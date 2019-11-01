@@ -181,7 +181,7 @@ abstract class MModel{
             return false;
         }
     }
-
+/*
     function changementMdp($mdp)
     {
         //ferme le dernier message
@@ -196,5 +196,51 @@ abstract class MModel{
             echo 'Requête : ' . $requete . '<br/>';
             exit();
         }
+
+    }
+    function changementPseudo($pseudo)
+    {
+        //ferme le dernier message
+        $requete = "UPDATE utilisateur SET pseudo = '$pseudo' WHERE idutilisateur = $this->id";
+
+        if (!(mysqli_query($this->bdd, $requete))) {
+            echo 'Erreur de requête<br/>';
+            // Affiche le type d'erreur.
+            echo 'Erreur : ' . mysqli_error($this->bdd) . '<br/>';
+            // Affiche la requête envoyée.
+            echo 'Requête : ' . $requete . '<br/>';
+            exit();
+        }
+    }
+
+        function changementMail($mail)
+        {
+            //ferme le dernier message
+            $requete = "UPDATE utilisateur SET mail = '$mail' WHERE idutilisateur = $this->id";
+
+            if (!(mysqli_query($this->bdd, $requete))) {
+                echo 'Erreur de requête<br/>';
+                // Affiche le type d'erreur.
+                echo 'Erreur : ' . mysqli_error($this->bdd) . '<br/>';
+                // Affiche la requête envoyée.
+                echo 'Requête : ' . $requete . '<br/>';
+                exit();
+            }
+        }
+*/
+    function changementBDD($nouvval, $type)
+    {
+        //ferme le dernier message
+        $requete = "UPDATE utilisateur SET $type = '$nouvval' WHERE idutilisateur = $this->id";
+
+        if (!(mysqli_query($this->bdd, $requete))) {
+            echo 'Erreur de requête<br/>';
+            // Affiche le type d'erreur.
+            echo 'Erreur : ' . mysqli_error($this->bdd) . '<br/>';
+            // Affiche la requête envoyée.
+            echo 'Requête : ' . $requete . '<br/>';
+            exit();
+        }
     }
 }
+?>

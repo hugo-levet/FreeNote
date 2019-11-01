@@ -55,7 +55,7 @@ class CCompte extends CController
         //Gestion du mail
         if(!empty($_POST['modificationMail']))
         {
-            if (preg_match('/^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/', $_POST['nouveauPseudo']))
+            if (preg_match('/^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/', $_POST['nouveauMail']))
             {
                 $this->utilisateur->setMail($_POST['nouveauMail']);
                 echo 'Mail modifié avec succès.<br>';

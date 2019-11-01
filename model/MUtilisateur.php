@@ -45,17 +45,19 @@ class MUtilisateur extends MModel
     public function setPseudo($pseudo)
     {
         $this->pseudo = $pseudo;
+        $this->changementBDD($this->pseudo, 'pseudo');
     }
 
     public function setMdp($mdp)
     {
         $this->mdp = md5($mdp);
-        $this->changementMdp($this->mdp);
+        $this->changementBDD($this->mdp, 'mdp');
     }
 
     public function setMail($mail)
     {
         $this->mail = $mail;
+        $this->changementBDD($this->mail, 'mail');
     }
 
     public function changeRole()

@@ -11,12 +11,13 @@ class CConnexion extends CController
     function __construct($arg)
     {
         //vérifie si l'utilisateur est connecte
-        $this->autoConnexion();
+        $this->autoConnexion($arg);
         //si connecter retourne a l'accueil
         if($this->isConnecte())
         {
             header('Location: index.php');
         }
+
         foreach ($arg as $key => $p)
         {
             if ($key >= 1)
@@ -36,7 +37,7 @@ class CConnexion extends CController
                 }
             }
         }
-        $this->urlIci = $this->urlRetourDebut . 'connexion/' . $this->urlRetourFin;
+        $this->urlIci = $this->urlRetourDebut . 'connexion' . $this->urlRetourFin;
         $this->urlRetour = $this->urlRetourDebut . $this->urlRetourFin;
         //vérifie si on viens de se connecter
         if(!empty($_POST['connexion']))

@@ -26,7 +26,6 @@ startPage();
             </div>
         </form>
         <a href="connexion">Déjà un compte ? Se connecter</a>
-        ?>
 <?php
 endPage();
 ?>

@@ -1,0 +1,20 @@
+.deconnexion{
+    text-align: center
+}
+
+form .deconnexion{
+    background: red;
+    border: none;
+    margin: 15px;
+    font-size: 1.1em;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 15px;
+    color: white;
+}
+
+form .deconnexion:hover{
+    cursor: pointer;
+}

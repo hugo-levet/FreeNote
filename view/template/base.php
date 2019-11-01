@@ -22,45 +22,41 @@ function startPage()
         ?>
 
         <!-- CSS -->
-        <link rel="stylesheet" href="../public/css/style.css">
+        <link rel="stylesheet" href="<?= $GLOBALS['controller']->getRetourRacine() ?>public/css/style.css">
 
         <!-- FONTAWESOME -->
         <script src="https://kit.fontawesome.com/66ecd38112.js" crossorigin="anonymous"></script>
 
 
         <?php
-    if($GLOBALS['ajoutHead'] != '')
-    {
-        echo $GLOBALS['ajoutHead'];
-    }
+            if($GLOBALS['ajoutHead'] != '')
+            {
+                echo $GLOBALS['ajoutHead'];
+            }
         ?>
 
     </head>
     <body>
         <header>
-            <p>FreeNote</p>
+            <a href="<?= $GLOBALS['controller']->getRetourRacine() ?>accueil/1" title="retour accueil">FreeNote</a>
             <nav>
                 <?php
-    if($GLOBALS['titre'] != 'connexion' || $GLOBALS['titre'] != 'inscription')
-    {
+            if($GLOBALS['titre'] != 'connexion' || $GLOBALS['titre'] != 'inscription')
+            {
                 ?>
                 <?php if($GLOBALS['controller']->isConnecte())
                 {
                 ?>
-                <!--            <form action="../discussion/<?= 'tmp';/* $GLOBALS['controller']->getDiscussion()->getId(); */ ?>" method="post">-->
-                <form action="./" method="post">
-                    <button type="submit" name="deconnexion" value="deconnexion">se deconnecter</button>
-                </form>
+                <a href="<?= $GLOBALS['controller']->getRetourRacine() ?>compte" ><?=  $GLOBALS['controller']->getUtilisateurActuel()->getPseudo() ?></a>
                 <?php
                 }
-        else
-        {
+                else
+                {
                 ?>
-                <!--            <a href="../connexion/discussion/<?= 'tmp';/*$GLOBALS['controller']->getDiscussion()->getId();*/ ?>">se connecter</a>-->
-                <a href="../connexion/">se connecter</a>
+                <a href="<?= $GLOBALS['controller']->getRetourRacine() ?>connexion">se connecter</a>
                 <?php
-        }
-    }
+                }
+            }
                 ?>
             </nav>
         </header>

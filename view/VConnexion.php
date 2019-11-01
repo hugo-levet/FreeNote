@@ -24,7 +24,7 @@ startPage();
                 <button type="submit" name="connexion" value="connexion">Se connecter</button>
             </div>
         </form>
-        <a href="inscription.php">S'inscrire</a>
+        <a href="inscription">S'inscrire</a>
 <?php
 endPage();
 ?>

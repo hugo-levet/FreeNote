@@ -14,15 +14,22 @@ class CAccueil extends CController
     //constructeur
     function __construct($arg)
     {
-        $this->autoConnexion();
+        $this->autoConnexion($arg);
 
-        if(!empty($arg[1]))
+        if(count($arg) > 1)
         {
-            $this->pageActuelle =  $arg[1];
+            if($arg[1] == "")
+            {
+                $this->pageActuelle = 1;
+            }
+            else
+            {
+                $this->pageActuelle = $arg[1];
+            }
         }
         else
         {
-            $this->pageActuelle = 1;
+            header("Location: ./");
         }
 
         $this->discussions();
@@ -63,10 +70,6 @@ class CAccueil extends CController
     //fonction privé appelé par le controller
     private function discussions()
     {
-        if($this->pageActuelle > $this->nbPages) //si la valeur de $pageActuelle est plus grand que $nbPages
-        {
-            $this->pageActuelle = $this->nbPages;
-        }
         if(!empty($_GET['discParPage']))
         {
             $this->$nbDiscussionParPage = ($_GET['nbDiscParPage']);
@@ -82,6 +85,11 @@ class CAccueil extends CController
 
         $this->nbDiscussion = count($this->discussionsManageur->getDiscussions());
         $this->nbPages = ceil($this->nbDiscussion/$this->nbDiscussionParPage); //on compte le nombre de pages
+
+        if($this->pageActuelle > $this->nbPages) //si la valeur de $pageActuelle est plus grand que $nbPages
+        {
+            $this->pageActuelle = $this->nbPages;
+        }
 
         //si (pageActulelle  > nbPages) pageActuelle = nbPages
 

@@ -1,11 +1,14 @@
 <?php
+require_once('model/MUtilisateur.php');
 class CController
 {
     protected $idUtilisateurActuel;
+    protected $utilisateurActuel;
     private $isConnecte = false;
+    private $retourRacine;
+    private $urlIci;
 
-
-    protected function autoConnexion()
+    protected function autoConnexion($arg = [])
     {
         session_start();
         if (isset($_SESSION['idUtilisateur'], $_SESSION['mdp']))
@@ -13,6 +16,27 @@ class CController
             // L'authentification est validée.
             $this->isConnecte = true;
             $this->idUtilisateurActuel = $_SESSION['idUtilisateur'];
+
+            $this->utilisateurActuel = new MUtilisateur($_SESSION['idUtilisateur']);
+        }
+
+        //retour racine du site
+        foreach ($arg as $key)
+        {
+            if($key != 0)
+            {
+                $this->retourRacine .= '../';
+            }
+        }
+
+        //chemin de depuis la racine vers cette page
+        foreach ($arg as $key => $p)
+        {
+            $this->urlIci .= $p;
+            if($key < count($arg)-1)
+            {
+                $this->urlIci .= '/';
+            }
         }
 
         //gestion si deconnexion
@@ -27,9 +51,9 @@ class CController
         return $this->idUtilisateurActuel;
     }
 
-    public function setIdUtilisateurActuel($id)
+    public function getUtilisateurActuel()
     {
-        $this->idUtilisateurActuel = $id;
+        return $this->utilisateurActuel;
     }
 
     public function isConnecte()
@@ -75,6 +99,16 @@ class CController
         {
             die('Erreur  : ' . $e->getMessage());
         }
+    }
+
+    public function getRetourRacine()
+    {
+        return $this->retourRacine;
+    }
+
+    public function getUrlIci()
+    {
+        return $this->urlIci;
     }
 }
 ?>

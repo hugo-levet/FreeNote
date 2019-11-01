@@ -13,7 +13,7 @@ startPage();
         }
         else
         {
-            echo "<h2>Discussion fermé.</h2>";
+            echo "<h2>Discussion fermée.</h2>";
         }
         ?>
         <div>

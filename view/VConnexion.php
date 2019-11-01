@@ -1,12 +1,11 @@
 <?php
 $titre = 'connexion';
 $ajoutHead = '';
-$ajoutHead = '
-        <script language="javascript" type="text/javascript">
-            function popup(){
-                alert("' . htmlspecialchars('Nous vous avons envoyé un e-mail avec votre nouveau mot de passe.', ENT_QUOTES) . '")
-            }
-        </script>';
+$ajoutHead = '<script language="javascript" type="text/javascript">
+                function popup(){
+                alert("' . htmlspecialchars('Un email contenant votre nouveau mot de passe vous a été envoyé.', ENT_QUOTES) . '")
+                }
+              </script>';
 require_once('template/base.php');
 startPage();
 ?>

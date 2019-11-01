@@ -8,21 +8,6 @@ class MUtilisateurManageur extends MModel {
     {
         $this->connexionBdd();
     }
-
-    function ajouterUtilisateur($pseudo, $mail, $mdp_crypte)
-    {
-        $requete = "INSERT INTO utilisateur(pseudo, mail, mdp, role) VALUES ('$pseudo', '$mail', '$mdp_crypte', 'membre')";
-
-        if(!($resultat = mysqli_query($this->bdd, $requete)))
-        {
-            echo 'Erreur de requête<br/>';
-            // Affiche le type d'erreur.
-            echo 'Erreur : ' . mysqli_error($this->bdd) . '<br/>';
-            // Affiche la requête envoyée.
-            echo 'Requête : ' . $requete . '<br/>';
-            exit();
-        }
-    }
 }
 
 ?>

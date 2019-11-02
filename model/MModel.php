@@ -389,5 +389,31 @@ abstract class MModel{
 
         }
     }
+    public function suppressionmessage($idMessage)
+    {
+        //supprime tous les mots
+            $requete = "DELETE FROM mot WHERE idmessage = ".$idMessage;
+
+            if (!(mysqli_query(self::$bdd, $requete))) {
+                echo 'Erreur de requête<br/>';
+                // Affiche le type d'erreur.
+                echo 'Erreur : ' . mysqli_error(self::$bdd) . '<br/>';
+                // Affiche la requête envoyée.
+                echo 'Requête : ' . $requete . '<br/>';
+                exit();
+            }
+
+        //supprime le message
+        $requete = "DELETE FROM message WHERE idmessage = ".$idMessage;
+
+        if (!(mysqli_query(self::$bdd, $requete))) {
+            echo 'Erreur de requête<br/>';
+            // Affiche le type d'erreur.
+            echo 'Erreur : ' . mysqli_error(self::$bdd) . '<br/>';
+            // Affiche la requête envoyée.
+            echo 'Requête : ' . $requete . '<br/>';
+            exit();
+        }
+    }
 }
 ?>

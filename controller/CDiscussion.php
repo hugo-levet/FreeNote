@@ -41,6 +41,13 @@ class CDiscussion extends CController
             header('Location: '.$this->retourRacine);
         }
 
+        //gestion si suppression d'un message
+        if(!empty($_POST['suppressionMessage']))
+        {
+                $this->discussion->suppressionmessage($_POST['suppressionMessage']);
+            header('Location: '.$this->retourRacine.$this->urlIci);
+        }
+
         //gestion si ajout de mot
         if(!empty($_POST['ajoutMot']))
         {

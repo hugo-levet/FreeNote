@@ -6,7 +6,7 @@ class CController
     protected $utilisateurActuel;
     private $isConnecte = false;
     protected $retourRacine;
-    private $urlIci;
+    protected $urlIci;
 
     protected function autoConnexion($arg = [])
     {

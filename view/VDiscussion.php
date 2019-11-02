@@ -26,6 +26,15 @@ if($controller->getUtilisateurActuel()->getRole() == 'admin')
         {
             echo $controller->getDiscussion()->getMessage($i)->getMot($j)->getvaleur() . ' ';
         }
+
+        if($controller->getUtilisateurActuel()->getRole() == 'admin' && $i < count($controller->getDiscussion()->getMessages())-1)
+        {
+    ?>
+    <form action="../discussion/<?= $controller->getDiscussion()->getId(); ?>" method="post">
+        <button type="submit" name="suppressionMessage" value="<?= $controller->getDiscussion()->getMessage($i)->getId() ?>">Supprimer le message</button>
+    </form>
+    <?php
+        }
     }
     ?>
 </div>

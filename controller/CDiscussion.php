@@ -37,14 +37,21 @@ class CDiscussion extends CController
         //gestion si suppression de discussion
         if(!empty($_POST['suppressionDiscussion']))
         {
-                $this->discussion->suppressionDiscussion();
+            $this->discussion->suppressionDiscussion();
             header('Location: '.$this->retourRacine);
+        }
+
+        //gestion si cloture discussion
+        if(!empty($_POST['clotureDiscussion']))
+        {
+            $this->discussion->clotureDiscussion();
+            header('Location: '.$this->retourRacine.$this->urlIci);
         }
 
         //gestion si suppression d'un message
         if(!empty($_POST['suppressionMessage']))
         {
-                $this->discussion->suppressionmessage($_POST['suppressionMessage']);
+            $this->discussion->suppressionmessage($_POST['suppressionMessage']);
             header('Location: '.$this->retourRacine.$this->urlIci);
         }
 

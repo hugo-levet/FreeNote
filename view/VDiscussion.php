@@ -11,7 +11,10 @@ if($controller->getUtilisateurActuel()->getRole() == 'admin')
 {
 ?>
 <form action="../discussion/<?= $controller->getDiscussion()->getId(); ?>" method="post">
-    <button type="submit" name="suppressionDiscussion" value="suppressionDiscussion">Clore la discussion</button>
+    <button type="submit" name="suppressionDiscussion" value="suppressionDiscussion">Supprimer la discussion</button>
+</form>
+<form action="../discussion/<?= $controller->getDiscussion()->getId(); ?>" method="post">
+    <button type="submit" name="clotureDiscussion" value="clotureDiscussion">Clore la discussion</button>
 </form>
 <?php
 }

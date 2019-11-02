@@ -6,7 +6,7 @@ class CConnexion extends CController
     private $urlRetourDebut = '';
     private $urlRetourFin = '';
     private $urlRetour;
-    private $urlIci;
+//    private $urlIci;
 
     function __construct($arg)
     {

@@ -322,6 +322,28 @@ abstract class MModel{
         return $idDiscussion;
     }
 
+    function clotureDiscussion($id = 0)
+    {
+        if($id == 0) //supprime la discussion actuelle
+        {
+            //clot la discussion courante
+        $requete = "UPDATE discussion SET statutdiscussion = 0 WHERE iddiscussion = $this->id";
+
+        if (!(mysqli_query(self::$bdd, $requete))) {
+            echo 'Erreur de requête<br/>';
+            // Affiche le type d'erreur.
+            echo 'Erreur : ' . mysqli_error(self::$bdd) . '<br/>';
+            // Affiche la requête envoyée.
+            echo 'Requête : ' . $requete . '<br/>';
+            exit();
+        }
+        }
+        else //supprime la discussion avec l'id renseigné
+        {
+            echo 'fontcion pas encore géré.';
+        }
+    }
+
     function suppressionDiscussion($id = 0)
     {
         if($id == 0) //supprime la discussion actuelle
@@ -386,9 +408,10 @@ abstract class MModel{
         }
         else //supprime la discussion avec l'id renseigné
         {
-
+            echo 'fontcion pas encore géré.';
         }
     }
+
     public function suppressionmessage($idMessage)
     {
         //supprime tous les mots

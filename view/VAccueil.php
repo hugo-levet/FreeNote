@@ -42,7 +42,7 @@ if($controller->isConnecte())
 
             //table de presentation du message courant
     ?>
-    <a href="../discussion/' . ($id) . '"><div id="uneDiscussion" class="<?= $statut; ?>">
+    <a href="<?= $controller->getRetourRacine(); ?>discussion/<?= $id; ?>"><div id="uneDiscussion" class="<?= $statut; ?>">
         <h2><?= stripslashes($titre); ?></h2>
         <!--        <a href="../discussion/' . ($id) . '">ouvrir</a>-->
         </div></a>

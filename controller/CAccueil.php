@@ -79,7 +79,7 @@ class CAccueil extends CController
             }
         }
 
-        $this->discussionsManageur = new MDiscussionManageur();
+        $this->discussionsManageur = new MDiscussionManageur($this->idUtilisateurActuel);
 
         //      $this->tableToutesDiscussions = $tablediscussion->getDiscussions();
 

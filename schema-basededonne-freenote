@@ -6,5 +6,5 @@ MESSAGE     (_idmessage, iddiscussion#, statutmessage)
 
 MOT         (_idmot, idmessage#, idutilisateur#, valeur)
 
-UTILISATEUR (_idutilisateur, mdp, pseudo, mail, role)
+UTILISATEUR (_idutilisateur, mdp, pseudo, mail, role, nombrediscussion)
 

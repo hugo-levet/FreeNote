@@ -156,7 +156,6 @@ abstract class MModel{
 
     function aParticipe($idUtilisateur)
     {
-        echo $idUtilisateur;
         $requete = "SELECT * FROM mot WHERE idutilisateur = $idUtilisateur AND idmessage = $this->id";
 
         if(!($resultat = mysqli_query(self::$bdd, $requete)))
@@ -251,15 +250,76 @@ abstract class MModel{
     {
         $requete = "INSERT INTO utilisateur(pseudo, mail, mdp, role) VALUES ('$pseudo', '$mail', '$mdp_crypte', 'membre')";
 
-        if(!($resultat = mysqli_query($this->bdd, $requete)))
+        if(!($resultat = mysqli_query(self::$bdd, $requete)))
         {
             echo 'Erreur de requête<br/>';
             // Affiche le type d'erreur.
-            echo 'Erreur : ' . mysqli_error($this->bdd) . '<br/>';
+            echo 'Erreur : ' . mysqli_error(self::$bdd) . '<br/>';
             // Affiche la requête envoyée.
             echo 'Requête : ' . $requete . '<br/>';
             exit();
         }
+    }
+
+    function ajouterDiscussion($titre) //la valeur de retour est l'id de la discussion créé
+    {
+        $requete = "INSERT INTO discussion(titre) VALUES ('$titre')";
+
+        if(!($resultat = mysqli_query(self::$bdd, $requete)))
+        {
+            echo 'Erreur de requête<br/>';
+            // Affiche le type d'erreur.
+            echo 'Erreur : ' . mysqli_error(self::$bdd) . '<br/>';
+            // Affiche la requête envoyée.
+            echo 'Requête : ' . $requete . '<br/>';
+            exit();
+        }
+
+        //enregistre l'id de la discussin créé
+        $requete = "SELECT MAX(iddiscussion) AS max_id, iddiscussion FROM discussion";
+
+        if(!($resultat = mysqli_query(self::$bdd, $requete)))
+        {
+            echo 'Erreur de requête<br/>';
+            // Affiche le type d'erreur.
+            echo 'Erreur : ' . mysqli_error(self::$bdd) . '<br/>';
+            // Affiche la requête envoyée.
+            echo 'Requête : ' . $requete . '<br/>';
+            exit();
+        }
+
+        $idDiscussion;
+        while($ligneTable = mysqli_fetch_assoc($resultat))
+        {
+            $idDiscussion = $ligneTable['max_id'];
+        }
+
+        //crée un nouveau message vide
+        $requete = "INSERT INTO message (iddiscussion, statutmessage) VALUES ($idDiscussion, 0)";
+
+        if(!(mysqli_query(self::$bdd, $requete)))
+        {
+            echo 'Erreur de requête<br/>';
+            // Affiche le type d'erreur.
+            echo 'Erreur : ' . mysqli_error(self::$bdd) . '<br/>';
+            // Affiche la requête envoyée.
+            echo 'Requête : ' . $requete . '<br/>';
+            exit();
+        }
+
+        //incremente le nombre de discussion créé
+        $requete = "UPDATE utilisateur SET nombrediscussion = nombrediscussion + 1 WHERE idutilisateur = $this->idUtilisateurActuel";
+
+        if (!(mysqli_query(self::$bdd, $requete))) {
+            echo 'Erreur de requête<br/>';
+            // Affiche le type d'erreur.
+            echo 'Erreur : ' . mysqli_error(self::$bdd) . '<br/>';
+            // Affiche la requête envoyée.
+            echo 'Requête : ' . $requete . '<br/>';
+            exit();
+        }
+
+        return $idDiscussion;
     }
 }
 ?>

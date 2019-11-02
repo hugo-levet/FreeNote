@@ -34,6 +34,7 @@ class MUtilisateur extends MModel
         $this->mail = $data['mail'];
         $this->mdp = $data['mdp'];
         $this->role = $data['role'];
+        $this->nombrediscussion = $data['nombrediscussion'];
     }
 
     //SETTERS
@@ -91,6 +92,16 @@ class MUtilisateur extends MModel
     public function getMdp()
     {
         return $this->mdp;
+    }
+
+    public function getRole()
+    {
+        return $this->role;
+    }
+
+    public function getNombrediscussion()
+    {
+        return $this->nombrediscussion;
     }
 }
 ?>

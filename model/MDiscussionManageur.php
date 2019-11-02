@@ -1,17 +1,15 @@
 <?php
 require_once ('model/MModel.php');
 class MDiscussionManageur extends MModel {
-    //    protected $id;
-    //    protected $statut;
-    //    protected $titre;
+    protected $idUtilisateurActuel;
     protected $discussions = [];
 
-    function __construct()
+    function __construct($idUtilisateurActuel)
     {
         $this->table = 'discussion';
         $this->connexionBdd();
         $tuple = $this->getUneTable();
-
+        $this->idUtilisateurActuel = $idUtilisateurActuel;
     }
 
     public function hydrate(array $data)

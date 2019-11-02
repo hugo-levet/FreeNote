@@ -5,7 +5,8 @@ require_once('template/base.php');
 startPage();
 ?>
 <!--description du service-->
-<p>ce site internet est un site de chat... (a developper)</p>
+<p>Hello, FreeNote est un réseau social d’un nouveau genre, FreeNote consiste à créer des fils de discussions comprenant
+des messages participatifs au sein desquels chaque utilisateur ne peut ajouter qu’un ou deux mots.</p>
 
 <?php
 /*bouton de création de discussion*/

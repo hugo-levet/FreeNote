@@ -14,12 +14,14 @@ body{
 
 header
 {
+    width: 100%;
     background: #2552bb;
     color: white;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     font-family: sans-serif;
 }
 

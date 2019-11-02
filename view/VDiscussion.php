@@ -1,6 +1,6 @@
 <?php
 $titre = 'discussion';
-$ajoutHead = '';
+$ajoutHead = '<link rel="stylesheet" href="'.$controller->getRetourRacine().'public/css/discussion.css">';
 require_once('template/base.php');
 startPage();
 ?>
@@ -20,24 +20,26 @@ if($controller->getUtilisateurActuel()->getRole() == 'admin')
 }
 ?>
 
-<div>
+<div id="messages">
     <?php //affichage de la discussion
     for ($i = 0; $i < count($controller->getDiscussion()->getMessages()); $i++)
     {
-        echo '<br>';
-        for ($j = 0; $j < count($controller->getDiscussion()->getMessage($i)->getMots()); $j++)
-        {
-            echo $controller->getDiscussion()->getMessage($i)->getMot($j)->getvaleur() . ' ';
-        }
+        echo '<div id="unMessage">';
 
         if($controller->getUtilisateurActuel()->getRole() == 'admin' && $i < count($controller->getDiscussion()->getMessages())-1)
         {
     ?>
     <form action="../discussion/<?= $controller->getDiscussion()->getId(); ?>" method="post">
-        <button type="submit" name="suppressionMessage" value="<?= $controller->getDiscussion()->getMessage($i)->getId() ?>">Supprimer le message</button>
+        <button type="submit" name="suppressionMessage" value="<?= $controller->getDiscussion()->getMessage($i)->getId() ?>"><i class="far fa-trash-alt"></i></button>
     </form>
     <?php
         }
+        echo '<p>';
+        for ($j = 0; $j < count($controller->getDiscussion()->getMessage($i)->getMots()); $j++)
+        {
+            echo $controller->getDiscussion()->getMessage($i)->getMot($j)->getvaleur() . ' ';
+        }
+        echo '</p></div>';
     }
     ?>
 </div>

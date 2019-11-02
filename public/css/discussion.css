@@ -1,0 +1,25 @@
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1, p{
+    font-family: sans-serif;
+}
+
+#messages{
+/*    background-color: aliceblue;*/
+}
+
+#unMessage{
+    display: flex;
+}
+
+#unMessage p{
+    margin: 0;
+    margin: 15px;
+    background-color: skyblue;
+    padding: 10px;
+    border-radius: 20px;
+}

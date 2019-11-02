@@ -44,24 +44,25 @@ if($controller->isConnecte())
     ?>
     <a href="../discussion/' . ($id) . '"><div id="uneDiscussion" class="<?= $statut; ?>">
         <h2><?= stripslashes($titre); ?></h2>
-<!--        <a href="../discussion/' . ($id) . '">ouvrir</a>-->
+        <!--        <a href="../discussion/' . ($id) . '">ouvrir</a>-->
         </div></a>
     <?php
         }
     }?>
 </div>
 
-<form method="get" action="CAccueil.php">
+<form method="post" action="">
     <label>
-        "Afficher "
+        Afficher
         <select name="nbDiscParPage" aria-controls="eventTable">
-            <option value="2">2</option>
-            <option value="5">5</option>
-            <option value="10">10</option>
-            <option value="25">25</option>
-        </select> "éléments"
+            <option value="2" <?php if($controller->getNbDiscussionParPage() == 2) echo 'selected'; ?>>2</option>
+            <option value="5" <?php if($controller->getNbDiscussionParPage() == 5) echo 'selected'; ?>>5</option>
+            <option value="10" <?php if($controller->getNbDiscussionParPage() == 10) echo 'selected'; ?>>10</option>
+            <option value="25" <?php if($controller->getNbDiscussionParPage() == 25) echo 'selected'; ?>>25</option>
+        </select>
+        éléments
     </label>
-    <button type="submit" name="discParPage" value="discParPage"><i class="fas fa-sort-amount-down"></i></button>
+    <button type="submit" name="pagination" value="pagination"><i class="fas fa-sort-amount-down"></i></button>
 
 </form>
 <?php
@@ -75,7 +76,7 @@ for($i = 1; $i <= $controller->getNbPages(); $i++) //On fait notre boucle
     }
     else
     {
-        echo '<a href="./'.$i.'">'.$i.'</a>';
+        echo '<a href="'.$controller->getRetourRacine().'accueil/'.$i.'/'.$controller->getNbDiscussionParPage().'">'.$i.'</a>';
     }
     echo' ';
 }

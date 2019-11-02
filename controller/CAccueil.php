@@ -9,12 +9,21 @@ class CAccueil extends CController
     private $nbDiscussionParPage = 2;   //nb de discussion par pages
     private $nbDiscussion;              //nb total de discussion
     private $nbPages;                   //nb pages necessaires pour afficher l'ensemble des discussions
-    private $pageActuelle;
+    private $pageActuelle = 1;
 
     //constructeur
     function __construct($arg)
     {
         $this->autoConnexion($arg);
+
+        if(count($arg) > 2)
+        {
+            $this->nbDiscussionParPage = $arg[2];
+
+            if ($this->nbDiscussionParPage > 25) {
+                $this->nbDiscussionParPage = 25;
+            }
+        }
 
         if(count($arg) > 1)
         {
@@ -33,6 +42,12 @@ class CAccueil extends CController
         }
 
         $this->discussions();
+
+        //vérifie si on viens de changer la pagination
+        if(!empty($_POST['pagination']))
+        {
+            header('Location: '.$this->retourRacine.'accueil/'.$this->pageActuelle.'/'.$this->nbDiscussionParPage = intval($_POST['nbDiscParPage']));
+        }
     }
 
     //getter et setter
@@ -66,19 +81,9 @@ class CAccueil extends CController
         return $this->nbDiscussion;
     }
 
-
     //fonction privé appelé par le controller
     private function discussions()
     {
-        if(!empty($_GET['discParPage']))
-        {
-            $this->$nbDiscussionParPage = ($_GET['nbDiscParPage']);
-
-            if ($this->$nbDiscussionParPage > 25) {
-                $this->$nbDiscussionParPage = 25;
-            }
-        }
-
         $this->discussionsManageur = new MDiscussionManageur($this->idUtilisateurActuel);
 
         //      $this->tableToutesDiscussions = $tablediscussion->getDiscussions();
@@ -88,11 +93,11 @@ class CAccueil extends CController
 
         if($this->pageActuelle > $this->nbPages) //si la valeur de $pageActuelle est plus grand que $nbPages
         {
-            $this->pageActuelle = $this->nbPages;
+//            $this->pageActuelle = $this->nbPages;
+            header('Location: '.$this->retourRacine.'accueil/'.$this->nbPages.'/'.$this->nbDiscussionParPage);
         }
 
         //si (pageActulelle  > nbPages) pageActuelle = nbPages
-
     }
 }
 

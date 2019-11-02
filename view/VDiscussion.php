@@ -4,54 +4,68 @@ $ajoutHead = '';
 require_once('template/base.php');
 startPage();
 ?>
-        <h1><?= $controller->getDiscussion()->getTitre(); ?></h1>
+<h1><?= $controller->getDiscussion()->getTitre(); ?></h1>
 
-        <?php
-        if($controller->getDiscussion()->isOuvert())
+<?php
+if($controller->getUtilisateurActuel()->getRole() == 'admin')
+{
+?>
+<form action="../discussion/<?= $controller->getDiscussion()->getId(); ?>" method="post">
+    <button type="submit" name="suppressionDiscussion" value="suppressionDiscussion">Clore la discussion</button>
+</form>
+<?php
+}
+?>
+
+<div>
+    <?php //affichage de la discussion
+    for ($i = 0; $i < count($controller->getDiscussion()->getMessages()); $i++)
+    {
+        echo '<br>';
+        for ($j = 0; $j < count($controller->getDiscussion()->getMessage($i)->getMots()); $j++)
         {
-            echo "<h2>Discussion ouverte.</h2>";
+            echo $controller->getDiscussion()->getMessage($i)->getMot($j)->getvaleur() . ' ';
+        }
+    }
+    ?>
+</div>
+
+<?php //affichage des option de modification de discussion
+if($controller->getDiscussion()->isOuvert())
+{
+?>
+<?php
+    if($controller->isConnecte())
+    {
+        if($controller->getDiscussion()->getMessage(count($controller->getDiscussion()->getMessages())-1)->aParticipe($controller->getIdUtilisateurActuel()))
+        {
+?>
+<form action="../discussion/<?= $controller->getDiscussion()->getId(); ?>" method="post">
+    <button type="submit" name="clotureMessage" value="clotureMessage"><i class="far fa-times-circle"></i></button>
+</form>
+<?php
         }
         else
         {
-            echo "<h2>Discussion fermée.</h2>";
+?>
+<form action="../discussion/<?= $controller->getDiscussion()->getId(); ?>" method="post">
+    <input type="text" name="mot" maxlength="52" required />
+    <button type="submit" name="ajoutMot" value="ajoutMot"><i class="fab fa-telegram-plane"></i></button>
+</form>
+<?php
         }
-        ?>
-        <div>
-            <?php
+    }
+?>
 
-            for ($i = 0; $i < count($controller->getDiscussion()->getMessages()); $i++)
-            {
-                echo '<br>';
-                for ($j = 0; $j < count($controller->getDiscussion()->getMessage($i)->getMots()); $j++)
-                {
-                    echo $controller->getDiscussion()->getMessage($i)->getMot($j)->getvaleur() . ' ';
-                }
-            }
-            ?>
-        </div>
-
-        <?php
-        if($controller->isConnecte())
-        {
-            if($controller->getDiscussion()->getMessage(count($controller->getDiscussion()->getMessages())-1)->aParticipe($controller->getIdUtilisateurActuel()))
-            {
-        ?>
-        <form action="../discussion/<?= $controller->getDiscussion()->getId(); ?>" method="post">
-            <button type="submit" name="clotureMessage" value="clotureMessage"><i class="far fa-times-circle"></i></button>
-        </form>
-        <?php
-            }
-            else
-            {
-        ?>
-        <form action="../discussion/<?= $controller->getDiscussion()->getId(); ?>" method="post">
-            <input type="text" name="mot" maxlength="52" required />
-            <button type="submit" name="ajoutMot" value="ajoutMot"><i class="fab fa-telegram-plane"></i></button>
-        </form>
-        <?php
-            }
-        }
-        ?>
+<?php
+}
+else
+{
+?>
+<p>Cette discussion est fermée.</p>
+<?php
+}
+?>
 <?php
 endPage();
 ?>

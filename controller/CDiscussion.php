@@ -34,6 +34,13 @@ class CDiscussion extends CController
             $this->discussion = new MDiscussion($arg[1]);
         }
 
+        //gestion si suppression de discussion
+        if(!empty($_POST['suppressionDiscussion']))
+        {
+                $this->discussion->suppressionDiscussion();
+            header('Location: '.$this->retourRacine);
+        }
+
         //gestion si ajout de mot
         if(!empty($_POST['ajoutMot']))
         {

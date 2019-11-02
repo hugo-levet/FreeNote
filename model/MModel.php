@@ -321,5 +321,73 @@ abstract class MModel{
 
         return $idDiscussion;
     }
+
+    function suppressionDiscussion($id = 0)
+    {
+        if($id == 0) //supprime la discussion actuelle
+        {
+            //récupérer les id des messages a supprimer
+            $requete = "SELECT idmessage FROM message WHERE iddiscussion = ".$this->id;
+
+            if(!($resultat = mysqli_query(self::$bdd, $requete)))
+            {
+                echo 'Erreur de requête<br/>';
+                // Affiche le type d'erreur.
+                echo 'Erreur : ' . mysqli_error(self::$bdd) . '<br/>';
+                // Affiche la requête envoyée.
+                echo 'Requête : ' . $requete . '<br/>';
+                exit();
+            }
+
+            $idMessages = [];
+            while($ligneTable = mysqli_fetch_assoc($resultat))
+            {
+                array_push($idMessages, $ligneTable['idmessage']);
+            }
+
+            //supprime tous les mots
+            foreach($idMessages as &$unIdMessage)
+            {
+                $requete = "DELETE FROM mot WHERE idmessage = ".$unIdMessage;
+
+                if (!(mysqli_query(self::$bdd, $requete))) {
+                    echo 'Erreur de requête<br/>';
+                    // Affiche le type d'erreur.
+                    echo 'Erreur : ' . mysqli_error(self::$bdd) . '<br/>';
+                    // Affiche la requête envoyée.
+                    echo 'Requête : ' . $requete . '<br/>';
+                    exit();
+                }
+            }
+
+            //supprime tous les messages
+            $requete = "DELETE FROM message WHERE iddiscussion = ".$this->id;
+
+            if (!(mysqli_query(self::$bdd, $requete))) {
+                echo 'Erreur de requête<br/>';
+                // Affiche le type d'erreur.
+                echo 'Erreur : ' . mysqli_error(self::$bdd) . '<br/>';
+                // Affiche la requête envoyée.
+                echo 'Requête : ' . $requete . '<br/>';
+                exit();
+            }
+
+            //supprime la discussion
+            $requete = "DELETE FROM discussion WHERE iddiscussion = ".$this->id;
+
+            if (!(mysqli_query(self::$bdd, $requete))) {
+                echo 'Erreur de requête<br/>';
+                // Affiche le type d'erreur.
+                echo 'Erreur : ' . mysqli_error(self::$bdd) . '<br/>';
+                // Affiche la requête envoyée.
+                echo 'Requête : ' . $requete . '<br/>';
+                exit();
+            }
+        }
+        else //supprime la discussion avec l'id renseigné
+        {
+
+        }
+    }
 }
 ?>

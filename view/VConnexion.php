@@ -15,15 +15,15 @@ startPage();
             <div>
                 <label for="pseudo">Pseudo</label>
                 <input type="text" name="pseudo" required>
-                <a href="pseudo_perdu.php" onclick="popup()">Pseudo perdu ?</a>
+                <a href="#" onclick="popup()">Pseudo perdu ?</a>
             </div>
             <div>
                 <label for="mdp">Mot de passe</label>
                 <input type="password" name="mdp" required>
+                <a href="#" onclick="popup()">Mot de passe perdu ?</a>
             </div>
             <div>
                 <button type="submit" name="connexion" value="connexion">Se connecter</button>
-                <button onclick="popup()" type="submit" value="envoyer">Mot de passe perdu ?</button>
             </div>
         </form>
         <a href="inscription">S'inscrire</a>

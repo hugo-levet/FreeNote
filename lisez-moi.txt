@@ -14,7 +14,8 @@ Ce jeux consiste à faire composer une phrase, par plusieurs utilisateurs sans q
 -Chaque utilisateur peut ajouter un ou deux mots dans le message courant de la discussion ouverte. 
 -tout utilisateur ayant contribué au message courant peut le fermer et aisi passer au message suivant
 
-o les choix techniques (technologies, algorithmes, etc.) et leurs raisons
+o les choix techniques (technologies, algorithmes, etc.)
+nous avons utilisé github trello alwaysdata et messenger pour gérer notre projet/communication, nous avons choisit le modele MVC car il permet une séparation claire des intentions et optimise la création d’un site et sa maintenance.
 
 o la configuration logicielle minimale et conseillée
 minimale: un ordinateur avec une connexion Internet et un navigateur avec moteur de recherche

@@ -66,7 +66,7 @@ function endPage()
 {
 ?>
         <footer>
-            <p>Un site créé dans le cadre de l'iut informatique d'Aix en Provence par Hugo Levet, Hugo Panis, Bryan Dubruc, Noé Guyomarc'h et Vincent Dely.</p>
+            <p>Un site créé dans le cadre de l'IUT Informatique d'Aix-en-Provence par Hugo Levet, Hugo Panis, Bryan Dubruc, Noé Guyomarc'h et Vincent Dely.</p>
         </footer>
     </body>
 </html>

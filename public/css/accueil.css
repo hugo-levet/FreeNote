@@ -5,13 +5,18 @@
     align-items: center;
 }
 
+#discussions a{
+    width: 80%;
+}
+
 a{
     text-decoration: none;
     color: black;
 }
 
 #uneDiscussion{
-    width: 500px;
+    max-width: 500px;
+    width: 100%;
     border-radius: 5px;
     margin: 5px;
     padding: 5px;

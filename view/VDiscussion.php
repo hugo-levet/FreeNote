@@ -9,7 +9,7 @@ startPage();
 <h1><?= $controller->getDiscussion()->getTitre(); ?></h1>
 
 <?php
-if($controller->getUtilisateurActuel()->getRole() == 'admin')
+if($controller->isConnecte() && $controller->getUtilisateurActuel()->getRole() == 'admin')
 {
 ?>
     <form action="../discussion/<?= $controller->getDiscussion()->getId(); ?>" method="post">
@@ -28,7 +28,7 @@ if($controller->getUtilisateurActuel()->getRole() == 'admin')
     {
         echo '<div id="unMessage">';
 
-        if($controller->getUtilisateurActuel()->getRole() == 'admin' && $i < count($controller->getDiscussion()->getMessages())-1)
+        if($controller->isConnecte() && $controller->getUtilisateurActuel()->getRole() == 'admin' && $i < count($controller->getDiscussion()->getMessages())-1)
         {
     ?>
             <form action="../discussion/<?= $controller->getDiscussion()->getId(); ?>" method="post">
@@ -70,6 +70,12 @@ if($controller->getDiscussion()->isOuvert())
             </form>
     <?php
         }
+    }
+    else
+    {
+     ?>
+    <p>Connectez-vous pour participer aux diférrentes discussions.</p>
+    <?php
     }
     ?>
 

@@ -8,8 +8,8 @@ h1, p{
     font-family: sans-serif;
 }
 
-#messages{
-/* background-color: aliceblue; */
+body > p, body > form:last-of-type{
+    margin-bottom: 100px;
 }
 
 #unMessage{

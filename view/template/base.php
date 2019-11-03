@@ -6,6 +6,7 @@ function startPage()
 <html lang="fr">
     <head>
         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
         <?php
         if($GLOBALS['titre'] == '')
         {

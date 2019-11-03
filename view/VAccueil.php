@@ -50,7 +50,7 @@ if($controller->isConnecte())
 
             //table de presentation du message courant
     ?>
-    <a href="<?= $controller->getRetourRacine(); ?>discussion/<?= $id; ?>"><div id="uneDiscussion" class="<?= $statut; ?>">
+    <a href="<?= $controller->getRetourRacine(); ?>discussion/<?= $id; ?>"><div class="<?= $statut; ?>">
         <h2><?= stripslashes($titre); ?></h2>
         <!--        <a href="../discussion/' . ($id) . '">ouvrir</a>-->
         </div></a>
@@ -60,10 +60,10 @@ if($controller->isConnecte())
     ?>
 </div>
 
-<form method="post" action="">
+<form method="post" action="<?= $controller->getRetourRacine(); ?>accueil">
     <label>
         Nombre d'éléments par page:
-        <select name="nbDiscParPage" aria-controls="eventTable">
+        <select name="nbDiscParPage">
             <option value="2" <?php if($controller->getNbDiscussionParPage() == 2) echo 'selected'; ?>>2</option>
             <option value="5" <?php if($controller->getNbDiscussionParPage() == 5) echo 'selected'; ?>>5</option>
             <option value="10" <?php if($controller->getNbDiscussionParPage() == 10) echo 'selected'; ?>>10</option>
@@ -74,7 +74,7 @@ if($controller->isConnecte())
 </form>
 
 <?php
-echo '<p align="center">Page : '; //Pour l'affichage, on centre la liste des pages
+echo '<p>Page : '; //Pour l'affichage, on centre la liste des pages
 for($i = 1; $i <= $controller->getNbPages(); $i++) //On fait notre boucle
 {
     //On va faire notre condition

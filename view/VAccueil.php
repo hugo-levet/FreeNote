@@ -62,14 +62,13 @@ if($controller->isConnecte())
 
 <form method="post" action="">
     <label>
-        <!--Afficher-->
+        Nombre d'éléments par page:
         <select name="nbDiscParPage" aria-controls="eventTable">
             <option value="2" <?php if($controller->getNbDiscussionParPage() == 2) echo 'selected'; ?>>2</option>
             <option value="5" <?php if($controller->getNbDiscussionParPage() == 5) echo 'selected'; ?>>5</option>
             <option value="10" <?php if($controller->getNbDiscussionParPage() == 10) echo 'selected'; ?>>10</option>
             <option value="25" <?php if($controller->getNbDiscussionParPage() == 25) echo 'selected'; ?>>25</option>
         </select>
-        <!--éléments-->
     </label>
     <button type="submit" name="pagination" value="pagination"><i class="fas fa-sort-amount-down"></i></button>
 </form>

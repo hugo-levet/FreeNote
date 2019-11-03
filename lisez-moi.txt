@@ -7,18 +7,33 @@ o les 5 doigts d'pieds
 
 o l’URL de l’index du site Web
 
-o une présentation concise du projet réalisé
+Nous avons réalisé un site de chat en ligne sur lequel les utilisateurs ont acces a diferentes discussions dans lequelles figurent un ou plusieurs messages. L'ensemble des utilisateurs peut contribuer aux discussions qui representent un jeu litteraire.
+Ce jeux consiste à faire composer une phrase, par plusieurs utilisateurs sans qu'aucun d'eux ne puisse modifier la ou les collaborations precedentes.(Cadavre exquis -> wikipedia.org)
+-Chaque utilisateur peut ajouter un ou deux mots dans le message courant de la discussion ouverte. 
+-tout utilisateur ayant contribué au message courant peut le fermer et aisi passer au message suivant
 
 o les choix techniques (technologies, algorithmes, etc.) et leurs raisons
 
 o la configuration logicielle minimale et conseillée
+minimale: un ordinateur avec une connexion internet et un moeur de recherche
+conseillé: moteur le recherche google chrome si possible
 
 o l’ensemble des identifiants de connexion
 
   ▪ du site Web (au minimum un compte de test et un d’administration)
+  
 
   ▪ de la base de données
+      lien de connexion:    https://phpmyadmin.alwaysdata.com
+      identifiant:          189624_root
+      mot de passe:         iutinformatique
 
   ▪ de l’hébergement
+      lien de connexion:    https://ssh-noeguyomarch.alwaysdata.net/
+      identifiant:          noeguyomarch_freenote
+      mot de passe:         iutinformatique
+  
 
 github : https://github.com/hugo-levet/FreeNote
+
+mesures de sécurité du mot de passe

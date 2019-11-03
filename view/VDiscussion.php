@@ -74,7 +74,7 @@ if($controller->getDiscussion()->isOuvert())
     else
     {
      ?>
-    <p>Connectez-vous pour participer aux diférrentes discussions.</p>
+    <p>Connectez-vous pour participer aux différentes discussions.</p>
     <?php
     }
     ?>

@@ -11,7 +11,7 @@ class CDiscussion extends CController
         //vérifie si l'utilisateur est connecté
         $this->autoConnexion($arg);
 
-        //crée objet discussion a partir de la base de données
+        //crée un objet discussion à partir de la base de données
         try
         {
             if (isset($arg[1]))
@@ -88,7 +88,7 @@ class CDiscussion extends CController
                     }
                 }
 
-                if($mots[count($mots)-1] == ' ')
+                if ($mots[count($mots)-1] == ' ')
                 {
                     array_splice($mots, count($mots)-1);
                 }
@@ -120,12 +120,12 @@ class CDiscussion extends CController
                 if(verifieNbMot($motAjout))
                 {
                     $this->discussion->getMessage(count($this->discussion->getMessages())-1)->ajoutMot($motAjout, $this->getIdUtilisateurActuel());
-                    //actualise la discussion pour qu'elle possede le nouveau mot
+                    //actualise la discussion pour qu'elle possède le nouveau mot
                     $this->discussion = new MDiscussion($arg[1]);
                 }
                 else
                 {
-                    echo '<p class="erreur">Vous ne pouvez ajouter que 1 ou 2 mots.</p>';
+                    echo '<p class="erreur">Vous ne pouvez ajouter qu\'1 à 2 mots.</p>';
                 }
             }
         }

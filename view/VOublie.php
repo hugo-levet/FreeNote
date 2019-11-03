@@ -7,14 +7,14 @@ startPage();
 
 <?php
 if($_GET['type'] == 'mdp')
-    echo 'Un mot de passe temporaire vous seras envoyé par mail, veuillez le remplacer dès que possible.';
+    echo 'Un mot de passe temporaire vous sera envoyé par mail, veuillez ensuite à le modifier dès que possible.';
 elseif ($_GET['type'] == 'pseudo')
-    echo 'Votre pseudo vous seras envoyé par mail.';
+    echo 'Votre pseudo vous sera envoyé par mail.';
 ?>
 
 <form method="post" action="<?= $controller->getUrlIci(); ?>">
     <div>
-        <label for="mail">EMail</label>
+        <label for="mail">Mail</label>
         <input type="email" name="mail" required>
     </div>
     <div>

@@ -1,3 +1,5 @@
+>> FREENOTE
+
 o les 5 doigts d'pieds
   ▪ Hugo Levet
   ▪ Hugo Panis
@@ -15,7 +17,9 @@ o une présentation concise du projet réalisé
         - Tout utilisateur ayant contribué au message courant peut fermer la discussion et ainsi passer à la discussion suivante.
 
 o les choix techniques (technologies, algorithmes, etc.)
-nous avons utilisé github trello alwaysdata et messenger pour gérer notre projet/communication, nous avons choisit le modele MVC car il permet une séparation claire des intentions et optimise la création d’un site et sa maintenance.
+    Nous avons utilisé GitHub, Trello, AlwaysData et Messenger pour gérer notre projet/communication.
+    Nous avons choisi le modèle MVC car il permet une séparation claire des intentions et optimise la
+    création d’un site et sa maintenance.
 
 
 o la configuration logicielle minimale et conseillée
@@ -47,5 +51,7 @@ o l’ensemble des identifiants de connexion
 o GitHub : https://github.com/hugo-levet/FreeNote
 
 o mesures de sécurité du mot de passe:
-    le mot de passe doit contenir au minimum 6 caractères, il est crypté en MD5 dès la création du compte et est enregisté ainsi dans la base de données.
-    le système de mot de passe perdu envoie un nouveau mot de passe aléatoire par mail à l'utilisateur qui peut ainsi se connecter et le changer dans ses paramètres de compte.
+    le mot de passe doit contenir au minimum 6 caractères, il est crypté en MD5 dès la création du compte
+    et est enregisté ainsi dans la base de données. le système de mot de passe perdu envoie un nouveau mot
+    de passe aléatoire par mail à l'utilisateur qui peut ainsi se connecter et le changer dans ses paramètres
+    de compte.

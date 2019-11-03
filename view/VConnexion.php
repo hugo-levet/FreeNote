@@ -3,7 +3,7 @@ $titre = 'connexion';
 $ajoutHead = '';
 $ajoutHead = '<script language="javascript" type="text/javascript">
                 function popup(){
-                alert("' . htmlspecialchars('Oups il semblerait que cette partie du site soit encore en chantier ! veuillez réessayer plus tard', ENT_QUOTES) . '")
+                alert("' . htmlspecialchars('Oups, il semblerait que cette partie du site soit encore en chantier ! Veuillez réessayer plus tard.', ENT_QUOTES) . '")
                 }
               </script>';
 

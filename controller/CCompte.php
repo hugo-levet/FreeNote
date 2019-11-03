@@ -20,7 +20,7 @@ class CCompte extends CController
         $this->utilisateur = new MUtilisateur($this->idUtilisateurActuel);
 
         //gestion modification mdp
-        if(!empty($_POST['modificationMdp']))
+        if (!empty($_POST['modificationMdp']))
         {
             if ($this->utilisateur->getMdp() == md5($_POST['ancienMdp']))
             {
@@ -41,7 +41,7 @@ class CCompte extends CController
         }
 
         //Gestion du pseudo
-        if(!empty($_POST['modificationPseudo']))
+        if (!empty($_POST['modificationPseudo']))
         {
             if (!is_numeric($_POST['nouveauPseudo']))
             {
@@ -55,7 +55,7 @@ class CCompte extends CController
         }
 
         //Gestion du mail
-        if(!empty($_POST['modificationMail']))
+        if (!empty($_POST['modificationMail']))
         {
             if (preg_match('/^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/', $_POST['nouveauMail']))
             {

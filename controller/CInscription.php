@@ -9,7 +9,7 @@ class CInscription extends CController
     private $urlRetourDebut = '';
     private $urlRetourFin = '';
     private $urlRetour;
-    private $urlIci;
+    protected $urlIci;
 
     function __construct($arg)
     {

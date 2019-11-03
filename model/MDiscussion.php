@@ -1,7 +1,10 @@
 <?php
+
 require_once ('model/MModel.php');
 require_once ('model/MMessage.php');
-class MDiscussion extends MModel {
+
+class MDiscussion extends MModel
+{
     protected $id;
     protected $statut;
     protected $titre;
@@ -17,6 +20,7 @@ class MDiscussion extends MModel {
 
         //crée un tableau des messages de la discussion a partir de la base données
         $idMessages = $this->getComposition();
+
         foreach ($idMessages as $value)
         {
             array_push($this->messages, new MMessage($value));
@@ -77,4 +81,5 @@ class MDiscussion extends MModel {
         }
     }
 }
+
 ?>

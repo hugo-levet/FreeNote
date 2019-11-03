@@ -1,7 +1,9 @@
 <?php
 $titre = 'discussion';
 $ajoutHead = '<link rel="stylesheet" href="'.$controller->getRetourRacine().'public/css/discussion.css">';
+
 require_once('template/base.php');
+
 startPage();
 ?>
 <h1><?= $controller->getDiscussion()->getTitre(); ?></h1>
@@ -10,12 +12,12 @@ startPage();
 if($controller->getUtilisateurActuel()->getRole() == 'admin')
 {
 ?>
-<form action="../discussion/<?= $controller->getDiscussion()->getId(); ?>" method="post">
-    <button type="submit" name="suppressionDiscussion" value="suppressionDiscussion">Supprimer la discussion</button>
-</form>
-<form action="../discussion/<?= $controller->getDiscussion()->getId(); ?>" method="post">
-    <button type="submit" name="clotureDiscussion" value="clotureDiscussion">Clore la discussion</button>
-</form>
+    <form action="../discussion/<?= $controller->getDiscussion()->getId(); ?>" method="post">
+        <button type="submit" name="suppressionDiscussion" value="suppressionDiscussion">Supprimer la discussion</button>
+    </form>
+    <form action="../discussion/<?= $controller->getDiscussion()->getId(); ?>" method="post">
+        <button type="submit" name="clotureDiscussion" value="clotureDiscussion">Clore la discussion</button>
+    </form>
 <?php
 }
 ?>
@@ -29,10 +31,10 @@ if($controller->getUtilisateurActuel()->getRole() == 'admin')
         if($controller->getUtilisateurActuel()->getRole() == 'admin' && $i < count($controller->getDiscussion()->getMessages())-1)
         {
     ?>
-    <form action="../discussion/<?= $controller->getDiscussion()->getId(); ?>" method="post">
-        <button type="submit" name="suppressionMessage" value="<?= $controller->getDiscussion()->getMessage($i)->getId() ?>"><i class="far fa-trash-alt"></i></button>
-    </form>
-    <?php
+            <form action="../discussion/<?= $controller->getDiscussion()->getId(); ?>" method="post">
+                <button type="submit" name="suppressionMessage" value="<?= $controller->getDiscussion()->getMessage($i)->getId() ?>"><i class="far fa-trash-alt"></i></button>
+            </form>
+        <?php
         }
         echo '<p>';
         for ($j = 0; $j < count($controller->getDiscussion()->getMessage($i)->getMots()); $j++)
@@ -48,38 +50,37 @@ if($controller->getUtilisateurActuel()->getRole() == 'admin')
 if($controller->getDiscussion()->isOuvert())
 {
 ?>
-<?php
+    <?php
     if($controller->isConnecte())
     {
         if($controller->getDiscussion()->getMessage(count($controller->getDiscussion()->getMessages())-1)->aParticipe($controller->getIdUtilisateurActuel()))
         {
-?>
-<form action="../discussion/<?= $controller->getDiscussion()->getId(); ?>" method="post">
-    <button type="submit" name="clotureMessage" value="clotureMessage"><i class="far fa-times-circle"></i></button>
-</form>
-<?php
+    ?>
+            <form action="../discussion/<?= $controller->getDiscussion()->getId(); ?>" method="post">
+                <button type="submit" name="clotureMessage" value="clotureMessage"><i class="far fa-times-circle"></i></button>
+            </form>
+        <?php
         }
         else
         {
-?>
-<form action="../discussion/<?= $controller->getDiscussion()->getId(); ?>" method="post">
-    <input type="text" name="mot" maxlength="52" required />
-    <button type="submit" name="ajoutMot" value="ajoutMot"><i class="fab fa-telegram-plane"></i></button>
-</form>
-<?php
+        ?>
+            <form action="../discussion/<?= $controller->getDiscussion()->getId(); ?>" method="post">
+                <input type="text" name="mot" maxlength="52" required />
+                <button type="submit" name="ajoutMot" value="ajoutMot"><i class="fab fa-telegram-plane"></i></button>
+            </form>
+    <?php
         }
     }
-?>
+    ?>
 
 <?php
 }
 else
 {
 ?>
-<p>Cette discussion est fermée.</p>
+    <p>Cette discussion est fermée.</p>
 <?php
 }
-?>
-<?php
+
 endPage();
 ?>

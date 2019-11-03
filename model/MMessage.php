@@ -1,7 +1,10 @@
 <?php
+
 require_once ('model/MModel.php');
 require_once ('model/MMot.php');
-class MMessage extends MModel {
+
+class MMessage extends MModel
+{
     protected $id;
     protected $idDiscussion;
     protected $statut;
@@ -11,20 +14,22 @@ class MMessage extends MModel {
     {
         if (!isset($id))
         {
-            echo 'caca';
+            echo 'OK';
         }
+
         $this->id = $id;
         $this->table = 'message';
         $this->composition = 'mot';
         $this->connexionBdd();
         $tuple = $this->getUnTuple($this->id);
 
-        //        $this->idDiscussion = $tuple[1];
-        //        $this->statut = $tuple[2];
-        //        $this->hydrate($tuple);
+        //$this->idDiscussion = $tuple[1];
+        //$this->statut = $tuple[2];
+        //$this->hydrate($tuple);
 
         //crée un tableau des mots du message a partir de la base données
         $idMot = $this->getComposition();
+
         foreach ($idMot as $value)
         {
             array_push($this->mots, new MMot($value));
@@ -79,4 +84,5 @@ class MMessage extends MModel {
         }
     }
 }
+
 ?>

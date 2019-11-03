@@ -6,7 +6,9 @@ $ajoutHead = '<script language="javascript" type="text/javascript">
                 alert("' . htmlspecialchars('Un email contenant votre nouveau mot de passe vous a été envoyé.', ENT_QUOTES) . '")
                 }
               </script>';
+
 require_once('template/base.php');
+
 startPage();
 ?>
         <form method="post" action="<?= $controller->getUrlIci(); ?>">

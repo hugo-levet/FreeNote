@@ -1,5 +1,7 @@
 <?php
+
 require_once ('controller/CController.php');
+
 class CErreur extends CController
 {
     private $message;
@@ -16,7 +18,8 @@ class CErreur extends CController
         }
     }
 
-    function getMessage(){
+    function getMessage()
+    {
         return $this->message;
     }
 
@@ -25,7 +28,8 @@ class CErreur extends CController
         $this->message = $message;
     }
 
-    function getRetourAccueil(){
+    function getRetourAccueil()
+    {
         return $this->retourAccueil;
     }
 
@@ -34,4 +38,5 @@ class CErreur extends CController
         $this->retourAccueil = $retourAccueil;
     }
 }
+
 ?>

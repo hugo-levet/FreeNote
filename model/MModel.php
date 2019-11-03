@@ -1,4 +1,5 @@
 <?php
+
 abstract class MModel{
 
     protected static $bdd;
@@ -9,6 +10,7 @@ abstract class MModel{
     function connexionBdd()
     {
         require('model/MVariablesConnexion.php');
+
         if(!self::$isConnecte)
         {
             self::$bdd = mysqli_connect($host, $identifiantBdd, $mdpBdd, $dbname) or die('Erreur de connexion au serveur : ' . mysqli_connect_error());
@@ -53,14 +55,12 @@ abstract class MModel{
             exit();
         }
 
-
         while($ligneTable = mysqli_fetch_assoc($resultat))
         {
             $this->hydrate($ligneTable);
         }
 
         return $resultat;
-
     }
 
     function getComposition()//ne récupère que l'id de composition
@@ -78,6 +78,7 @@ abstract class MModel{
         }
 
         $idComposition = [];
+
         while($ligneTable = mysqli_fetch_assoc($resultat))
         {
             array_push($idComposition, $ligneTable['id'.$this->composition]);
@@ -89,7 +90,6 @@ abstract class MModel{
     function ajoutMot($valeur, $idUtilisateur)
     {
         $requete = "INSERT INTO mot (idmessage, idutilisateur, valeur) VALUES ($this->id, $idUtilisateur, '$valeur')";
-
 
         if(!($resultat = mysqli_query(self::$bdd, $requete)))
         {
@@ -104,7 +104,7 @@ abstract class MModel{
 
     function clotureMessage($id)
     {
-        //ferme le dernier message
+        // ferme le dernier message
         $requete = "UPDATE message SET statutmessage = 1 WHERE idmessage = $id";
 
         if(!(mysqli_query(self::$bdd, $requete)))
@@ -117,7 +117,7 @@ abstract class MModel{
             exit();
         }
 
-        //crée un nouveau message ouvert
+        // crée un nouveau message ouvert
         $requete = "INSERT INTO message (iddiscussion, statutmessage) VALUES ($this->id, 0)";
 
         if(!(mysqli_query(self::$bdd, $requete)))
@@ -144,7 +144,6 @@ abstract class MModel{
             echo 'Requête : ' . $requete . '<br/>';
             exit();
         }
-
 
         while($ligneTable = mysqli_fetch_assoc($resultat))
         {
@@ -184,10 +183,11 @@ abstract class MModel{
             return false;
         }
     }
+
     /*
     function changementMdp($mdp)
     {
-        //ferme le dernier message
+        // ferme le dernier message
         $requete = "UPDATE utilisateur SET mdp = '$mdp' WHERE idutilisateur = $this->id";
 
         if(!(mysqli_query(self::$bdd, $requete)))
@@ -199,14 +199,15 @@ abstract class MModel{
             echo 'Requête : ' . $requete . '<br/>';
             exit();
         }
-
     }
+
     function changementPseudo($pseudo)
     {
-        //ferme le dernier message
+        // ferme le dernier message
         $requete = "UPDATE utilisateur SET pseudo = '$pseudo' WHERE idutilisateur = $this->id";
 
-        if (!(mysqli_query(self::$bdd, $requete))) {
+        if (!(mysqli_query(self::$bdd, $requete)))
+        {
             echo 'Erreur de requête<br/>';
             // Affiche le type d'erreur.
             echo 'Erreur : ' . mysqli_error(self::$bdd) . '<br/>';
@@ -218,10 +219,11 @@ abstract class MModel{
 
         function changementMail($mail)
         {
-            //ferme le dernier message
+            // ferme le dernier message
             $requete = "UPDATE utilisateur SET mail = '$mail' WHERE idutilisateur = $this->id";
 
-            if (!(mysqli_query(self::$bdd, $requete))) {
+            if (!(mysqli_query(self::$bdd, $requete)))
+            {
                 echo 'Erreur de requête<br/>';
                 // Affiche le type d'erreur.
                 echo 'Erreur : ' . mysqli_error(self::$bdd) . '<br/>';
@@ -231,12 +233,14 @@ abstract class MModel{
             }
         }
 */
+
     function changementBDD($nouvval, $type)
     {
-        //ferme le dernier message
+        // ferme le dernier message
         $requete = "UPDATE utilisateur SET $type = '$nouvval' WHERE idutilisateur = $this->id";
 
-        if (!(mysqli_query(self::$bdd, $requete))) {
+        if (!(mysqli_query(self::$bdd, $requete)))
+        {
             echo 'Erreur de requête<br/>';
             // Affiche le type d'erreur.
             echo 'Erreur : ' . mysqli_error(self::$bdd) . '<br/>';
@@ -261,7 +265,7 @@ abstract class MModel{
         }
     }
 
-    function ajouterDiscussion($titre) //la valeur de retour est l'id de la discussion créé
+    function ajouterDiscussion($titre) // la valeur de retour est l'id de la discussion créé
     {
         $requete = "INSERT INTO discussion(titre) VALUES ('$titre')";
 
@@ -275,7 +279,7 @@ abstract class MModel{
             exit();
         }
 
-        //enregistre l'id de la discussin créé
+        // enregistre l'id de la discussin créé
         $requete = "SELECT MAX(iddiscussion) AS max_id, iddiscussion FROM discussion";
 
         if(!($resultat = mysqli_query(self::$bdd, $requete)))
@@ -289,12 +293,13 @@ abstract class MModel{
         }
 
         $idDiscussion;
+
         while($ligneTable = mysqli_fetch_assoc($resultat))
         {
             $idDiscussion = $ligneTable['max_id'];
         }
 
-        //crée un nouveau message vide
+        // crée un nouveau message vide
         $requete = "INSERT INTO message (iddiscussion, statutmessage) VALUES ($idDiscussion, 0)";
 
         if(!(mysqli_query(self::$bdd, $requete)))
@@ -307,10 +312,11 @@ abstract class MModel{
             exit();
         }
 
-        //incremente le nombre de discussion créé
+        // incremente le nombre de discussion créé
         $requete = "UPDATE utilisateur SET nombrediscussion = nombrediscussion + 1 WHERE idutilisateur = $this->idUtilisateurActuel";
 
-        if (!(mysqli_query(self::$bdd, $requete))) {
+        if (!(mysqli_query(self::$bdd, $requete)))
+        {
             echo 'Erreur de requête<br/>';
             // Affiche le type d'erreur.
             echo 'Erreur : ' . mysqli_error(self::$bdd) . '<br/>';
@@ -327,16 +333,17 @@ abstract class MModel{
         if($id == 0) //supprime la discussion actuelle
         {
             //clot la discussion courante
-        $requete = "UPDATE discussion SET statutdiscussion = 0 WHERE iddiscussion = $this->id";
+            $requete = "UPDATE discussion SET statutdiscussion = 0 WHERE iddiscussion = $this->id";
 
-        if (!(mysqli_query(self::$bdd, $requete))) {
-            echo 'Erreur de requête<br/>';
-            // Affiche le type d'erreur.
-            echo 'Erreur : ' . mysqli_error(self::$bdd) . '<br/>';
-            // Affiche la requête envoyée.
-            echo 'Requête : ' . $requete . '<br/>';
-            exit();
-        }
+            if (!(mysqli_query(self::$bdd, $requete)))
+            {
+                echo 'Erreur de requête<br/>';
+                // Affiche le type d'erreur.
+                echo 'Erreur : ' . mysqli_error(self::$bdd) . '<br/>';
+                // Affiche la requête envoyée.
+                echo 'Requête : ' . $requete . '<br/>';
+                exit();
+            }
         }
         else //supprime la discussion avec l'id renseigné
         {
@@ -348,7 +355,7 @@ abstract class MModel{
     {
         if($id == 0) //supprime la discussion actuelle
         {
-            //récupérer les id des messages a supprimer
+            // récupérer les id des messages a supprimer
             $requete = "SELECT idmessage FROM message WHERE iddiscussion = ".$this->id;
 
             if(!($resultat = mysqli_query(self::$bdd, $requete)))
@@ -362,17 +369,19 @@ abstract class MModel{
             }
 
             $idMessages = [];
+
             while($ligneTable = mysqli_fetch_assoc($resultat))
             {
                 array_push($idMessages, $ligneTable['idmessage']);
             }
 
-            //supprime tous les mots
+            // supprime tous les mots
             foreach($idMessages as &$unIdMessage)
             {
                 $requete = "DELETE FROM mot WHERE idmessage = ".$unIdMessage;
 
-                if (!(mysqli_query(self::$bdd, $requete))) {
+                if (!(mysqli_query(self::$bdd, $requete)))
+                {
                     echo 'Erreur de requête<br/>';
                     // Affiche le type d'erreur.
                     echo 'Erreur : ' . mysqli_error(self::$bdd) . '<br/>';
@@ -382,10 +391,11 @@ abstract class MModel{
                 }
             }
 
-            //supprime tous les messages
+            // supprime tous les messages
             $requete = "DELETE FROM message WHERE iddiscussion = ".$this->id;
 
-            if (!(mysqli_query(self::$bdd, $requete))) {
+            if (!(mysqli_query(self::$bdd, $requete)))
+            {
                 echo 'Erreur de requête<br/>';
                 // Affiche le type d'erreur.
                 echo 'Erreur : ' . mysqli_error(self::$bdd) . '<br/>';
@@ -394,10 +404,11 @@ abstract class MModel{
                 exit();
             }
 
-            //supprime la discussion
+            // supprime la discussion
             $requete = "DELETE FROM discussion WHERE iddiscussion = ".$this->id;
 
-            if (!(mysqli_query(self::$bdd, $requete))) {
+            if (!(mysqli_query(self::$bdd, $requete)))
+            {
                 echo 'Erreur de requête<br/>';
                 // Affiche le type d'erreur.
                 echo 'Erreur : ' . mysqli_error(self::$bdd) . '<br/>';
@@ -414,10 +425,11 @@ abstract class MModel{
 
     public function suppressionmessage($idMessage)
     {
-        //supprime tous les mots
+            // supprime tous les mots
             $requete = "DELETE FROM mot WHERE idmessage = ".$idMessage;
 
-            if (!(mysqli_query(self::$bdd, $requete))) {
+            if (!(mysqli_query(self::$bdd, $requete)))
+            {
                 echo 'Erreur de requête<br/>';
                 // Affiche le type d'erreur.
                 echo 'Erreur : ' . mysqli_error(self::$bdd) . '<br/>';
@@ -426,10 +438,11 @@ abstract class MModel{
                 exit();
             }
 
-        //supprime le message
+        // supprime le message
         $requete = "DELETE FROM message WHERE idmessage = ".$idMessage;
 
-        if (!(mysqli_query(self::$bdd, $requete))) {
+        if (!(mysqli_query(self::$bdd, $requete)))
+        {
             echo 'Erreur de requête<br/>';
             // Affiche le type d'erreur.
             echo 'Erreur : ' . mysqli_error(self::$bdd) . '<br/>';
@@ -439,4 +452,5 @@ abstract class MModel{
         }
     }
 }
+
 ?>

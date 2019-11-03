@@ -6,7 +6,9 @@ o les 5 doigts d'pieds
   ▪ Bryan in the kitchen Dubruc
 
 o l’URL de l’index du site Web
+  http://noeguyomarch.alwaysdata.net/FreeNote/accueil/1
 
+o une présentation concise du projet réalisé
 Nous avons réalisé un site de chat en ligne sur lequel les utilisateurs ont acces a diferentes discussions dans lequelles figurent un ou plusieurs messages. L'ensemble des utilisateurs peut contribuer aux discussions qui representent un jeu litteraire.
 Ce jeux consiste à faire composer une phrase, par plusieurs utilisateurs sans qu'aucun d'eux ne puisse modifier la ou les collaborations precedentes.(Cadavre exquis -> wikipedia.org)
 -Chaque utilisateur peut ajouter un ou deux mots dans le message courant de la discussion ouverte. 
@@ -15,14 +17,20 @@ Ce jeux consiste à faire composer une phrase, par plusieurs utilisateurs sans q
 o les choix techniques (technologies, algorithmes, etc.) et leurs raisons
 
 o la configuration logicielle minimale et conseillée
-minimale: un ordinateur avec une connexion internet et un moeur de recherche
-conseillé: moteur le recherche google chrome si possible
+minimale: un ordinateur avec une connexion Internet et un navigateur avec moteur de recherche
+conseillée: OS récent (version datée de 2-3 ans, toute mouture confondue), navigateur Google Chrome
 
 o l’ensemble des identifiants de connexion
 
   ▪ du site Web (au minimum un compte de test et un d’administration)
+    lien de l'accueil:  http://noeguyomarch.alwaysdata.net/FreeNote
+    
+    identifiant:        root
+    mot de passe:       iutinformatique
+    
+    identifiant test:   test
+    mot de passe test:  comptetest
   
-
   ▪ de la base de données
       lien de connexion:    https://phpmyadmin.alwaysdata.com
       identifiant:          189624_root
@@ -36,4 +44,6 @@ o l’ensemble des identifiants de connexion
 
 github : https://github.com/hugo-levet/FreeNote
 
-mesures de sécurité du mot de passe
+mesures de sécurité du mot de passe:
+     le mot de passe doit contenir au minimum 6 caracteres, il est crypté en MD5 dès la création du compte et est enregisté aisi dans la base de donnée.
+     le système de mot de passe perdu envoi un nouveu not de pass aléatoire par mail a l'utilisateur qui peut ainsi se connecter et le changer dans ses paramètres

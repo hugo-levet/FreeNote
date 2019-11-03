@@ -6,9 +6,7 @@ o les 5 doigts d'pieds
   ▪ Bryan in the kitchen Dubruc
 
 o l’URL de l’index du site Web
-  http://noeguyomarch.alwaysdata.net/FreeNote/accueil/1
 
-o une présentation concise du projet réalisé
 Nous avons réalisé un site de chat en ligne sur lequel les utilisateurs ont acces a diferentes discussions dans lequelles figurent un ou plusieurs messages. L'ensemble des utilisateurs peut contribuer aux discussions qui representent un jeu litteraire.
 Ce jeux consiste à faire composer une phrase, par plusieurs utilisateurs sans qu'aucun d'eux ne puisse modifier la ou les collaborations precedentes.(Cadavre exquis -> wikipedia.org)
 -Chaque utilisateur peut ajouter un ou deux mots dans le message courant de la discussion ouverte. 
@@ -17,8 +15,8 @@ Ce jeux consiste à faire composer une phrase, par plusieurs utilisateurs sans q
 o les choix techniques (technologies, algorithmes, etc.) et leurs raisons
 
 o la configuration logicielle minimale et conseillée
-minimale: un ordinateur avec une connexion Internet et un navigateur avec moteur de recherche
-conseillée: OS récent (version datée de 2-3 ans, toute mouture confondue), navigateur Google Chrome
+minimale: un ordinateur avec une connexion internet et un moeur de recherche
+conseillé: moteur le recherche google chrome si possible
 
 o l’ensemble des identifiants de connexion
 

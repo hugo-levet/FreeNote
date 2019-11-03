@@ -9,7 +9,6 @@ class CInscription extends CController
     private $urlRetourDebut = '';
     private $urlRetourFin = '';
     private $urlRetour;
-    protected $urlIci;
 
     function __construct($arg)
     {
@@ -35,7 +34,7 @@ class CInscription extends CController
             }
         }
 
-        $this->urlIci = $this->urlRetourDebut . 'inscirption/' . $this->urlRetourFin;
+        $this->urlIci = $this->urlRetourDebut . 'inscription/' . $this->urlRetourFin;
         $this->urlRetour = $this->urlRetourDebut . $this->urlRetourFin;
 
         if($this->isConnecte())
@@ -101,11 +100,6 @@ class CInscription extends CController
         {
             echo 'Formulaire d\'inscription incomplet.';
         }
-    }
-
-    public function getUrlIci()
-    {
-        $this->urlIci;
     }
 }
 

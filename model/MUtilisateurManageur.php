@@ -2,8 +2,8 @@
 
 require_once ('model/MModel.php');
 
-class MUtilisateurManageur extends MModel {
-
+class MUtilisateurManageur extends MModel
+{
     function __construct()
     {
         $this->connexionBdd();

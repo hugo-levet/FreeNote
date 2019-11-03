@@ -1,7 +1,9 @@
 <?php
 $titre = 'nouvelle discussion';
 $ajoutHead = '';
+
 require_once('template/base.php');
+
 startPage();
 ?>
 <form method="post" action="<?= $controller->getUrlIci(); ?>">

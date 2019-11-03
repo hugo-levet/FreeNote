@@ -1,6 +1,9 @@
 <?php
+
 require_once ('model/MModel.php');
-class MMot extends MModel {
+
+class MMot extends MModel
+{
     protected $id;
     protected $idMessage;
     protected $idUtilisateur;
@@ -48,4 +51,5 @@ class MMot extends MModel {
 
 
 }
+
 ?>

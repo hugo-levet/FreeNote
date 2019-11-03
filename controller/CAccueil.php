@@ -1,6 +1,8 @@
 <?php
+
 require_once ('model/MDiscussionManageur.php');
 require_once ('controller/CController.php');
+
 class CAccueil extends CController
 {
 
@@ -20,7 +22,8 @@ class CAccueil extends CController
         {
             $this->nbDiscussionParPage = $arg[2];
 
-            if ($this->nbDiscussionParPage > 25) {
+            if ($this->nbDiscussionParPage > 25)
+            {
                 $this->nbDiscussionParPage = 25;
             }
         }
@@ -86,14 +89,14 @@ class CAccueil extends CController
     {
         $this->discussionsManageur = new MDiscussionManageur($this->idUtilisateurActuel);
 
-        //      $this->tableToutesDiscussions = $tablediscussion->getDiscussions();
+        //$this->tableToutesDiscussions = $tablediscussion->getDiscussions();
 
         $this->nbDiscussion = count($this->discussionsManageur->getDiscussions());
         $this->nbPages = ceil($this->nbDiscussion/$this->nbDiscussionParPage); //on compte le nombre de pages
 
         if($this->pageActuelle > $this->nbPages) //si la valeur de $pageActuelle est plus grand que $nbPages
         {
-//            $this->pageActuelle = $this->nbPages;
+            //$this->pageActuelle = $this->nbPages;
             header('Location: '.$this->retourRacine.'accueil/'.$this->nbPages.'/'.$this->nbDiscussionParPage);
         }
 

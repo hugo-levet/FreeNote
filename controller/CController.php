@@ -1,5 +1,7 @@
 <?php
+
 require_once('model/MUtilisateur.php');
+
 class CController
 {
     protected $idUtilisateurActuel;
@@ -11,12 +13,12 @@ class CController
     protected function autoConnexion($arg = [])
     {
         session_start();
+
         if (isset($_SESSION['idUtilisateur'], $_SESSION['mdp']))
         {
             // L'authentification est validée.
             $this->isConnecte = true;
             $this->idUtilisateurActuel = $_SESSION['idUtilisateur'];
-
             $this->utilisateurActuel = new MUtilisateur($_SESSION['idUtilisateur']);
         }
 
@@ -111,4 +113,5 @@ class CController
         return $this->urlIci;
     }
 }
+
 ?>

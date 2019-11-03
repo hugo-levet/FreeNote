@@ -1,7 +1,9 @@
 <?php
 $titre = 'compte';
 $ajoutHead = '<link rel="stylesheet" href="public/css/compte.css">';
+
 require_once('template/base.php');
+
 startPage();
 ?>
 <!-- information sur l'utilisateur -->

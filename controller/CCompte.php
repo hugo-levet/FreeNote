@@ -1,6 +1,8 @@
 <?php
+
 require_once ('controller/CController.php');
 require_once('model/MUtilisateur.php');
+
 class CCompte extends CController
 {
     private $utilisateur;
@@ -67,11 +69,10 @@ class CCompte extends CController
         }
     }
 
-
-
     public function getUtilisateur()
     {
         return $this->utilisateur;
     }
 }
+
 ?>

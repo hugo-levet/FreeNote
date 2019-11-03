@@ -1,7 +1,9 @@
 <?php
 $titre = 'accueil';
 $ajoutHead = '';
+
 require_once('template/base.php');
+
 startPage();
 ?>
 <p>Oups, il y a un petit problème : <?= $controller->getMessage() ?></p>

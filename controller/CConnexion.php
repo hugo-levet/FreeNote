@@ -1,12 +1,14 @@
 <?php
+
 require_once('model/MUtilisateur.php');
 require_once('controller/CController.php');
+
 class CConnexion extends CController
 {
     private $urlRetourDebut = '';
     private $urlRetourFin = '';
     private $urlRetour;
-//    private $urlIci;
+    //private $urlIci;
 
     function __construct($arg)
     {

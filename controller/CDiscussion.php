@@ -1,6 +1,8 @@
 <?php
+
 require_once ('model/MDiscussion.php');
 require_once ('controller/CController.php');
+
 class CDiscussion extends CController
 {
     private $discussion;
@@ -74,7 +76,6 @@ class CDiscussion extends CController
                     {
                         if(count($mots) == 0)
                         {
-
                         }
                         elseif(count($mots) == 1)
                         {
@@ -86,10 +87,12 @@ class CDiscussion extends CController
                         }
                     }
                 }
+
                 if($mots[count($mots)-1] == ' ')
                 {
                     array_splice($mots, count($mots)-1);
                 }
+
                 $motAjout = implode($mots);
 
                 function verifieNbMot($phrase)
@@ -138,4 +141,5 @@ class CDiscussion extends CController
         $this->discussion = $discussion;
     }
 }
+
 ?>

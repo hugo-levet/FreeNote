@@ -1,7 +1,9 @@
 <?php
 $titre = 'inscription';
 $ajoutHead = '';
+
 require_once('template/base.php');
+
 startPage();
 ?>
         <form method="post" action="<?= $controller->getUrlIci(); ?>">

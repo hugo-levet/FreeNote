@@ -1,5 +1,7 @@
 <?php
+
 require_once('model/MModel.php');
+
 class MUtilisateur extends MModel
 {
     protected $id;
@@ -11,6 +13,7 @@ class MUtilisateur extends MModel
     function __construct($id)
     {
         $this->table = 'utilisateur';
+
         //si l'id est un nombre
         if (is_numeric($id))
         {
@@ -104,4 +107,5 @@ class MUtilisateur extends MModel
         return $this->nombrediscussion;
     }
 }
+
 ?>

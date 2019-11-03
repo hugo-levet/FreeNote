@@ -1,6 +1,9 @@
 <?php
+
 require_once ('model/MModel.php');
-class MDiscussionManageur extends MModel {
+
+class MDiscussionManageur extends MModel
+{
     protected $idUtilisateurActuel;
     protected $discussions = [];
 
@@ -43,4 +46,5 @@ class MDiscussionManageur extends MModel {
         return $this->discussions[$ligne][1];
     }
 }
+
 ?>

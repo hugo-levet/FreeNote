@@ -1,22 +1,23 @@
 <?php
 $titre = 'accueil';
 $ajoutHead = '<link rel="stylesheet" href="'.$controller->getRetourRacine().'public/css/accueil.css">';
-
 require_once('template/base.php');
-
 startPage();
 ?>
-
 <!--description du service-->
-<p>Hello, FreeNote est un réseau social d’un nouveau genre, FreeNote consiste à créer des fils de discussions comprenant
-des messages participatifs au sein desquels chaque utilisateur ne peut ajouter qu’un à deux mots.</p>
+<div class="presentation">
+    Hello, FreeNote est un réseau social d’un nouveau genre, FreeNote consiste à créer des fils de discussions comprenant
+    des messages participatifs au sein desquels chaque utilisateur ne peut ajouter qu’un ou deux mots.
+</div>
 
 <?php
 /*bouton de création de discussion*/
 if($controller->isConnecte())
 {
 ?>
-    <a href="<?= $controller->getRetourRacine(); ?>nouvelleDiscussion" >Ajouter une discussion <i class="far fa-comments"></i></a>
+    <div class="NouveauMessage">
+        <a href="<?= $controller->getRetourRacine(); ?>nouvelleDiscussion" >Ajouter une discussion <i class="far fa-comments"></i></a>
+    </div>
 <?php
 }
 ?>
@@ -40,41 +41,37 @@ if($controller->isConnecte())
             //statut du message[i]
             $statut = $controller->getTableToutesDiscussions()->getStatut($i);
             if($statut)
-            {
                 $statut = 'ouvert';
-            }
             else
-            {
                 $statut = 'fermee';
-            }
 
             //table de presentation du message courant
     ?>
-    <a href="<?= $controller->getRetourRacine(); ?>discussion/<?= $id; ?>"><div class="<?= $statut; ?>">
+    <a href="<?= $controller->getRetourRacine(); ?>discussion/<?= $id; ?>"><div id="uneDiscussion" class="<?= $statut; ?>">
         <h2><?= stripslashes($titre); ?></h2>
         <!--        <a href="../discussion/' . ($id) . '">ouvrir</a>-->
         </div></a>
     <?php
         }
-    }
-    ?>
+    }?>
 </div>
 
-<form method="post" action="<?= $controller->getRetourRacine(); ?>accueil">
+<form method="post" action="">
     <label>
-        Nombre d'éléments par page:
-        <select name="nbDiscParPage">
+        Afficher
+        <select name="nbDiscParPage" aria-controls="eventTable">
             <option value="2" <?php if($controller->getNbDiscussionParPage() == 2) echo 'selected'; ?>>2</option>
             <option value="5" <?php if($controller->getNbDiscussionParPage() == 5) echo 'selected'; ?>>5</option>
             <option value="10" <?php if($controller->getNbDiscussionParPage() == 10) echo 'selected'; ?>>10</option>
             <option value="25" <?php if($controller->getNbDiscussionParPage() == 25) echo 'selected'; ?>>25</option>
         </select>
+        éléments
     </label>
     <button type="submit" name="pagination" value="pagination"><i class="fas fa-sort-amount-down"></i></button>
-</form>
 
+</form>
 <?php
-echo '<p>Page : '; //Pour l'affichage, on centre la liste des pages
+echo '<p align="center">Page : '; //Pour l'affichage, on centre la liste des pages
 for($i = 1; $i <= $controller->getNbPages(); $i++) //On fait notre boucle
 {
     //On va faire notre condition
@@ -89,6 +86,8 @@ for($i = 1; $i <= $controller->getNbPages(); $i++) //On fait notre boucle
     echo' ';
 }
 echo '</p>';
-
+?>
+<?php
 endPage();
 ?>
+

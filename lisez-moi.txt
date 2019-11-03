@@ -14,7 +14,8 @@ o une présentation concise du projet réalisé
         - Chaque utilisateur peut ajouter un ou deux mots dans le message courant de la discussion ouverte. 
         - Tout utilisateur ayant contribué au message courant peut fermer la discussion et ainsi passer à la discussion suivante.
 
-o les choix techniques (technologies, algorithmes, etc.) et leurs raisons
+o les choix techniques (technologies, algorithmes, etc.)
+nous avons utilisé github trello alwaysdata et messenger pour gérer notre projet/communication, nous avons choisit le modele MVC car il permet une séparation claire des intentions et optimise la création d’un site et sa maintenance.
 
 
 o la configuration logicielle minimale et conseillée

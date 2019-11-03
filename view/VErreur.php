@@ -1,14 +1,17 @@
 <?php
 $titre = 'accueil';
-$ajoutHead = '';
-
+$ajoutHead = '<link rel="stylesheet" href="'.$controller->getRetourRacine().'public/css/erreur.css">';
 require_once('template/base.php');
-
 startPage();
 ?>
-<p>Oups, il y a un petit problème : <?= $controller->getMessage() ?></p>
-
-<a href="<?= $controller->getRetourAccueil() ?>" >Tu peux retourner a l'accueil ;D</a>
+<div class="msg">
+    <img src = "public/images/ErrorT-REX.png">
+    <p1>Oups, il y a un petit problème : </p1> <p2> <?= $controller->getMessage() ?></p2>
+</div>
+</br>
+<div class="bouton">
+    <a href="<?= $controller->getRetourAccueil() ?>" >Tu peux retourner a l'accueil ;D</a>
+</div>
 <?php
     endPage();
 ?>

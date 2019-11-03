@@ -16,6 +16,7 @@ startPage();
         <legend>modification mot de passe</legend>
         <div>
             <label for="ancienMdp">Ancien mot de passe :</label><input type="password" name="ancienMdp">
+             <button><a href="">mot de passe oublié ?</a></button>
         </div>
         <div>
             <label for="nouveauMdp">Nouveau mot de passe :</label><input type="password" name="nouveauMdp">

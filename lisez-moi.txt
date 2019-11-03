@@ -21,8 +21,14 @@ conseillé: moteur le recherche google chrome si possible
 o l’ensemble des identifiants de connexion
 
   ▪ du site Web (au minimum un compte de test et un d’administration)
+    lien de l'accueil:  http://noeguyomarch.alwaysdata.net/FreeNote
+    
+    identifiant:        root
+    mot de passe:       iutinformatique
+    
+    identifiant test:   test
+    mot de passe test:  comptetest
   
-
   ▪ de la base de données
       lien de connexion:    https://phpmyadmin.alwaysdata.com
       identifiant:          189624_root
@@ -36,4 +42,6 @@ o l’ensemble des identifiants de connexion
 
 github : https://github.com/hugo-levet/FreeNote
 
-mesures de sécurité du mot de passe
+mesures de sécurité du mot de passe:
+     le mot de passe doit contenir au minimum 6 caracteres, il est crypté en MD5 dès la création du compte et est enregisté aisi dans la base de donnée.
+     le système de mot de passe perdu envoi un nouveu not de pass aléatoire par mail a l'utilisateur qui peut ainsi se connecter et le changer dans ses paramètres

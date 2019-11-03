@@ -3,7 +3,7 @@ $titre = 'connexion';
 $ajoutHead = '';
 $ajoutHead = '<script language="javascript" type="text/javascript">
                 function popup(){
-                alert("' . htmlspecialchars('Un email contenant votre nouveau mot de passe vous a été envoyé.', ENT_QUOTES) . '")
+                alert("' . htmlspecialchars('Oups il semblerait que cette partie du site soit encore en chantier ! veuillez réessayer plus tard', ENT_QUOTES) . '")
                 }
               </script>';
 
@@ -15,7 +15,7 @@ startPage();
             <div>
                 <label for="pseudo">Pseudo</label>
                 <input type="text" name="pseudo" required>
-                <a href="pseudo_perdu.php">Pseudo perdu ?</a>
+                <a href="pseudo_perdu.php" onclick="popup()">Pseudo perdu ?</a>
             </div>
             <div>
                 <label for="mdp">Mot de passe</label>

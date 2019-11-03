@@ -20,10 +20,10 @@ startPage();
             <div>
                 <label for="mdp">Mot de passe</label>
                 <input type="password" name="mdp" required>
-                <button onclick="popup()" type="submit" value="envoyer">Mot de passe perdu ?</button>
             </div>
             <div>
                 <button type="submit" name="connexion" value="connexion">Se connecter</button>
+                <button onclick="popup()" type="submit" value="envoyer">Mot de passe perdu ?</button>
             </div>
         </form>
         <a href="inscription">S'inscrire</a>

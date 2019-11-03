@@ -47,7 +47,7 @@ startPage();
     <fieldset>
         <legend>modification mail</legend>
         <div>
-            <label for="ancienMdp">Ancien mail : <?= $controller->getUtilisateur()->getMail() ?></label>
+            <label for="ancienMail">Ancien mail : <?= $controller->getUtilisateur()->getMail() ?></label>
         </div>
         <div>
             <label for="nouveauMail">Nouveau mail :</label><input type="email" name="nouveauMail">

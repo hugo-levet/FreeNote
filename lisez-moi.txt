@@ -9,16 +9,17 @@ o l’URL de l’index du site Web
   http://noeguyomarch.alwaysdata.net/FreeNote/accueil/1
 
 o une présentation concise du projet réalisé
-Nous avons réalisé un site de chat en ligne sur lequel les utilisateurs ont acces a diferentes discussions dans lequelles figurent un ou plusieurs messages. L'ensemble des utilisateurs peut contribuer aux discussions qui representent un jeu litteraire.
-Ce jeux consiste à faire composer une phrase, par plusieurs utilisateurs sans qu'aucun d'eux ne puisse modifier la ou les collaborations precedentes.(Cadavre exquis -> wikipedia.org)
--Chaque utilisateur peut ajouter un ou deux mots dans le message courant de la discussion ouverte. 
--tout utilisateur ayant contribué au message courant peut le fermer et aisi passer au message suivant
+    Nous avons réalisé un site de chat en ligne sur lequel les utilisateurs ont acces à différentes discussions dans lequelles figurent un ou plusieurs messages. L'ensemble des utilisateurs peut contribuer aux discussions qui représentent un jeu littéraire.
+    Ce jeu consiste à faire composer une phrase, par plusieurs utilisateurs sans qu'aucun d'eux ne puisse modifier la ou les collaborations precedentes. (Cadavre exquis -> wikipedia.org)
+        - Chaque utilisateur peut ajouter un ou deux mots dans le message courant de la discussion ouverte. 
+        - Tout utilisateur ayant contribué au message courant peut fermer la discussion et ainsi passer à la discussion suivante.
 
 o les choix techniques (technologies, algorithmes, etc.) et leurs raisons
 
+
 o la configuration logicielle minimale et conseillée
-minimale: un ordinateur avec une connexion Internet et un navigateur avec moteur de recherche
-conseillée: OS récent (version datée de 2-3 ans, toute mouture confondue), navigateur Google Chrome
+    minimale: un ordinateur avec une connexion Internet et un navigateur avec moteur de recherche
+    conseillée: OS récent (version datée de 2-3 ans, toute mouture confondue), navigateur Google Chrome
 
 o l’ensemble des identifiants de connexion
 
@@ -42,8 +43,8 @@ o l’ensemble des identifiants de connexion
       mot de passe:         iutinformatique
   
 
-github : https://github.com/hugo-levet/FreeNote
+o GitHub : https://github.com/hugo-levet/FreeNote
 
-mesures de sécurité du mot de passe:
-     le mot de passe doit contenir au minimum 6 caracteres, il est crypté en MD5 dès la création du compte et est enregisté aisi dans la base de donnée.
-     le système de mot de passe perdu envoi un nouveu not de pass aléatoire par mail a l'utilisateur qui peut ainsi se connecter et le changer dans ses paramètres
+o mesures de sécurité du mot de passe:
+    le mot de passe doit contenir au minimum 6 caractères, il est crypté en MD5 dès la création du compte et est enregisté ainsi dans la base de données.
+    le système de mot de passe perdu envoie un nouveau mot de passe aléatoire par mail à l'utilisateur qui peut ainsi se connecter et le changer dans ses paramètres de compte.

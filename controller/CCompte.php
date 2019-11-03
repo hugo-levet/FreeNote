@@ -1,6 +1,6 @@
 <?php
 
-require_once ('controller/CController.php');
+require_once('controller/CController.php');
 require_once('model/MUtilisateur.php');
 
 class CCompte extends CController
@@ -12,7 +12,7 @@ class CCompte extends CController
         //vérifie si l'utilisateur est connecte
         $this->autoConnexion($arg);
         //si pas connecter retourne a l'accueil
-        if(!$this->isConnecte())
+        if (!$this->isConnecte())
         {
             header('Location: index.php');
         }
@@ -50,7 +50,7 @@ class CCompte extends CController
             }
             else
             {
-                echo 'Le pseudo n\'ai constitué que d\'une suite numérique.<br>';
+                echo 'Le pseudo n\'est constitué que d\'une suite numérique.<br>';
             }
         }
 
@@ -64,7 +64,7 @@ class CCompte extends CController
             }
             else
             {
-                echo 'Le mail est invalide.<br>';
+                echo 'Le mail saisi est invalide.<br>';
             }
         }
     }

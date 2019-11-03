@@ -9,7 +9,7 @@ startPage();
 
 <!--description du service-->
 <p>Hello, FreeNote est un réseau social d’un nouveau genre, FreeNote consiste à créer des fils de discussions comprenant
-des messages participatifs au sein desquels chaque utilisateur ne peut ajouter qu’un ou deux mots.</p>
+des messages participatifs au sein desquels chaque utilisateur ne peut ajouter qu’un à deux mots.</p>
 
 <?php
 /*bouton de création de discussion*/

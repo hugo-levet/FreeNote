@@ -1,7 +1,5 @@
 <?php
 
-namespace Config;
-
 class Config
 {
     const BDD_HOTE = 'mysql-noeguyomarch.alwaysdata.net';
